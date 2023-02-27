@@ -38,7 +38,7 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <p style="font-size: 4rem; color: #EF3B2D; font-weight: bolder">
+                    <p style="font-size: 4rem; color: #EF3B2D; font-weight: 900">
                         Case Nova
                     </p>
                 </div>
