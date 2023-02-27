@@ -13,20 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subservice', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('service_id');
 
             $table->string('name_ru', 255)->nullable();
             $table->string('name_uz', 255)->nullable();
             $table->string('name_en', 255)->nullable();
 
-            $table->text('content_ru')->nullable();
-            $table->text('content_uz')->nullable();
-            $table->text('content_en')->nullable();
+            $table->string('title_ru', 255)->nullable();
+            $table->string('title_uz', 255)->nullable();
+            $table->string('title_en', 255)->nullable();
 
-            $table->foreign('service_id')->references('id')->on('service')->onDelete('cascade');
+            $table->string('image')->nullable();
 
             $table->timestamps();
         });
@@ -39,8 +37,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('subservice', function (Blueprint $table) {
-            $table->dropForeign('subservice_service_id_foreign');
+        Schema::table('services', function (Blueprint $table) {
             $table->dropIfExists();
         });
     }
