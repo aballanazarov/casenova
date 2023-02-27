@@ -15,19 +15,10 @@ return new class extends Migration
     {
         Schema::create('subservices', function (Blueprint $table) {
             $table->id();
-
             $table->unsignedBigInteger('service_id');
-
-            $table->string('name_ru', 255)->nullable();
-            $table->string('name_uz', 255)->nullable();
-            $table->string('name_en', 255)->nullable();
-
-            $table->text('content_ru')->nullable();
-            $table->text('content_uz')->nullable();
-            $table->text('content_en')->nullable();
-
+            $table->string('name', 255)->nullable();
+            $table->text('content')->nullable();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
