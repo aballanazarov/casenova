@@ -8,6 +8,8 @@ use App\Http\Resources\V1\ServiceResource;
 use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
+use App\Filters\V1\ServicesFilter;
+use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
@@ -16,9 +18,18 @@ class ServiceController extends Controller
      *
      * @return ServiceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new ServiceCollection(Service::paginate());
+        $filter = new ServicesFilter();
+        $queryItems = $filter->transform($request); // [['column', 'operator', 'value']]
+
+        if (count($queryItems) == 0) {
+            return new ServiceCollection(Service::paginate());
+        } else {
+            $services = Service::where($queryItems)->paginate();
+
+            return new ServiceCollection($services->appends($request->query()));
+        }
     }
 
     /**

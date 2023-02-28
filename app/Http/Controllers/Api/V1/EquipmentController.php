@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Filters\V1\EquipmentsFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\EquipmentCollection;
 use App\Http\Resources\V1\EquipmentResource;
 use App\Models\Equipment;
 use App\Http\Requests\StoreEquipmentRequest;
 use App\Http\Requests\UpdateEquipmentRequest;
+use Illuminate\Http\Request;
 
 class EquipmentController extends Controller
 {
@@ -16,9 +18,17 @@ class EquipmentController extends Controller
      *
      * @return EquipmentCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new EquipmentCollection(Equipment::paginate());
+        $filter = new EquipmentsFilter();
+        $queryItems = $filter->transform($request);
+
+        if (count($queryItems) == 0) {
+            return new EquipmentCollection(Equipment::paginate());
+        } else {
+            $equipments = Equipment::where($queryItems)->paginate();
+            return new EquipmentCollection($equipments->appends($request->query()));
+        }
     }
 
     /**
