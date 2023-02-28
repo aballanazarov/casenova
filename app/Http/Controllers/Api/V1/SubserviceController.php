@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Filters\V1\SubservicesFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\SubserviceCollection;
 use App\Http\Resources\V1\SubserviceResource;
 use App\Models\Subservice;
 use App\Http\Requests\StoreSubserviceRequest;
 use App\Http\Requests\UpdateSubserviceRequest;
+use Illuminate\Http\Request;
 
 class SubserviceController extends Controller
 {
@@ -16,9 +18,17 @@ class SubserviceController extends Controller
      *
      * @return SubserviceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new SubserviceCollection(Subservice::paginate());
+        $filter = new SubservicesFilter();
+        $queryItems = $filter->transform($request); // [['column', 'operator', 'value']]
+
+        if (count($queryItems) == 0) {
+            return new SubserviceCollection(Subservice::paginate());
+        } else {
+            $subservice = Subservice::where($queryItems)->paginate();
+            return new SubserviceCollection($subservice->appends($request->query()));
+        }
     }
 
     /**

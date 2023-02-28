@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Filters\V1\BlogsFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\BlogCollection;
 use App\Http\Resources\V1\BlogResource;
 use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -16,9 +18,17 @@ class BlogController extends Controller
      *
      * @return BlogCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new BlogCollection(Blog::paginate());
+        $filter = new BlogsFilter();
+        $queryItems = $filter->transform($request);
+
+        if (count($queryItems) == 0) {
+            return new BlogCollection(Blog::paginate());
+        } else {
+            $blogs = Blog::where($queryItems)->paginate();
+            return new BlogCollection($blogs->appends($request->query()));
+        }
     }
 
     /**
