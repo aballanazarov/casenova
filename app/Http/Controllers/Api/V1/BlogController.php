@@ -1,22 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Subservice;
-use App\Http\Requests\StoreSubserviceRequest;
-use App\Http\Requests\UpdateSubserviceRequest;
+use App\Http\Resources\V1\BlogCollection;
+use App\Http\Resources\V1\BlogResource;
+use App\Models\Blog;
+use App\Http\Requests\StoreBlogRequest;
+use App\Http\Requests\UpdateBlogRequest;
 
-class SubserviceController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return BlogCollection
      */
     public function index()
     {
-        //
+        return new BlogCollection(Blog::paginate());
     }
 
     /**
@@ -32,10 +34,10 @@ class SubserviceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSubserviceRequest  $request
+     * @param  \App\Http\Requests\StoreBlogRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSubserviceRequest $request)
+    public function store(StoreBlogRequest $request)
     {
         //
     }
@@ -43,21 +45,21 @@ class SubserviceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subservice  $subservice
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Blog  $blog
+     * @return BlogResource
      */
-    public function show(Subservice $subservice)
+    public function show(Blog $blog)
     {
-        //
+        return new BlogResource($blog);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subservice  $subservice
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subservice $subservice)
+    public function edit(Blog $blog)
     {
         //
     }
@@ -65,11 +67,11 @@ class SubserviceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSubserviceRequest  $request
-     * @param  \App\Models\Subservice  $subservice
+     * @param  \App\Http\Requests\UpdateBlogRequest  $request
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSubserviceRequest $request, Subservice $subservice)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
         //
     }
@@ -77,10 +79,10 @@ class SubserviceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subservice  $subservice
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subservice $subservice)
+    public function destroy(Blog $blog)
     {
         //
     }

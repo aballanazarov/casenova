@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\EquipmentCollection;
+use App\Http\Resources\V1\EquipmentResource;
 use App\Models\Equipment;
 use App\Http\Requests\StoreEquipmentRequest;
 use App\Http\Requests\UpdateEquipmentRequest;
@@ -12,11 +14,11 @@ class EquipmentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return EquipmentCollection
      */
     public function index()
     {
-        //
+        return new EquipmentCollection(Equipment::paginate());
     }
 
     /**
@@ -44,11 +46,11 @@ class EquipmentController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Equipment  $equipment
-     * @return \Illuminate\Http\Response
+     * @return EquipmentResource
      */
     public function show(Equipment $equipment)
     {
-        //
+        return new EquipmentResource($equipment);
     }
 
     /**
