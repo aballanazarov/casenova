@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('subservices', function (Blueprint $table) {
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
             $table->id();
-            $table->unsignedBigInteger('service_id');
-            $table->string('name', 255)->nullable();
+            $table->string('name')->nullable();
             $table->text('content')->nullable();
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,9 +31,11 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('subservices', function (Blueprint $table) {
-            $table->dropForeign('subservices_service_id_foreign');
-            $table->dropIfExists();
-        });
+        if (Schema::hasTable('subservices')) {
+            Schema::table('subservices', function (Blueprint $table) {
+                $table->dropForeign('subservices_service_id_foreign');
+                $table->drop();
+            });
+        }
     }
 };
