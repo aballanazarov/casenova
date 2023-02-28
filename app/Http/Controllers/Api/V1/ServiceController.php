@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\ServiceCollection;
+use App\Http\Resources\V1\ServiceResource;
 use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
@@ -11,11 +14,11 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return ServiceCollection
      */
     public function index()
     {
-        //
+        return new ServiceCollection(Service::paginate());
     }
 
     /**
@@ -43,11 +46,11 @@ class ServiceController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
+     * @return ServiceResource
      */
     public function show(Service $service)
     {
-        //
+        return new ServiceResource($service);
     }
 
     /**
