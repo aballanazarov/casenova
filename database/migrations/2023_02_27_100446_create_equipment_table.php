@@ -14,10 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('equipments', function (Blueprint $table) {
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
             $table->id();
-            $table->string('name', 255)->nullable();
-            $table->string('title', 255)->nullable();
-            $table->string('image')->nullable();
+            $table->string('name')->nullable();
+            $table->string('title')->nullable();
+            //$table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -29,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('equipments', function (Blueprint $table) {
-            $table->dropIfExists();
-        });
+        Schema::dropIfExists('equipments');
     }
 };

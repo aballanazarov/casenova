@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('blogs', function (Blueprint $table) {
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
             $table->id();
-            $table->string('title', 255)->nullable();
+            $table->string('title')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
         });
@@ -28,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('blogs', function (Blueprint $table) {
-            $table->dropIfExists();
-        });
+        Schema::dropIfExists('blogs');
     }
 };
