@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Subservice;
-use App\Http\Requests\StoreSubserviceRequest;
-use App\Http\Requests\UpdateSubserviceRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Equipment;
+use App\Http\Requests\StoreEquipmentRequest;
+use App\Http\Requests\UpdateEquipmentRequest;
 
-class SubserviceController extends Controller
+class EquipmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class SubserviceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSubserviceRequest  $request
+     * @param  \App\Http\Requests\StoreEquipmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSubserviceRequest $request)
+    public function store(StoreEquipmentRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class SubserviceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subservice  $subservice
+     * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function show(Subservice $subservice)
+    public function show(Equipment $equipment)
     {
         //
     }
@@ -53,10 +54,10 @@ class SubserviceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subservice  $subservice
+     * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subservice $subservice)
+    public function edit(Equipment $equipment)
     {
         //
     }
@@ -64,11 +65,11 @@ class SubserviceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSubserviceRequest  $request
-     * @param  \App\Models\Subservice  $subservice
+     * @param  \App\Http\Requests\UpdateEquipmentRequest  $request
+     * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSubserviceRequest $request, Subservice $subservice)
+    public function update(UpdateEquipmentRequest $request, Equipment $equipment)
     {
         //
     }
@@ -76,10 +77,10 @@ class SubserviceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subservice  $subservice
+     * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subservice $subservice)
+    public function destroy(Equipment $equipment)
     {
         //
     }
