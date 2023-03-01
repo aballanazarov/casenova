@@ -14,12 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('subservices', function (Blueprint $table) {
-            $table->charset = 'utf8';
-            $table->collation = 'utf8_unicode_ci';
             $table->id();
-            $table->string('name')->nullable();
-            $table->text('content')->nullable();
-            $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
+            $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
             $table->timestamps();
         });
     }

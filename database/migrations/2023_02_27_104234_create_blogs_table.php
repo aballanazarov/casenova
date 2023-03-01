@@ -17,8 +17,6 @@ return new class extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
             $table->id();
-            $table->string('title')->nullable();
-            $table->text('content')->nullable();
             $table->timestamps();
         });
     }

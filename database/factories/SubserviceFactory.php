@@ -17,10 +17,16 @@ class SubserviceFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'name' => $this->faker->name,
-            'content' => $this->faker->text,
-            'service_id' => Service::factory(),
-        ];
+        $result = [];
+        $result['service_id'] = Service::factory();
+
+        foreach (config('translatable.locales') as $locale) {
+            $result[$locale] = [
+                'name' => $this->faker->name,
+                'content' => $this->faker->text,
+            ];
+        }
+
+        return $result;
     }
 }

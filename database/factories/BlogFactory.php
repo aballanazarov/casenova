@@ -16,9 +16,15 @@ class BlogFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'title' => $this->faker->title,
-            'content' => $this->faker->text,
-        ];
+        $result = [];
+
+        foreach (config('translatable.locales') as $locale) {
+            $result[$locale] = [
+                'title' => $this->faker->title,
+                'content' => $this->faker->text,
+            ];
+        }
+
+        return $result;
     }
 }
