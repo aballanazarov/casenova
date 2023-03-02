@@ -16,10 +16,9 @@ class EquipmentResource extends JsonResource
     {
         return [
             'od' => $this->id,
-            'name' => $this->name,
-            'title' => $this->title,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
+            'translations' => $this->getTranslationsArray(),
         ];
     }
 }
