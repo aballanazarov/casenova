@@ -16,10 +16,9 @@ class BlogResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'content' => $this->content,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
+            'translations' => $this->getTranslationsArray(),
         ];
     }
 }

@@ -16,11 +16,10 @@ class SubserviceResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'content' => $this->content,
             'serviceId' => $this->service_id,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
+            'translations' => $this->getTranslationsArray(),
         ];
     }
 }
