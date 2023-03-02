@@ -8,14 +8,24 @@ class StoreServiceRequest extends FormRequest
 {
     public function authorize()
     {
-        return false;
+        return true;
     }
 
 
     public function rules()
     {
-        return [
-            //
-        ];
+        $result = [];
+
+        foreach (config('translatable.locales') as $locale) {
+            $result[$locale] = ['required'];
+        }
+
+        return $result;
+    }
+
+
+    protected function prepareForValidation()
+    {
+        //
     }
 }

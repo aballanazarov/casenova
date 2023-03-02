@@ -8,14 +8,21 @@ class StoreEquipmentTranslationRequest extends FormRequest
 {
     public function authorize()
     {
-        return false;
+        return true;
     }
 
 
     public function rules()
     {
         return [
-            //
+            'name' => ['required'],
+            'title' => ['required'],
         ];
+    }
+
+
+    protected function prepareForValidation()
+    {
+        //
     }
 }

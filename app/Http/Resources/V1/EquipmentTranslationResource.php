@@ -12,8 +12,8 @@ class EquipmentTranslationResource extends JsonResource
             'id' => $this->id,
             'equipmentId' => $this->equipment_id,
             'locale' => $this->locale,
+            'name' => $this->name,
             'title' => $this->title,
-            'content' => $this->content,
         ];
     }
 }

@@ -12,7 +12,7 @@ class SubserviceTranslationResource extends JsonResource
             'id' => $this->id,
             'subserviceId' => $this->subservice_id,
             'locale' => $this->locale,
-            'title' => $this->title,
+            'name' => $this->name,
             'content' => $this->content,
         ];
     }

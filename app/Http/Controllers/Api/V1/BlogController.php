@@ -35,7 +35,7 @@ class BlogController extends Controller
 
     public function store(StoreBlogRequest $request)
     {
-        //
+        return new BlogResource(Blog::create($request->all()));
     }
 
 

@@ -9,15 +9,13 @@ class StoreServiceTranslationRequest extends FormRequest
 {
     public function authorize()
     {
-        return false;
+        return true;
     }
 
 
     public function rules()
     {
         return [
-            'service_id' => ['required'],
-            'locale' => ['required', Rule::in(config('translatable.locales'))],
             'name' => ['required'],
             'title' => ['required'],
         ];
