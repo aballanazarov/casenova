@@ -26,6 +26,6 @@ class StoreServiceTranslationRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-
+        //
     }
 }

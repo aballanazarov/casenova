@@ -12,7 +12,7 @@ class ServiceResource extends JsonResource
             'id' => $this->id,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
-            'translations' => $this->translations,
+            'translations' => ServiceTranslationResource::collection($this->translations),
             'subservices' => SubserviceResource::collection($this->whenLoaded('subservices')),
         ];
     }
