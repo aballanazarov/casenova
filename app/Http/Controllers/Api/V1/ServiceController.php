@@ -6,93 +6,66 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\ServiceCollection;
 use App\Http\Resources\V1\ServiceResource;
 use App\Models\Service;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateServiceRequest;
+use App\Http\Requests\V1\StoreServiceRequest;
+use App\Http\Requests\V1\UpdateServiceRequest;
 use App\Filters\V1\ServicesFilter;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return ServiceCollection
-     */
     public function index(Request $request)
     {
         $filter = new ServicesFilter();
         $queryItems = $filter->transform($request); // [['column', 'operator', 'value']]
 
-        if (count($queryItems) == 0) {
-            return new ServiceCollection(Service::paginate());
-        } else {
-            $services = Service::where($queryItems)->paginate();
+        $incSubs = $request->query('incSubs');
 
-            return new ServiceCollection($services->appends($request->query()));
+        $services = Service::where($queryItems);
+
+        if ($incSubs) {
+            $services = $services->with('subservices');
         }
+
+        return new ServiceCollection($services->paginate()->appends($request->query()));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreServiceRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(StoreServiceRequest $request)
     {
-        //
+        return new ServiceResource(Service::create($request->all()));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return ServiceResource
-     */
+
     public function show(Service $service)
     {
+        $incSubs = request()->query('incSubs');
+
+        if ($incSubs) {
+            return new ServiceResource($service->loadMissing('subservices'));
+        }
+
         return new ServiceResource($service);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Service $service)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateServiceRequest  $request
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(UpdateServiceRequest $request, Service $service)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Service $service)
     {
         //
