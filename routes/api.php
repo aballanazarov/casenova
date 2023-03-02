@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // url : /api/v1
 
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], function () {
-    Route::apiResource('services', ServiceController::class, ['method' => "post"]);
+    Route::apiResource('services', ServiceController::class);
     Route::apiResource('subservices', SubserviceController::class);
     Route::apiResource('equipment', EquipmentController::class);
     Route::apiResource('blog', BlogController::class);

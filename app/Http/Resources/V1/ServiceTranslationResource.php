@@ -12,8 +12,8 @@ class ServiceTranslationResource extends JsonResource
             'id' => $this->id,
             'serviceId' => $this->service_id,
             'locale' => $this->locale,
+            'name' => $this->name,
             'title' => $this->title,
-            'content' => $this->content,
         ];
     }
 }

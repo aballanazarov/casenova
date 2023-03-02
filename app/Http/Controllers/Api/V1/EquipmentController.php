@@ -35,7 +35,7 @@ class EquipmentController extends Controller
 
     public function store(StoreEquipmentRequest $request)
     {
-        //
+        return new EquipmentResource(Equipment::create($request->all()));
     }
 
 

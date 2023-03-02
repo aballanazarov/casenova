@@ -35,7 +35,7 @@ class SubserviceController extends Controller
 
     public function store(StoreSubserviceRequest $request)
     {
-        //
+        return new SubserviceResource(Subservice::create($request->all()));
     }
 
 
