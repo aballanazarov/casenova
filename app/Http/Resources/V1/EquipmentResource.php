@@ -12,7 +12,7 @@ class EquipmentResource extends JsonResource
             'od' => $this->id,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
-            'translations' => $this->translations,
+            'translations' => EquipmentTranslationResource::collection($this->translations),
         ];
     }
 }

@@ -4,16 +4,16 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SubserviceResource extends JsonResource
+class ServiceTranslationResource extends JsonResource
 {
     public function toArray($request)
     {
         return [
             'id' => $this->id,
             'serviceId' => $this->service_id,
-            'createdAt' => $this->created_at,
-            'updatedAt' => $this->updated_at,
-            'translations' => SubserviceTranslationResource::collection($this->translations),
+            'locale' => $this->locale,
+            'title' => $this->title,
+            'content' => $this->content,
         ];
     }
 }
