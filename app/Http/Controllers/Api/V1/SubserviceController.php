@@ -53,7 +53,7 @@ class SubserviceController extends Controller
 
     public function update(UpdateSubserviceRequest $request, Subservice $subservice)
     {
-        //
+        $subservice->update($request->all());
     }
 
 

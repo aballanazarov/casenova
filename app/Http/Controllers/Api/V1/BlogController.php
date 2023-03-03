@@ -53,7 +53,7 @@ class BlogController extends Controller
 
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+        $blog->update($request->all());
     }
 
 

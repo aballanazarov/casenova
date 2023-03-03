@@ -16,7 +16,7 @@ class StoreSubserviceRequest extends FormRequest
     public function rules()
     {
         $result = [
-            'serviceId' => ['required'],
+
         ];
 
         foreach (config('translatable.locales') as $locale) {

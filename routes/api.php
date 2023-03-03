@@ -20,9 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // url : /api/v1
 
-Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], function () {
+Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1', 'middleware' => 'auth:sanctum'], function () {
     Route::apiResource('services', ServiceController::class);
     Route::apiResource('subservices', SubserviceController::class);
     Route::apiResource('equipment', EquipmentController::class);
     Route::apiResource('blog', BlogController::class);
+
+    Route::post('services/bulk', ['uses' => 'ServiceController@bulkStore']);
 });

@@ -8,14 +8,32 @@ class UpdateEquipmentRequest extends FormRequest
 {
     public function authorize()
     {
-        return false;
+        return true;
     }
 
 
     public function rules()
     {
-        return [
-            //
-        ];
+        $method = $this->method();
+        $result = [];
+        $locales = config('translatable.locales');
+
+        if ($method == "PUT") {
+            foreach ($locales as $locale) {
+                $result[$locale] = ['required'];
+            }
+        } else {
+            foreach ($locales as $locale) {
+                $result[$locale] = ['sometimes', 'required'];
+            }
+        }
+
+        return $result;
+    }
+
+
+    protected function prepareForValidation()
+    {
+        //
     }
 }
