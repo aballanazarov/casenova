@@ -8,14 +8,30 @@ class UpdateSubserviceTranslationRequest extends FormRequest
 {
     public function authorize()
     {
-        return false;
+        return true;
     }
 
 
     public function rules()
     {
-        return [
-            //
-        ];
+        $method = $this->method();
+
+        if ($method == "PUT") {
+            return [
+                'name' => ['required'],
+                'content' => ['required'],
+            ];
+        } else {
+            return [
+                'name' => ['sometimes', 'required'],
+                'content' => ['sometimes', 'required'],
+            ];
+        }
+    }
+
+
+    protected function prepareForValidation()
+    {
+        //
     }
 }

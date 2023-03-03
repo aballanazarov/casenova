@@ -8,8 +8,11 @@ use App\Http\Resources\V1\ServiceResource;
 use App\Models\Service;
 use App\Http\Requests\V1\StoreServiceRequest;
 use App\Http\Requests\V1\UpdateServiceRequest;
+use App\Http\Requests\V1\BulkStoreServiceRequest;
+use App\Http\Requests\V1\BulkStoreServiceTranslationRequest;
 use App\Filters\V1\ServicesFilter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ServiceController extends Controller
 {
@@ -42,6 +45,16 @@ class ServiceController extends Controller
     }
 
 
+    public function bulkStore(BulkStoreServiceRequest $request)
+    {
+        $bulk = collect($request->all())->map(function ($arr, $key) {
+            return Arr::except($arr, []);
+        });
+
+        Service::create($bulk->toArray());
+    }
+
+
     public function show(Service $service)
     {
         $incSubs = request()->query('incSubs');
@@ -62,7 +75,7 @@ class ServiceController extends Controller
 
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        //
+        $service->update($request->all());
     }
 
 
