@@ -22,13 +22,13 @@ Route::get('/', function () {
 
 Route::get('/setup', function () {
     $credentails = [
-        'email' => 'admin@casenova.uz',
-        'password' => 'P@$$Admin'
+        'email' => env('USER_EMAIL'),
+        'password' => env('USER_PASS')
     ];
 
     if (!Auth::attempt($credentails)) {
         $user = new User();
-        $user->name = 'Admin';
+        $user->name = env('USER_NAME');
         $user->email = $credentails['email'];
         $user->password = Hash::make($credentails['password']);
         $user->save();
@@ -38,7 +38,7 @@ Route::get('/setup', function () {
 
             $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
             $updateToken = $user->createToken('update-token', ['create', 'update']);
-            $basicToken = $user->createToken('basic-token');
+            $basicToken = $user->createToken('basic-token', ['none']);
 
             return [
                 'admin' => $adminToken->plainTextToken,

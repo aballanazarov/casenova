@@ -9,7 +9,8 @@ class StoreSubserviceRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;
+        $user = $this->user();
+        return $user !== null && $user->tokenCan('create');
     }
 
 

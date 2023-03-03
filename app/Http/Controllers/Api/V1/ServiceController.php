@@ -16,6 +16,27 @@ use Illuminate\Support\Arr;
 
 class ServiceController extends Controller
 {
+    /**
+     * @OA\Get(
+     *      path = "/services",
+     *      operationId = "getServices",
+     *      tags = {"Services"},
+     *      summary = "Get list of services",
+     *      description = "Returns list of services",
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
     public function index(Request $request)
     {
         $filter = new ServicesFilter();
