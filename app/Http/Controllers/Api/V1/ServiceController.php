@@ -14,6 +14,12 @@ use App\Filters\V1\ServicesFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
+/**
+ * @OA\Tag(
+ *     name="Services",
+ *     description="API Endpoints of Projects"
+ * )
+ */
 class ServiceController extends Controller
 {
     /**
@@ -60,6 +66,34 @@ class ServiceController extends Controller
     }
 
 
+    /**
+     * @OA\Post(
+     *      path="/services",
+     *      operationId="createServices",
+     *      tags={"Services"},
+     *      summary="Create new service",
+     *      description="Returns service data",
+     *      @OA\RequestBody(
+     *          required=true,
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
     public function store(StoreServiceRequest $request)
     {
         return new ServiceResource(Service::create($request->all()));
@@ -76,6 +110,40 @@ class ServiceController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *      path="/services/{id}",
+     *      operationId="getServiceById",
+     *      tags={"Services"},
+     *      summary="Get service information",
+     *      description="Returns service data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Service id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
     public function show(Service $service)
     {
         $incSubs = request()->query('incSubs');
