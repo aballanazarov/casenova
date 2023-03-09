@@ -19,36 +19,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/setup', function () {
-    $credentails = [
-        'email' => env('USER_EMAIL'),
-        'password' => env('USER_PASS')
-    ];
-
-    if (!Auth::attempt($credentails)) {
-        $user = new User();
-        $user->name = env('USER_NAME');
-        $user->email = $credentails['email'];
-        $user->password = Hash::make($credentails['password']);
-        $user->save();
-
-        if (Auth::attempt($credentails)) {
-            $user = Auth::user();
-
-            $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
-            $updateToken = $user->createToken('update-token', ['create', 'update']);
-            $basicToken = $user->createToken('basic-token', ['none']);
-
-            return [
-                'admin' => $adminToken->plainTextToken,
-                'update' => $updateToken->plainTextToken,
-                'basic' => $basicToken->plainTextToken,
-            ];
-        } else {
-            return 'Token is already exits';
-        }
-    } else {
-        return 'Token is already exits';
-    }
-});
