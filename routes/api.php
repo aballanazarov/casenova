@@ -14,18 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 // url : /api/v1
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], function () {
+    Route::post('create', 'AuthController@create');
     Route::post('login', 'AuthController@login');
 
-    Route::apiResource('services', ServiceController::class);
-    Route::apiResource('subservices', SubserviceController::class);
-    Route::apiResource('equipment', EquipmentController::class);
-    Route::apiResource('blog', BlogController::class);
+    Route::apiResource('services', ServiceController::class)->middleware('auth:sanctum');
+    Route::apiResource('subservices', SubserviceController::class)->middleware('auth:sanctum');
+    Route::apiResource('equipment', EquipmentController::class)->middleware('auth:sanctum');
+    Route::apiResource('blog', BlogController::class)->middleware('auth:sanctum');
 
     Route::post('services/bulk', ['uses' => 'ServiceController@bulkStore']);
 });

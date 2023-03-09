@@ -47,7 +47,72 @@
                 "description": "Returns service data",
                 "operationId": "createServices",
                 "requestBody": {
-                    "required": true
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "translation": {
+                                        "properties": {
+                                            "ru": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "format": "string",
+                                                        "example": "Name Ru"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "format": "string",
+                                                        "example": "Title Ru"
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "format": "query"
+                                            },
+                                            "uz": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "format": "string",
+                                                        "example": "Name Uz"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "format": "string",
+                                                        "example": "Title Uz"
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "format": "query"
+                                            },
+                                            "en": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "format": "string",
+                                                        "example": "Name En"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "format": "string",
+                                                        "example": "Title En"
+                                                    }
+                                                },
+                                                "type": "object",
+                                                "format": "query"
+                                            }
+                                        },
+                                        "type": "object",
+                                        "format": "query"
+                                    }
+                                },
+                                "type": "object",
+                                "collectionFormat": "multi"
+                            }
+                        }
+                    }
                 },
                 "responses": {
                     "201": {

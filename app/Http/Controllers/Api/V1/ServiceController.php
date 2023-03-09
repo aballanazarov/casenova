@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 /**
- * @OA\Tag(
+ * @OA\Tag (
  *     name="Services",
  *     description="API Endpoints of Projects"
  * )
@@ -23,7 +23,7 @@ use Illuminate\Support\Arr;
 class ServiceController extends Controller
 {
     /**
-     * @OA\Get(
+     * @OA\Get (
      *      path = "/services",
      *      operationId = "getServices",
      *      tags = {"Services"},
@@ -33,13 +33,13 @@ class ServiceController extends Controller
      *          response = 200,
      *          description = "Successful operation",
      *      ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
      *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
      *      )
      * )
      */
@@ -68,29 +68,89 @@ class ServiceController extends Controller
 
     /**
      * @OA\Post(
-     *      path="/services",
-     *      operationId="createServices",
-     *      tags={"Services"},
-     *      summary="Create new service",
-     *      description="Returns service data",
-     *      @OA\RequestBody(
-     *          required=true,
+     *      path = "/services",
+     *      operationId = "storeServices",
+     *      tags = {"Services"},
+     *      summary = "Create new service",
+     *      description = "Returns service data",
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              @OA\Property (
+     *                  property = "translation",
+     *                  type = "object",
+     *                  format = "query",
+     *                  @OA\Property (
+     *                      property = "ru",
+     *                      type = "object",
+     *                      format = "query",
+     *                      @OA\Property (
+     *                          property = "name",
+     *                          type = "string",
+     *                          format = "string",
+     *                          example = "Name Ru"
+     *                      ),
+     *                      @OA\Property (
+     *                          property = "title",
+     *                          type = "string",
+     *                          format = "string",
+     *                          example = "Title Ru"
+     *                      ),
+     *                  ),
+     *                  @OA\Property (
+     *                      property = "uz",
+     *                      type = "object",
+     *                      format = "query",
+     *                      @OA\Property (
+     *                          property = "name",
+     *                          type = "string",
+     *                          format = "string",
+     *                          example = "Name Uz"
+     *                      ),
+     *                      @OA\Property (
+     *                          property = "title",
+     *                          type = "string",
+     *                          format = "string",
+     *                          example = "Title Uz"
+     *                      ),
+     *                  ),
+     *                  @OA\Property (
+     *                      property = "en",
+     *                      type = "object",
+     *                      format = "query",
+     *                      @OA\Property (
+     *                          property = "name",
+     *                          type = "string",
+     *                          format = "string",
+     *                          example = "Name En"
+     *                      ),
+     *                      @OA\Property (
+     *                          property = "title",
+     *                          type = "string",
+     *                          format = "string",
+     *                          example = "Title En"
+     *                      ),
+     *                  ),
+     *              ),
+     *          ),
      *      ),
-     *      @OA\Response(
-     *          response=201,
-     *          description="Successful operation",
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
      *       ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad Request"
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
      *      ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
      *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
      *      )
      * )
      */
