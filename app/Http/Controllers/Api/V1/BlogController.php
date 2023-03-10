@@ -29,6 +29,7 @@ class BlogController extends Controller
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/BlogResource")
      *      ),
      *      @OA\Response (
      *          response = 401,
@@ -62,7 +63,7 @@ class BlogController extends Controller
 
     public function store(StoreBlogRequest $request)
     {
-        return new BlogResource(Blog::create($request->all()));
+        return BlogResource::make(Blog::create($request->all()));
     }
 
 

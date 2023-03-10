@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,19 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
 // url : /api/v1
-Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], function () {
-    Route::post('create', 'AuthController@create');
-    Route::post('login', 'AuthController@login');
-
-    Route::apiResource('services', ServiceController::class);
-    Route::apiResource('subservices', SubserviceController::class);
-    Route::apiResource('equipment', EquipmentController::class);
-    Route::apiResource('blog', BlogController::class);
-
-    Route::post('services/bulk', ['uses' => 'ServiceController@bulkStore']);
-});
+require 'version1.php';

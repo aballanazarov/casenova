@@ -46,7 +46,7 @@
                     "Auth"
                 ],
                 "summary": "User authorization",
-                "description": "Returns a token",
+                "description": "Return User token",
                 "operationId": "authUser",
                 "responses": {
                     "200": {
@@ -71,7 +71,14 @@
                 "operationId": "getBlogs",
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BlogResource"
+                                }
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -271,6 +278,122 @@
             }
         }
     },
+    "components": {
+        "schemas": {
+            "StoreBlogRequest": {
+                "title": "StoreBlogRequest",
+                "description": "Store Blog request body data",
+                "type": "object",
+                "xml": {
+                    "name": "StoreBlogRequest"
+                }
+            },
+            "StoreBlogTranslationRequest": {
+                "title": "StoreBlogTranslationRequest",
+                "description": "Store Blog Translation request body data",
+                "type": "object",
+                "xml": {
+                    "name": "StoreBlogTranslationRequest"
+                }
+            },
+            "UpdateBlogRequest": {
+                "title": "UpdateBlogRequest",
+                "description": "Update Blog request body data",
+                "type": "object",
+                "xml": {
+                    "name": "UpdateBlogRequest"
+                }
+            },
+            "UpdateBlogTranslationRequest": {
+                "title": "UpdateBlogTranslationRequest",
+                "description": "Update Blog Translation request body data",
+                "type": "object",
+                "xml": {
+                    "name": "UpdateBlogTranslationRequest"
+                }
+            },
+            "BlogCollection": {
+                "title": "BlogCollection",
+                "description": "Blog Collection",
+                "xml": {
+                    "name": "BlogCollection"
+                }
+            },
+            "BlogResource": {
+                "title": "BlogResource",
+                "description": "Blog Resource",
+                "properties": {
+                    "": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Blog"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "BlogResource"
+                }
+            },
+            "BlogTranslationCollection": {
+                "title": "BlogTranslationCollection",
+                "description": "Blog Translation Collection",
+                "xml": {
+                    "name": "BlogTranslationCollection"
+                }
+            },
+            "BlogTranslationResource": {
+                "title": "BlogTranslationResource",
+                "description": "Blog Translation Resource",
+                "xml": {
+                    "name": "BlogTranslationResource"
+                }
+            },
+            "Blog": {
+                "title": "Blog",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "translatedAttributes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BlogTranslation"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "BlogTranslation": {
+                "title": "BlogTranslation",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
     "tags": [
         {
             "name": "Auth",
@@ -292,15 +415,5 @@
             "name": "Subservices",
             "description": "API Endpoints of Projects"
         }
-    ],
-    "components": {
-        "securitySchemes": {
-            "sanctum": {
-                "type": "apiKey",
-                "description": "Enter token in format (Bearer <token>)",
-                "name": "Authorization",
-                "in": "header"
-            }
-        }
-    }
+    ]
 }
