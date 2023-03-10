@@ -4,22 +4,31 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *      title="UpdateBlogRequest",
+ *      description="Update Blog request body data",
+ *      type="object",
+ *      @OA\Xml (
+ *          name = "UpdateBlogRequest",
+ *      )
+ * )
+ */
 class UpdateBlogRequest extends FormRequest
 {
     public function authorize()
     {
         $user = $this->user();
-        return !is_null($user) && $user->tokenCan('update');
+        return !is_null($user) && $user->can('update');
     }
 
 
     public function rules()
     {
-        $method = $this->method();
         $result = [];
         $locales = config('translatable.locales');
 
-        if ($method == "PUT") {
+        if ($this->method() === "PUT") {
             foreach ($locales as $locale) {
                 $result[$locale] = ['required'];
             }
@@ -30,11 +39,5 @@ class UpdateBlogRequest extends FormRequest
         }
 
         return $result;
-    }
-
-
-    protected function prepareForValidation()
-    {
-        //
     }
 }
