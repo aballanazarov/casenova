@@ -11,8 +11,35 @@ use App\Http\Requests\V1\StoreEquipmentRequest;
 use App\Http\Requests\V1\UpdateEquipmentRequest;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Tag (
+ *     name="Equipments",
+ *     description="API Endpoints of Projects"
+ * )
+ */
 class EquipmentController extends Controller
 {
+    /**
+     * @OA\Get (
+     *      path = "/equipments",
+     *      operationId = "getEquipments",
+     *      tags = {"Equipments"},
+     *      summary = "Get list of equipments",
+     *      description = "Returns list of equipments",
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function index(Request $request)
     {
         $filter = new EquipmentsFilter();

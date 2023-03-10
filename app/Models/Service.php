@@ -12,6 +12,11 @@ class Service extends Model implements TranslatableContract
     use HasFactory;
     use Translatable;
 
+    /**
+     * @var string
+     */
+    protected $table = "services";
+
     public $translatedAttributes = [
         'name',
         'title',

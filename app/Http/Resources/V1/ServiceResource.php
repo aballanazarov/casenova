@@ -4,6 +4,9 @@ namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property int $id
+ */
 class ServiceResource extends JsonResource
 {
     public function toArray($request)

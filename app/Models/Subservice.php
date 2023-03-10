@@ -12,6 +12,11 @@ class Subservice extends Model implements TranslatableContract
     use HasFactory;
     use Translatable;
 
+    /**
+     * @var string
+     */
+    protected $table = "subservices";
+
     protected $fillable = [
         'service_id',
     ];

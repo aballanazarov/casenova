@@ -9,6 +9,11 @@ class ServiceTranslation extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string
+     */
+    protected $table = "service_translations";
+
     public $timestamps = false;
     protected $fillable = [
         'name',

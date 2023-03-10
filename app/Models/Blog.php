@@ -12,6 +12,11 @@ class Blog extends Model implements TranslatableContract
     use HasFactory;
     use Translatable;
 
+    /**
+     * @var string
+     */
+    protected $table = "blogs";
+
     public $translatedAttributes = [
         'title',
         'content',

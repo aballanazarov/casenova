@@ -12,6 +12,11 @@ class Equipment extends Model implements TranslatableContract
     use HasFactory;
     use Translatable;
 
+    /**
+     * @var string
+     */
+    protected $table = "equipment";
+
     public $translatedAttributes = [
         'name',
         'title',

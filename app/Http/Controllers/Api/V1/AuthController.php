@@ -9,8 +9,35 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @OA\Tag (
+ *     name="Auth",
+ *     description="API Endpoints of Projects"
+ * )
+ */
 class AuthController extends Controller
 {
+    /**
+     * @OA\Post (
+     *      path = "/create",
+     *      operationId = "createUser",
+     *      tags = {"Auth"},
+     *      summary = "Create new User",
+     *      description = "Returns User data",
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function create(Request $request)
     {
         try {
@@ -50,6 +77,27 @@ class AuthController extends Controller
     }
 
 
+    /**
+     * @OA\Post (
+     *      path = "/login",
+     *      operationId = "authUser",
+     *      tags = {"Auth"},
+     *      summary = "User authorization",
+     *      description = "Return User token",
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function login(Request $request)
     {
         try {
