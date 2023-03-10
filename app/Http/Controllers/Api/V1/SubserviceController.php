@@ -11,8 +11,35 @@ use App\Http\Requests\V1\StoreSubserviceRequest;
 use App\Http\Requests\V1\UpdateSubserviceRequest;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Tag (
+ *     name="Subservices",
+ *     description="API Endpoints of Projects"
+ * )
+ */
 class SubserviceController extends Controller
 {
+    /**
+     * @OA\Get (
+     *      path = "/subservices",
+     *      operationId = "getSubservices",
+     *      tags = {"Blogs"},
+     *      summary = "Get list of subservices",
+     *      description = "Returns list of subservices",
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function index(Request $request)
     {
         $filter = new SubservicesFilter();

@@ -11,8 +11,35 @@ use App\Http\Requests\V1\StoreBlogRequest;
 use App\Http\Requests\V1\UpdateBlogRequest;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Tag (
+ *     name="Blogs",
+ *     description="API Endpoints of Projects"
+ * )
+ */
 class BlogController extends Controller
 {
+    /**
+     * @OA\Get (
+     *      path = "/blog",
+     *      operationId = "getBlogs",
+     *      tags = {"Blogs"},
+     *      summary = "Get list of blogs",
+     *      description = "Returns list of blogs",
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function index(Request $request)
     {
         $filter = new BlogsFilter();

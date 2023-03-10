@@ -9,7 +9,7 @@ class UpdateEquipmentRequest extends FormRequest
     public function authorize()
     {
         $user = $this->user();
-        return $user !== null && $user->tokenCan('update');
+        return !is_null($user) && $user->tokenCan('update');
     }
 
 

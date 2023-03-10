@@ -9,6 +9,11 @@ class EquipmentTranslation extends Model
 {
     use HasFactory;
 
+    /**
+     * @var string
+     */
+    protected $table = "equipment_translations";
+
     public $timestamps = false;
     protected $fillable = [
         'name',

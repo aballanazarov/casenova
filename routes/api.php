@@ -23,10 +23,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::post('create', 'AuthController@create');
     Route::post('login', 'AuthController@login');
 
-    Route::apiResource('services', ServiceController::class)->middleware('auth:sanctum');
-    Route::apiResource('subservices', SubserviceController::class)->middleware('auth:sanctum');
-    Route::apiResource('equipment', EquipmentController::class)->middleware('auth:sanctum');
-    Route::apiResource('blog', BlogController::class)->middleware('auth:sanctum');
+    Route::apiResource('services', ServiceController::class);
+    Route::apiResource('subservices', SubserviceController::class);
+    Route::apiResource('equipment', EquipmentController::class);
+    Route::apiResource('blog', BlogController::class);
 
     Route::post('services/bulk', ['uses' => 'ServiceController@bulkStore']);
 });
