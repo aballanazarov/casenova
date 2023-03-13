@@ -39,9 +39,7 @@ class StoreServiceRequest extends FormRequest
 
     public function rules()
     {
-        $result = [
-            'image'
-        ];
+        $result = [];
 
         foreach (config('translatable.locales') as $locale) {
             $result[$locale] = ['required'];

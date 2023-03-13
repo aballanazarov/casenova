@@ -9,10 +9,11 @@ use App\Models\Service;
 use App\Http\Requests\V1\StoreServiceRequest;
 use App\Http\Requests\V1\UpdateServiceRequest;
 use App\Http\Requests\V1\BulkStoreServiceRequest;
-use App\Http\Requests\V1\BulkStoreServiceTranslationRequest;
 use App\Filters\V1\ServicesFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
@@ -221,7 +222,7 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        $service->update($request->all());
+        return $service->update($request->all());
     }
 
 
@@ -231,8 +232,12 @@ class ServiceController extends Controller
     }
 
 
-    public function upload()
+    public function image(Service $service, Request $image)
     {
+        if (!is_null($service->id) && $service->uploadImage($image)) {
+            return URL::to("/uploads") . "/" . $service->image;
+        }
 
+        return "error";
     }
 }

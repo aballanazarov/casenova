@@ -34,6 +34,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * ),
  *
  * @property int id
+ * @property string image
  * @property string created_at
  * @property string updated_at
  * @property string translations

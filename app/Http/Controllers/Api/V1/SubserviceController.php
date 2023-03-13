@@ -10,6 +10,7 @@ use App\Models\Subservice;
 use App\Http\Requests\V1\StoreSubserviceRequest;
 use App\Http\Requests\V1\UpdateSubserviceRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
@@ -206,5 +207,15 @@ class SubserviceController extends Controller
     public function destroy(Subservice $subservice)
     {
         //
+    }
+
+
+    public function image(Subservice $subservice, Request $image)
+    {
+        if (!is_null($subservice->id) && $subservice->uploadImage($image)) {
+            return URL::to("/uploads") . "/" . $subservice->image;
+        }
+
+        return "error";
     }
 }
