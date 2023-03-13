@@ -9,8 +9,20 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     title="BlogTranslationResource",
  *     description="Blog Translation Resource",
  *     @OA\Xml(
- *         name="BlogTranslationResource"
- *     )
+ *         name="BlogTranslationResource",
+ *     ),
+ *     @OA\Property (
+ *         property="title",
+ *         title="title",
+ *         description="title",
+ *         format="string",
+ *     ),
+ *     @OA\Property (
+ *         property="content",
+ *         title="content",
+ *         description="content",
+ *         format="string",
+ *     ),
  * )
  */
 

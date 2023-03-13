@@ -4,16 +4,6 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * @OA\Schema(
- *      title="UpdateBlogTranslationRequest",
- *      description="Update Blog Translation request body data",
- *      type="object",
- *      @OA\Xml (
- *          name = "UpdateBlogTranslationRequest",
- *      )
- * )
- */
 class UpdateBlogTranslationRequest extends FormRequest
 {
     public function authorize()
