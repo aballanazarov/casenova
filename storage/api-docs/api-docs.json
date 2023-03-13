@@ -93,7 +93,7 @@
                     "Blogs"
                 ],
                 "summary": "Create new blog",
-                "description": "Returns service data",
+                "description": "Returns blog data",
                 "operationId": "storeBlog",
                 "requestBody": {
                     "description": "Pass user credentials",
@@ -122,7 +122,54 @@
                 }
             }
         },
-        "/equipments": {
+        "/blog/{id}": {
+            "get": {
+                "tags": [
+                    "Blogs"
+                ],
+                "summary": "Get blog information",
+                "description": "Returns blog data",
+                "operationId": "getBlogById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Blog id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/BlogResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/equipment": {
             "get": {
                 "tags": [
                     "Equipments"
@@ -154,7 +201,7 @@
                     "Equipments"
                 ],
                 "summary": "Create new equipment",
-                "description": "Returns service data",
+                "description": "Returns equipment data",
                 "operationId": "storeEquipments",
                 "requestBody": {
                     "description": "Pass user credentials",
@@ -170,6 +217,53 @@
                 "responses": {
                     "201": {
                         "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/equipment/{id}": {
+            "get": {
+                "tags": [
+                    "Equipments"
+                ],
+                "summary": "Get equipment information",
+                "description": "Returns equipment data",
+                "operationId": "getEquipmentById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Equipment id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/EquipmentResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad Request"
@@ -265,7 +359,19 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ServiceResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad Request"
@@ -327,6 +433,53 @@
                 "responses": {
                     "201": {
                         "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/subservices/{id}": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Get subservice information",
+                "description": "Returns subservice data",
+                "operationId": "getSubserviceById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subservice id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/SubserviceResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad Request"
@@ -502,7 +655,11 @@
                     "translations": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/BlogTranslationResource"
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/BlogTranslationResource"
+                                }
+                            ]
                         }
                     }
                 },
@@ -574,7 +731,11 @@
                     "translations": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/EquipmentTranslationResource"
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/EquipmentTranslationResource"
+                                }
+                            ]
                         }
                     }
                 },
@@ -646,7 +807,11 @@
                     "translations": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/ServiceTranslationResource"
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/ServiceTranslationResource"
+                                }
+                            ]
                         }
                     }
                 },
@@ -718,7 +883,11 @@
                     "translations": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/SubserviceTranslationResource"
+                            "anyOf": [
+                                {
+                                    "$ref": "#/components/schemas/SubserviceTranslationResource"
+                                }
+                            ]
                         }
                     }
                 },

@@ -26,7 +26,9 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *         property="translations",
  *         type="array",
  *         @OA\Items (
- *             ref="#/components/schemas/ServiceTranslationResource",
+ *             anyOf={
+ *                 @OA\Schema(ref="#/components/schemas/ServiceTranslationResource"),
+ *             }
  *         ),
  *     ),
  * ),

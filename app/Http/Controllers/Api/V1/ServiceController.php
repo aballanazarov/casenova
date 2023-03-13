@@ -137,6 +137,13 @@ class ServiceController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
+     *          @OA\JsonContent(
+     *              @OA\Property (
+     *                  property="data",
+     *                  type="object",
+     *                  ref="#/components/schemas/ServiceResource",
+     *              )
+     *          )
      *       ),
      *      @OA\Response(
      *          response=400,
