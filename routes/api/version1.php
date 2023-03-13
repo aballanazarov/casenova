@@ -17,12 +17,12 @@ Route::prefix('v1')
         Route::post('services/{service}/image', [ServiceController::class, 'image'])->whereNumber('service');
 
         Route::apiResource('subservices', SubserviceController::class);
-        Route::post('services/{subservice}/image', [SubserviceController::class, 'image'])->whereNumber('subservice');
+        Route::post('subservices/{subservice}/image', [SubserviceController::class, 'image'])->whereNumber('subservice');
 
         Route::apiResource('equipment', EquipmentController::class);
-        Route::post('services/{equipment}/image', [EquipmentController::class, 'image'])->whereNumber('equipment');
+        Route::post('equipment/{equipment}/image', [EquipmentController::class, 'image'])->whereNumber('equipment');
 
         Route::apiResource('blog', BlogController::class);
-        Route::post('services/{blog}/image', [BlogController::class, 'image'])->whereNumber('blog');
+        Route::post('blog/{blog}/image', [BlogController::class, 'image'])->whereNumber('blog');
     }
 );
