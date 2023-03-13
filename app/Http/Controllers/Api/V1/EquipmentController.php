@@ -21,7 +21,7 @@ class EquipmentController extends Controller
 {
     /**
      * @OA\Get (
-     *      path = "/equipments",
+     *      path = "/equipment",
      *      operationId = "getEquipments",
      *      tags = {"Equipments"},
      *      summary = "Get list of equipments",
@@ -63,6 +63,39 @@ class EquipmentController extends Controller
     }
 
 
+    /**
+     * @OA\Post(
+     *      path = "/equipment",
+     *      operationId = "storeEquipments",
+     *      tags = {"Equipments"},
+     *      summary = "Create new equipment",
+     *      description = "Returns service data",
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              ref="#/components/schemas/StoreEquipmentRequest",
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function store(StoreEquipmentRequest $request)
     {
         return new EquipmentResource(Equipment::create($request->all()));
