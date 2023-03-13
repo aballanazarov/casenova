@@ -3,6 +3,7 @@
 namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Schema(
@@ -48,6 +49,7 @@ class BlogResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'image' => empty($this->image) ? $this->image : URL::to("/uploads")  . "/" . $this->image,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
             'translations' => BlogTranslationResource::collection($this->translations),

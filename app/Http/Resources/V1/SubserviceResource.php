@@ -3,6 +3,7 @@
 namespace App\Http\Resources\V1;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Schema(
@@ -34,6 +35,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * ),
  *
  * @property int id
+ * @property string service_id
  * @property string image
  * @property string created_at
  * @property string updated_at
@@ -47,6 +49,7 @@ class SubserviceResource extends JsonResource
         return [
             'id' => $this->id,
             'serviceId' => $this->service_id,
+            'image' => empty($this->image) ? $this->image : URL::to("/uploads")  . "/" . $this->image,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
             'translations' => SubserviceTranslationResource::collection($this->translations),
