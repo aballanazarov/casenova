@@ -4,6 +4,25 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *     title="UpdateSubserviceTranslationRequest",
+ *     @OA\Xml(
+ *         name="UpdateSubserviceTranslationRequest"
+ *     ),
+ *     @OA\Property (
+ *         property="name",
+ *         ref="#/components/schemas/SubserviceTranslation/properties/name",
+ *     ),
+ *     @OA\Property (
+ *         property="content",
+ *         ref="#/components/schemas/SubserviceTranslation/properties/content",
+ *     ),
+ * ),
+ *
+ * @property string name
+ * @property string content
+ */
 class UpdateSubserviceTranslationRequest extends FormRequest
 {
     public function authorize()

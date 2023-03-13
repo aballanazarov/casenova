@@ -4,6 +4,30 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *     title="UpdateEquipmentRequest",
+ *     @OA\Xml(
+ *         name="UpdateEquipmentRequest"
+ *     ),
+ *     @OA\Property (
+ *         property="ru",
+ *         type="object",
+ *         ref="#/components/schemas/UpdateEquipmentTranslationRequest",
+ *     ),
+ *     @OA\Property (
+ *         property="uz",
+ *         type="object",
+ *         ref="#/components/schemas/UpdateEquipmentTranslationRequest",
+ *     ),
+ *     @OA\Property (
+ *         property="en",
+ *         type="object",
+ *         ref="#/components/schemas/UpdateEquipmentTranslationRequest",
+ *     ),
+ * ),
+ */
+
 class UpdateEquipmentRequest extends FormRequest
 {
     public function authorize()

@@ -155,6 +155,48 @@ class EquipmentController extends Controller
     }
 
 
+    /**
+     * @OA\Put (
+     *      path = "/equipment/{id}",
+     *      operationId = "updateEquipment",
+     *      tags = {"Equipments"},
+     *      summary = "Update equipment",
+     *      description = "Returns equipment data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Equipment id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              ref="#/components/schemas/UpdateEquipmentRequest",
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function update(UpdateEquipmentRequest $request, Equipment $equipment)
     {
         $equipment->update($request->all());

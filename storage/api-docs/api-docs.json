@@ -167,6 +167,50 @@
                         "description": "Forbidden"
                     }
                 }
+            },
+            "put": {
+                "tags": [
+                    "Blogs"
+                ],
+                "summary": "Update blog",
+                "description": "Returns blog data",
+                "operationId": "updateBlog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Blog id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateBlogRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
             }
         },
         "/equipment": {
@@ -264,6 +308,50 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Equipments"
+                ],
+                "summary": "Update equipment",
+                "description": "Returns equipment data",
+                "operationId": "updateEquipment",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Equipment id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateEquipmentRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
                     },
                     "400": {
                         "description": "Bad Request"
@@ -383,6 +471,50 @@
                         "description": "Forbidden"
                     }
                 }
+            },
+            "put": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Update service",
+                "description": "Returns service data",
+                "operationId": "updateServices",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateServiceRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
             }
         },
         "/subservices": {
@@ -480,6 +612,50 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subservices"
+                ],
+                "summary": "Update subservice",
+                "description": "Returns subservice data",
+                "operationId": "updateSubservice",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subservice id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateSubserviceRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
                     },
                     "400": {
                         "description": "Bad Request"
@@ -626,6 +802,138 @@
                 "type": "object",
                 "xml": {
                     "name": "StoreSubserviceTranslationRequest"
+                }
+            },
+            "UpdateBlogRequest": {
+                "title": "UpdateBlogRequest",
+                "properties": {
+                    "ru": {
+                        "$ref": "#/components/schemas/UpdateBlogTranslationRequest"
+                    },
+                    "uz": {
+                        "$ref": "#/components/schemas/UpdateBlogTranslationRequest"
+                    },
+                    "en": {
+                        "$ref": "#/components/schemas/UpdateBlogTranslationRequest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateBlogRequest"
+                }
+            },
+            "UpdateBlogTranslationRequest": {
+                "title": "UpdateBlogTranslationRequest",
+                "properties": {
+                    "title": {
+                        "$ref": "#/components/schemas/BlogTranslation/properties/title"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/BlogTranslation/properties/content"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateBlogTranslationRequest"
+                }
+            },
+            "UpdateEquipmentRequest": {
+                "title": "UpdateEquipmentRequest",
+                "properties": {
+                    "ru": {
+                        "$ref": "#/components/schemas/UpdateEquipmentTranslationRequest"
+                    },
+                    "uz": {
+                        "$ref": "#/components/schemas/UpdateEquipmentTranslationRequest"
+                    },
+                    "en": {
+                        "$ref": "#/components/schemas/UpdateEquipmentTranslationRequest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateEquipmentRequest"
+                }
+            },
+            "UpdateEquipmentTranslationRequest": {
+                "title": "UpdateEquipmentTranslationRequest",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/name"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/title"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateEquipmentTranslationRequest"
+                }
+            },
+            "UpdateServiceRequest": {
+                "title": "UpdateServiceRequest",
+                "properties": {
+                    "ru": {
+                        "$ref": "#/components/schemas/UpdateServiceTranslationRequest"
+                    },
+                    "uz": {
+                        "$ref": "#/components/schemas/UpdateServiceTranslationRequest"
+                    },
+                    "en": {
+                        "$ref": "#/components/schemas/UpdateServiceTranslationRequest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateServiceRequest"
+                }
+            },
+            "UpdateServiceTranslationRequest": {
+                "title": "UpdateServiceTranslationRequest",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/name"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/title"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateServiceTranslationRequest"
+                }
+            },
+            "UpdateSubserviceRequest": {
+                "title": "UpdateSubserviceRequest",
+                "properties": {
+                    "ru": {
+                        "$ref": "#/components/schemas/UpdateSubserviceTranslationRequest"
+                    },
+                    "uz": {
+                        "$ref": "#/components/schemas/UpdateSubserviceTranslationRequest"
+                    },
+                    "en": {
+                        "$ref": "#/components/schemas/UpdateSubserviceTranslationRequest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateSubserviceRequest"
+                }
+            },
+            "UpdateSubserviceTranslationRequest": {
+                "title": "UpdateSubserviceTranslationRequest",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/name"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/content"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UpdateSubserviceTranslationRequest"
                 }
             },
             "BlogCollection": {
