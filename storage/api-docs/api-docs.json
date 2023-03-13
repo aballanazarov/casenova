@@ -1322,6 +1322,27 @@
                     "name": "EquipmentTranslationResource"
                 }
             },
+            "GalleryCollection": {
+                "title": "BlogResource",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/Blog/properties/id"
+                    },
+                    "image": {
+                        "$ref": "#/components/schemas/Blog/properties/image"
+                    },
+                    "createdAt": {
+                        "$ref": "#/components/schemas/Blog/properties/created_at"
+                    },
+                    "updatedAt": {
+                        "$ref": "#/components/schemas/Blog/properties/updated_at"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "BlogResource"
+                }
+            },
             "ServiceCollection": {
                 "title": "ServiceCollection",
                 "properties": {
@@ -1634,6 +1655,27 @@
                 "type": "object",
                 "xml": {
                     "name": "EquipmentTranslation"
+                }
+            },
+            "Gallery": {
+                "title": "Blog",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "image": {
+                        "$ref": "#/components/schemas/BaseModel/properties/image"
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/created_at"
+                    },
+                    "updated_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/updated_at"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Blog"
                 }
             },
             "Service": {
