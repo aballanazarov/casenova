@@ -11,14 +11,27 @@ use Illuminate\Support\Facades\App;
 /**
  * @OA\Schema (
  *     title="Blog",
- *     description="Blog",
  *     @OA\Xml(
  *         name="Blog"
  *     ),
+ *     @OA\Property (
+ *         property="id",
+ *         ref="#/components/schemas/BaseModel/properties/id",
+ *     ),
+ *     @OA\Property (
+ *         property="created_at",
+ *         ref="#/components/schemas/BaseModel/properties/created_at",
+ *     ),
+ *     @OA\Property (
+ *         property="updated_at",
+ *         ref="#/components/schemas/BaseModel/properties/updated_at",
+ *     ),
  * ),
  *
- * @var string $create_at
- * @var string $update_at
+ * @property int id
+ * @property string create_at
+ * @property string update_at
+ * @property array translatedAttributes
  */
 class Blog extends Model implements TranslatableContract
 {

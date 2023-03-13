@@ -29,6 +29,9 @@ class SubserviceController extends Controller
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",
+     *          @OA\JsonContent(
+     *              ref="#/components/schemas/SubserviceCollection",
+     *          )
      *      ),
      *      @OA\Response (
      *          response = 401,
