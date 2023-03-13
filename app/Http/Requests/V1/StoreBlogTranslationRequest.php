@@ -23,7 +23,6 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string title
  * @property string content
  */
-
 class StoreBlogTranslationRequest extends FormRequest
 {
     public function authorize()

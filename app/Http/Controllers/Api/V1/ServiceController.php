@@ -177,6 +177,48 @@ class ServiceController extends Controller
     }
 
 
+    /**
+     * @OA\Put (
+     *      path = "/services/{id}",
+     *      operationId = "updateServices",
+     *      tags = {"Services"},
+     *      summary = "Update service",
+     *      description = "Returns service data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Service id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              ref="#/components/schemas/UpdateServiceRequest",
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function update(UpdateServiceRequest $request, Service $service)
     {
         $service->update($request->all());

@@ -96,7 +96,6 @@ class SubserviceController extends Controller
      *      )
      * )
      */
-
     public function store(StoreSubserviceRequest $request)
     {
         return new SubserviceResource(Subservice::create($request->all()));
@@ -156,6 +155,48 @@ class SubserviceController extends Controller
     }
 
 
+    /**
+     * @OA\Put (
+     *      path = "/subservices/{id}",
+     *      operationId = "updateSubservice",
+     *      tags = {"Subservices"},
+     *      summary = "Update subservice",
+     *      description = "Returns subservice data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Subservice id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              ref="#/components/schemas/UpdateSubserviceRequest",
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function update(UpdateSubserviceRequest $request, Subservice $subservice)
     {
         $subservice->update($request->all());

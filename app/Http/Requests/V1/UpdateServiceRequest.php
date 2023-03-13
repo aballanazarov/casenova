@@ -4,6 +4,30 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *     title="UpdateServiceRequest",
+ *     @OA\Xml(
+ *         name="UpdateServiceRequest"
+ *     ),
+ *     @OA\Property (
+ *         property="ru",
+ *         type="object",
+ *         ref="#/components/schemas/UpdateServiceTranslationRequest",
+ *     ),
+ *     @OA\Property (
+ *         property="uz",
+ *         type="object",
+ *         ref="#/components/schemas/UpdateServiceTranslationRequest",
+ *     ),
+ *     @OA\Property (
+ *         property="en",
+ *         type="object",
+ *         ref="#/components/schemas/UpdateServiceTranslationRequest",
+ *     ),
+ * ),
+ */
+
 class UpdateServiceRequest extends FormRequest
 {
     public function authorize()

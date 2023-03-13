@@ -64,7 +64,7 @@ class BlogController extends Controller
 
 
     /**
-     * @OA\Post(
+     * @OA\Post (
      *      path = "/blog",
      *      operationId = "storeBlog",
      *      tags = {"Blogs"},
@@ -103,7 +103,7 @@ class BlogController extends Controller
 
 
     /**
-     * @OA\Get(
+     * @OA\Get (
      *      path="/blog/{id}",
      *      operationId="getBlogById",
      *      tags={"Blogs"},
@@ -155,6 +155,48 @@ class BlogController extends Controller
     }
 
 
+    /**
+     * @OA\Put (
+     *      path = "/blog/{id}",
+     *      operationId = "updateBlog",
+     *      tags = {"Blogs"},
+     *      summary = "Update blog",
+     *      description = "Returns blog data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Blog id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              ref="#/components/schemas/UpdateBlogRequest",
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
         $blog->update($request->all());
