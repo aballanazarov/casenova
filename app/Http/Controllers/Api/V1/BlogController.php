@@ -21,23 +21,23 @@ class BlogController extends Controller
 {
     /**
      * @OA\Get (
-     *      path = "/blog",
-     *      operationId = "getBlogs",
-     *      tags = {"Blogs"},
-     *      summary = "Get list of blogs",
-     *      description = "Returns list of blogs",
+     *      path="/blog",
+     *      operationId="getBlogs",
+     *      tags={"Blogs"},
+     *      summary="Get list of blogs",
+     *      description="Returns list of blogs",
      *      @OA\Response (
-     *          response = 200,
-     *          description = "Successful operation",
+     *          response=200,
+     *          description="Successful operation",
      *          @OA\JsonContent(ref="#/components/schemas/BlogResource")
      *      ),
      *      @OA\Response (
-     *          response = 401,
-     *          description = "Unauthenticated",
+     *          response=401,
+     *          description="Unauthenticated",
      *      ),
      *      @OA\Response (
-     *          response = 403,
-     *          description = "Forbidden"
+     *          response=403,
+     *          description="Forbidden"
      *      )
      * )
      */

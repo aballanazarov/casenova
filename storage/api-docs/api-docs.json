@@ -280,109 +280,87 @@
     },
     "components": {
         "schemas": {
-            "StoreBlogRequest": {
-                "title": "StoreBlogRequest",
-                "description": "Store Blog request body data",
-                "type": "object",
+            "BaseRecourse": {
+                "title": "BaseRecourse",
+                "description": "Base Recourse",
                 "xml": {
-                    "name": "StoreBlogRequest"
-                }
-            },
-            "StoreBlogTranslationRequest": {
-                "title": "StoreBlogTranslationRequest",
-                "description": "Store Blog Translation request body data",
-                "type": "object",
-                "xml": {
-                    "name": "StoreBlogTranslationRequest"
-                }
-            },
-            "UpdateBlogRequest": {
-                "title": "UpdateBlogRequest",
-                "description": "Update Blog request body data",
-                "type": "object",
-                "xml": {
-                    "name": "UpdateBlogRequest"
-                }
-            },
-            "UpdateBlogTranslationRequest": {
-                "title": "UpdateBlogTranslationRequest",
-                "description": "Update Blog Translation request body data",
-                "type": "object",
-                "xml": {
-                    "name": "UpdateBlogTranslationRequest"
-                }
-            },
-            "BlogCollection": {
-                "title": "BlogCollection",
-                "description": "Blog Collection",
-                "xml": {
-                    "name": "BlogCollection"
+                    "name": "BaseRecourse"
                 }
             },
             "BlogResource": {
                 "title": "BlogResource",
                 "description": "Blog Resource",
-                "properties": {
-                    "": {
-                        "title": "Data",
-                        "description": "Data wrapper",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/Blog"
-                        }
-                    }
-                },
-                "type": "object",
                 "xml": {
                     "name": "BlogResource"
-                }
-            },
-            "BlogTranslationCollection": {
-                "title": "BlogTranslationCollection",
-                "description": "Blog Translation Collection",
-                "xml": {
-                    "name": "BlogTranslationCollection"
                 }
             },
             "BlogTranslationResource": {
                 "title": "BlogTranslationResource",
                 "description": "Blog Translation Resource",
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title",
+                        "format": "string"
+                    },
+                    "content": {
+                        "title": "content",
+                        "description": "content",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
                 "xml": {
                     "name": "BlogTranslationResource"
                 }
             },
-            "Blog": {
-                "title": "Blog",
+            "BaseModel": {
+                "title": "BaseModel",
+                "description": "Base Model",
                 "properties": {
                     "id": {
-                        "type": "integer"
+                        "title": "id",
+                        "description": "Id",
+                        "type": "integer",
+                        "format": "integer",
+                        "readOnly": "true",
+                        "nullable": true
                     },
                     "created_at": {
-                        "type": "string"
+                        "title": "created_at",
+                        "description": "Date of Model creation",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true",
+                        "nullable": true
                     },
                     "updated_at": {
-                        "type": "string"
+                        "title": "updated_at",
+                        "description": "Date of last updating Model data",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": "true",
+                        "nullable": true
                     },
-                    "translatedAttributes": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BlogTranslation"
-                        }
+                    "locale": {
+                        "title": "locale",
+                        "description": "locale",
+                        "type": "string",
+                        "format": "string",
+                        "readOnly": "true"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "xml": {
+                    "name": "BaseModel"
+                }
             },
-            "BlogTranslation": {
-                "title": "BlogTranslation",
-                "properties": {
-                    "title": {
-                        "type": "string"
-                    },
-                    "content": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
+            "Blog": {
+                "title": "Blog",
+                "description": "Blog",
+                "xml": {
+                    "name": "Blog"
+                }
             }
         },
         "securitySchemes": {

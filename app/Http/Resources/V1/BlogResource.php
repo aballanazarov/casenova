@@ -10,18 +10,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     description="Blog Resource",
  *     @OA\Xml(
  *         name="BlogResource"
- *     )
- * )
+ *     ),
+ * ),
  */
 class BlogResource extends JsonResource
 {
     /**
-     * @OA\Property(
-     *     title="Data",
-     *     description="Data wrapper"
-     * )
-     *
-     * @var \App\Models\Blog[]
+     * @return array
      */
     public function toArray($request)
     {
