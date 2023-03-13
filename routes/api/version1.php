@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\BlogController;
 use App\Http\Controllers\Api\V1\EquipmentController;
+use App\Http\Controllers\Api\V1\GalleryController;
 use App\Http\Controllers\Api\V1\ServiceController;
 use App\Http\Controllers\Api\V1\SubserviceController;
 use Illuminate\Support\Facades\Route;
@@ -24,5 +25,8 @@ Route::prefix('v1')
 
         Route::apiResource('blog', BlogController::class);
         Route::post('blog/{blog}/image', [BlogController::class, 'image'])->whereNumber('blog');
+
+        Route::apiResource('galleries', GalleryController::class);
+        Route::post('galleries/{gallery}/image', [GalleryController::class, 'image'])->whereNumber('gallery');
     }
 );
