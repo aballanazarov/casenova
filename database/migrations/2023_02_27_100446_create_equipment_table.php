@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('equipment', function (Blueprint $table) {
             $table->id();
-            //$table->string('image')->nullable();
             $table->timestamps();
         });
     }
