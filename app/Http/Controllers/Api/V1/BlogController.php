@@ -49,10 +49,10 @@ class BlogController extends Controller
         $queryItems = $filter->transform($request);
 
         if (count($queryItems) == 0) {
-            return new BlogCollection(Blog::paginate());
+            return BlogCollection::make(Blog::paginate());
         } else {
             $blogs = Blog::where($queryItems)->paginate();
-            return new BlogCollection($blogs->appends($request->query()));
+            return BlogCollection::make($blogs->appends($request->query()));
         }
     }
 
@@ -145,7 +145,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return new BlogResource($blog);
+        return BlogResource::make($blog);
     }
 
 
