@@ -5,7 +5,36 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @property int $id
+ * @OA\Schema(
+ *     title="ServiceResource",
+ *     @OA\Xml(
+ *         name="ServiceResource"
+ *     ),
+ *     @OA\Property (
+ *         property="id",
+ *         ref="#/components/schemas/Service/properties/id",
+ *     ),
+ *     @OA\Property (
+ *         property="createdAt",
+ *         ref="#/components/schemas/Service/properties/created_at",
+ *     ),
+ *     @OA\Property (
+ *         property="updatedAt",
+ *         ref="#/components/schemas/Service/properties/updated_at",
+ *     ),
+ *     @OA\Property (
+ *         property="translations",
+ *         type="array",
+ *         @OA\Items (
+ *             ref="#/components/schemas/ServiceTranslationResource",
+ *         ),
+ *     ),
+ * ),
+ *
+ * @property int id
+ * @property string created_at
+ * @property string updated_at
+ * @property string translations
  */
 class ServiceResource extends JsonResource
 {

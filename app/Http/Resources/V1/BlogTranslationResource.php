@@ -7,25 +7,31 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @OA\Schema(
  *     title="BlogTranslationResource",
- *     description="Blog Translation Resource",
  *     @OA\Xml(
  *         name="BlogTranslationResource",
  *     ),
  *     @OA\Property (
+ *         property="id",
+ *         ref="#/components/schemas/BlogTranslation/properties/id",
+ *     ),
+ *     @OA\Property (
+ *         property="blogId",
+ *         ref="#/components/schemas/BlogTranslation/properties/blog_id",
+ *     ),
+ *     @OA\Property (
+ *         property="locale",
+ *         ref="#/components/schemas/BlogTranslation/properties/locale",
+ *     ),
+ *     @OA\Property (
  *         property="title",
- *         title="title",
- *         description="title",
- *         format="string",
+ *         ref="#/components/schemas/BlogTranslation/properties/title",
  *     ),
  *     @OA\Property (
  *         property="content",
- *         title="content",
- *         description="content",
- *         format="string",
+ *         ref="#/components/schemas/BlogTranslation/properties/content",
  *     ),
  * )
  */
-
 class BlogTranslationResource extends JsonResource
 {
     public function toArray($request)

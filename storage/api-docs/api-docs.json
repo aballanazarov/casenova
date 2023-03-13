@@ -75,7 +75,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BlogResource"
+                                    "$ref": "#/components/schemas/BlogCollection"
                                 }
                             }
                         }
@@ -99,7 +99,14 @@
                 "operationId": "getEquipments",
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EquipmentCollection"
+                                }
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -120,7 +127,14 @@
                 "operationId": "getServices",
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceCollection"
+                                }
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -266,7 +280,14 @@
                 "operationId": "getSubservices",
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubserviceCollection"
+                                }
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -280,33 +301,71 @@
     },
     "components": {
         "schemas": {
-            "BaseRecourse": {
-                "title": "BaseRecourse",
-                "description": "Base Recourse",
-                "xml": {
-                    "name": "BaseRecourse"
-                }
+            "BlogCollection": {
+                "title": "BlogCollection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BlogResource"
+                        }
+                    }
+                },
+                "type": "object"
             },
             "BlogResource": {
                 "title": "BlogResource",
-                "description": "Blog Resource",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/Blog/properties/id"
+                    },
+                    "createdAt": {
+                        "$ref": "#/components/schemas/Blog/properties/created_at"
+                    },
+                    "updatedAt": {
+                        "$ref": "#/components/schemas/Blog/properties/updated_at"
+                    },
+                    "translations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BlogTranslationResource"
+                        }
+                    }
+                },
+                "type": "object",
                 "xml": {
                     "name": "BlogResource"
                 }
             },
+            "BlogTranslationCollection": {
+                "title": "BlogTranslationCollection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BlogTranslationResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
             "BlogTranslationResource": {
                 "title": "BlogTranslationResource",
-                "description": "Blog Translation Resource",
                 "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BlogTranslation/properties/id"
+                    },
+                    "blogId": {
+                        "$ref": "#/components/schemas/BlogTranslation/properties/blog_id"
+                    },
+                    "locale": {
+                        "$ref": "#/components/schemas/BlogTranslation/properties/locale"
+                    },
                     "title": {
-                        "title": "title",
-                        "description": "title",
-                        "format": "string"
+                        "$ref": "#/components/schemas/BlogTranslation/properties/title"
                     },
                     "content": {
-                        "title": "content",
-                        "description": "content",
-                        "format": "string"
+                        "$ref": "#/components/schemas/BlogTranslation/properties/content"
                     }
                 },
                 "type": "object",
@@ -314,40 +373,255 @@
                     "name": "BlogTranslationResource"
                 }
             },
+            "EquipmentCollection": {
+                "title": "EquipmentCollection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EquipmentResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "EquipmentResource": {
+                "title": "EquipmentResource",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/Equipment/properties/id"
+                    },
+                    "createdAt": {
+                        "$ref": "#/components/schemas/Equipment/properties/created_at"
+                    },
+                    "updatedAt": {
+                        "$ref": "#/components/schemas/Equipment/properties/updated_at"
+                    },
+                    "translations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EquipmentTranslationResource"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "EquipmentResource"
+                }
+            },
+            "EquipmentTranslationCollection": {
+                "title": "EquipmentTranslationCollection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EquipmentTranslationResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "EquipmentTranslationResource": {
+                "title": "EquipmentTranslationResource",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/id"
+                    },
+                    "equipmentId": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/equipment_id"
+                    },
+                    "locale": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/locale"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/name"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/title"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "EquipmentTranslationResource"
+                }
+            },
+            "ServiceCollection": {
+                "title": "ServiceCollection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ServiceResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "ServiceResource": {
+                "title": "ServiceResource",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/Service/properties/id"
+                    },
+                    "createdAt": {
+                        "$ref": "#/components/schemas/Service/properties/created_at"
+                    },
+                    "updatedAt": {
+                        "$ref": "#/components/schemas/Service/properties/updated_at"
+                    },
+                    "translations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ServiceTranslationResource"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ServiceResource"
+                }
+            },
+            "ServiceTranslationCollection": {
+                "title": "ServiceTranslationCollection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ServiceTranslationResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "ServiceTranslationResource": {
+                "title": "ServiceTranslationResource",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/id"
+                    },
+                    "serviceId": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/service_id"
+                    },
+                    "locale": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/locale"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/name"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/title"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ServiceTranslationResource"
+                }
+            },
+            "SubserviceCollection": {
+                "title": "SubserviceCollection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SubserviceResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "SubserviceResource": {
+                "title": "SubserviceResource",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/Subservice/properties/id"
+                    },
+                    "createdAt": {
+                        "$ref": "#/components/schemas/Subservice/properties/created_at"
+                    },
+                    "updatedAt": {
+                        "$ref": "#/components/schemas/Subservice/properties/updated_at"
+                    },
+                    "translations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SubserviceTranslationResource"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "SubserviceResource"
+                }
+            },
+            "SubserviceTranslationCollection": {
+                "title": "SubserviceTranslationCollection",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SubserviceTranslationResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "SubserviceTranslationResource": {
+                "title": "SubserviceTranslationResource",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/id"
+                    },
+                    "subserviceId": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/subservice_id"
+                    },
+                    "locale": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/locale"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/name"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/content"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "SubserviceTranslationResource"
+                }
+            },
             "BaseModel": {
                 "title": "BaseModel",
-                "description": "Base Model",
                 "properties": {
                     "id": {
                         "title": "id",
-                        "description": "Id",
                         "type": "integer",
                         "format": "integer",
                         "readOnly": "true",
+                        "example": 1,
                         "nullable": true
                     },
                     "created_at": {
                         "title": "created_at",
-                        "description": "Date of Model creation",
                         "type": "string",
                         "format": "date-time",
                         "readOnly": "true",
+                        "example": "2023-01-01T09:30:59.000000Z",
                         "nullable": true
                     },
                     "updated_at": {
                         "title": "updated_at",
-                        "description": "Date of last updating Model data",
                         "type": "string",
                         "format": "date-time",
                         "readOnly": "true",
+                        "example": "2023-01-01T09:30:59.000000Z",
                         "nullable": true
                     },
                     "locale": {
                         "title": "locale",
-                        "description": "locale",
                         "type": "string",
                         "format": "string",
-                        "readOnly": "true"
+                        "readOnly": "true",
+                        "example": "en"
                     }
                 },
                 "type": "object",
@@ -357,9 +631,189 @@
             },
             "Blog": {
                 "title": "Blog",
-                "description": "Blog",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/created_at"
+                    },
+                    "updated_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/updated_at"
+                    }
+                },
+                "type": "object",
                 "xml": {
                     "name": "Blog"
+                }
+            },
+            "BlogTranslation": {
+                "title": "BlogTranslation",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "blog_id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "locale": {
+                        "$ref": "#/components/schemas/BaseModel/properties/locale"
+                    },
+                    "title": {
+                        "title": "title",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "content": {
+                        "title": "content",
+                        "type": "string",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "BlogTranslation"
+                }
+            },
+            "Equipment": {
+                "title": "Equipment",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/created_at"
+                    },
+                    "updated_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/updated_at"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Equipment"
+                }
+            },
+            "EquipmentTranslation": {
+                "title": "EquipmentTranslation",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "equipment_id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "locale": {
+                        "$ref": "#/components/schemas/BaseModel/properties/locale"
+                    },
+                    "name": {
+                        "title": "name",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "title": {
+                        "title": "title",
+                        "type": "string",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "EquipmentTranslation"
+                }
+            },
+            "Service": {
+                "title": "Service",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/created_at"
+                    },
+                    "updated_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/updated_at"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Service"
+                }
+            },
+            "ServiceTranslation": {
+                "title": "ServiceTranslation",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "service_id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "locale": {
+                        "$ref": "#/components/schemas/BaseModel/properties/locale"
+                    },
+                    "name": {
+                        "title": "name",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "title": {
+                        "title": "title",
+                        "type": "string",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ServiceTranslation"
+                }
+            },
+            "Subservice": {
+                "title": "Subservice",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "service_id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/created_at"
+                    },
+                    "updated_at": {
+                        "$ref": "#/components/schemas/BaseModel/properties/updated_at"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Subservice"
+                }
+            },
+            "SubserviceTranslation": {
+                "title": "SubserviceTranslation",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "subservice_id": {
+                        "$ref": "#/components/schemas/BaseModel/properties/id"
+                    },
+                    "locale": {
+                        "$ref": "#/components/schemas/BaseModel/properties/locale"
+                    },
+                    "name": {
+                        "title": "name",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "content": {
+                        "title": "content",
+                        "type": "string",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "SubserviceTranslation"
                 }
             }
         },
