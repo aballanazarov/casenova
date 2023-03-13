@@ -103,6 +103,47 @@ class SubserviceController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *      path="/subservices/{id}",
+     *      operationId="getSubserviceById",
+     *      tags={"Services"},
+     *      summary="Get subservice information",
+     *      description="Returns subservice data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Subservice id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(
+     *              @OA\Property (
+     *                  property="data",
+     *                  type="object",
+     *                  ref="#/components/schemas/SubserviceResource",
+     *              )
+     *          )
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
     public function show(Subservice $subservice)
     {
         return new SubserviceResource($subservice);

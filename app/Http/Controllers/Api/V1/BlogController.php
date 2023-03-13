@@ -69,7 +69,7 @@ class BlogController extends Controller
      *      operationId = "storeBlog",
      *      tags = {"Blogs"},
      *      summary = "Create new blog",
-     *      description = "Returns service data",
+     *      description = "Returns blog data",
      *      @OA\RequestBody (
      *          required = true,
      *          description = "Pass user credentials",
@@ -102,6 +102,47 @@ class BlogController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *      path="/blog/{id}",
+     *      operationId="getBlogById",
+     *      tags={"Blogs"},
+     *      summary="Get blog information",
+     *      description="Returns blog data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Blog id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(
+     *              @OA\Property (
+     *                  property="data",
+     *                  type="object",
+     *                  ref="#/components/schemas/BlogResource",
+     *              )
+     *          )
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     */
     public function show(Blog $blog)
     {
         return new BlogResource($blog);
