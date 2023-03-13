@@ -14,10 +14,15 @@ Route::prefix('v1')
         Route::post('login', [AuthController::class, 'login']);
 
         Route::apiResource('services', ServiceController::class);
-        Route::apiResource('subservices', SubserviceController::class);
-        Route::apiResource('equipment', EquipmentController::class);
-        Route::apiResource('blog', BlogController::class);
+        Route::post('services/{service}/image', [ServiceController::class, 'image'])->whereNumber('service');
 
-        Route::post('services/bulk', ['uses' => 'ServiceController@bulkStore']);
+        Route::apiResource('subservices', SubserviceController::class);
+        Route::post('services/{subservice}/image', [SubserviceController::class, 'image'])->whereNumber('subservice');
+
+        Route::apiResource('equipment', EquipmentController::class);
+        Route::post('services/{equipment}/image', [EquipmentController::class, 'image'])->whereNumber('equipment');
+
+        Route::apiResource('blog', BlogController::class);
+        Route::post('services/{blog}/image', [BlogController::class, 'image'])->whereNumber('blog');
     }
 );

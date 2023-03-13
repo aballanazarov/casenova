@@ -6,6 +6,7 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 /**
  * @OA\Schema (
@@ -35,6 +36,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int service_id
  * @property string create_at
  * @property string update_at
+ * @property string image
  * @property array translatedAttributes
  */
 class Subservice extends Model implements TranslatableContract
@@ -44,6 +46,7 @@ class Subservice extends Model implements TranslatableContract
 
     protected $fillable = [
         'service_id',
+        'image',
     ];
 
     public $translatedAttributes = [
@@ -55,5 +58,20 @@ class Subservice extends Model implements TranslatableContract
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+
+
+    public function uploadImage(Request $request)
+    {
+        $upload = $request->file('image');
+        if (!is_null($upload)) {
+            $uploadName = time() . "." . $upload->extension();
+            $upload->move(public_path('uploads'), $uploadName);
+            $this->image = $uploadName;
+            return $this->save();
+        }
+
+        return false;
+
     }
 }

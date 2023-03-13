@@ -10,6 +10,7 @@ use App\Models\Blog;
 use App\Http\Requests\V1\StoreBlogRequest;
 use App\Http\Requests\V1\UpdateBlogRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
@@ -206,5 +207,15 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+    }
+
+
+    public function image(Blog $blog, Request $image)
+    {
+        if (!is_null($blog->id) && $blog->uploadImage($image)) {
+            return URL::to("/uploads") . "/" . $blog->image;
+        }
+
+        return "error";
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Equipment;
 use App\Http\Requests\V1\StoreEquipmentRequest;
 use App\Http\Requests\V1\UpdateEquipmentRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
@@ -206,5 +207,15 @@ class EquipmentController extends Controller
     public function destroy(Equipment $equipment)
     {
         //
+    }
+
+
+    public function image(Equipment $equipment, Request $image)
+    {
+        if (!is_null($equipment->id) && $equipment->uploadImage($image)) {
+            return URL::to("/uploads") . "/" . $equipment->image;
+        }
+
+        return "error";
     }
 }

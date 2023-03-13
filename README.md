@@ -64,3 +64,54 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Requirements
+-------------------
+
+```
+
+PHP : >= 8.1
+Composer : *
+Mysql : >= 8.0
+
+```
+
+Command sequence
+-------------------
+
+# Git
+```
+git clone https://github.com/aballanazarov/casenova.git
+```
+
+# Composer
+```
+composer install
+```
+
+# Installation
+```
+cp .env.example .env
+```
+
+# Configuration
+```
+/.env
+    ...
+    APP_URL=YOUR_DOMAIN
+    
+    DB_CONNECTION=YOUR_CONNECTION
+    DB_HOST=YOUR_HOST
+    DB_PORT=YOUR_PORT
+    DB_DATABASE=YOUR_DATABASE
+    DB_USERNAME=YOUR_USERNAME
+    DB_PASSWORD=YOUR_PASSWORD
+    ...
+    L5_SWAGGER_CONST_HOST=YOUR_DOMAIN/api/v1
+    ...
+```
+
+# Insert initial information
+```
+php artisan migrate
+```
