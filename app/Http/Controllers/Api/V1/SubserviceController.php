@@ -49,10 +49,10 @@ class SubserviceController extends Controller
         $queryItems = $filter->transform($request); // [['column', 'operator', 'value']]
 
         if (count($queryItems) == 0) {
-            return new SubserviceCollection(Subservice::paginate());
+            return SubserviceCollection::make(Subservice::paginate());
         } else {
             $subservice = Subservice::where($queryItems)->paginate();
-            return new SubserviceCollection($subservice->appends($request->query()));
+            return SubserviceCollection::make($subservice->appends($request->query()));
         }
     }
 
@@ -98,7 +98,7 @@ class SubserviceController extends Controller
      */
     public function store(StoreSubserviceRequest $request)
     {
-        return new SubserviceResource(Subservice::create($request->all()));
+        return SubserviceResource::make(Subservice::create($request->all()));
     }
 
 
@@ -145,7 +145,7 @@ class SubserviceController extends Controller
      */
     public function show(Subservice $subservice)
     {
-        return new SubserviceResource($subservice);
+        return SubserviceResource::make($subservice);
     }
 
 

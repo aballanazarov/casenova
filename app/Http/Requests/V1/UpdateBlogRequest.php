@@ -31,8 +31,7 @@ class UpdateBlogRequest extends FormRequest
 {
     public function authorize()
     {
-        $user = $this->user();
-        return !is_null($user) && $user->can('update');
+        return true;
     }
 
 

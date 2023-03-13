@@ -31,8 +31,7 @@ class StoreBlogRequest extends FormRequest
 {
     public function authorize()
     {
-        $user = $this->user();
-        return !is_null($user) && $user->tokenCan('create');
+        return true;
     }
 
 

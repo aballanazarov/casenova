@@ -32,8 +32,7 @@ class UpdateServiceRequest extends FormRequest
 {
     public function authorize()
     {
-        $user = $this->user();
-        return !is_null($user) && $user->tokenCan('update');
+        return true;
     }
 
 

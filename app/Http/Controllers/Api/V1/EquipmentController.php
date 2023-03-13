@@ -49,10 +49,10 @@ class EquipmentController extends Controller
         $queryItems = $filter->transform($request);
 
         if (count($queryItems) == 0) {
-            return new EquipmentCollection(Equipment::paginate());
+            return EquipmentCollection::make(Equipment::paginate());
         } else {
             $equipments = Equipment::where($queryItems)->paginate();
-            return new EquipmentCollection($equipments->appends($request->query()));
+            return EquipmentCollection::make($equipments->appends($request->query()));
         }
     }
 
@@ -98,7 +98,7 @@ class EquipmentController extends Controller
      */
     public function store(StoreEquipmentRequest $request)
     {
-        return new EquipmentResource(Equipment::create($request->all()));
+        return EquipmentResource::make(Equipment::create($request->all()));
     }
 
 
@@ -145,7 +145,7 @@ class EquipmentController extends Controller
      */
     public function show(Equipment $equipment)
     {
-        return new EquipmentResource($equipment);
+        return EquipmentResource::make($equipment);
     }
 
 

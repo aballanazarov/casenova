@@ -59,7 +59,7 @@ class ServiceController extends Controller
             $services = $services->with('subservices');
         }
 
-        return new ServiceCollection($services->paginate()->appends($request->query()));
+        return ServiceCollection::make($services->paginate()->appends($request->query()));
     }
 
 
@@ -104,7 +104,7 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        return new ServiceResource(Service::create($request->all()));
+        return ServiceResource::make(Service::create($request->all()));
     }
 
 
@@ -164,10 +164,10 @@ class ServiceController extends Controller
         $incSubs = request()->query('incSubs');
 
         if ($incSubs) {
-            return new ServiceResource($service->loadMissing('subservices'));
+            return ServiceResource::make($service->loadMissing('subservices'));
         }
 
-        return new ServiceResource($service);
+        return ServiceResource::make($service);
     }
 
 
