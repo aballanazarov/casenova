@@ -47,6 +47,30 @@ namespace App\Models;
  *         readOnly="true",
  *         example="en",
  *     ),
+ *
+ *     @OA\Property (
+ *         property="image",
+ *         title="image",
+ *         format="string",
+ *         type="string",
+ *         readOnly="true",
+ *         example="https://example.com/uploads/image1.jpg",
+ *     ),
+ *
+ *     @OA\Property (
+ *         property="uploads",
+ *         title="uploads",
+ *         format="binary",
+ *         type="string",
+ *     ),
+ *
+ *     @OA\Property (
+ *         property="booleanResult",
+ *         title="boolean",
+ *         format="boolean",
+ *         type="boolean",
+ *         example="true",
+ *     ),
  * ),
  */
 class BaseModel

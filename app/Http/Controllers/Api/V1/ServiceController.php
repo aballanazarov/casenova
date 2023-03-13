@@ -232,6 +232,55 @@ class ServiceController extends Controller
     }
 
 
+    /**
+     * @OA\Post (
+     *      path = "/services/{service}/image",
+     *      operationId = "imageService",
+     *      tags = {"Services"},
+     *      summary = "Update image for service",
+     *      description = "Returns service status",
+     *      @OA\Parameter(
+     *          name="service",
+     *          description="Service id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              ref="#/components/schemas/BaseModel/properties/id",
+     *          )
+     *      ),
+     *      @OA\RequestBody (
+     *          required = true,
+     *          @OA\MediaType (
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property (
+     *                      property="image",
+     *                      ref="#/components/schemas/BaseModel/properties/uploads",
+     *                  )
+     *              )
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *          @OA\JsonContent (
+     *              ref="#/components/schemas/BaseModel/properties/booleanResult",
+     *          ),
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function image(Service $service, Request $image)
     {
         if (!is_null($service->id) && $service->uploadImage($image)) {

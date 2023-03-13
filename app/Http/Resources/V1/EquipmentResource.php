@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\URL;
  *         ref="#/components/schemas/Equipment/properties/id",
  *     ),
  *     @OA\Property (
+ *         property="image",
+ *         ref="#/components/schemas/Equipment/properties/image",
+ *     ),
+ *     @OA\Property (
  *         property="createdAt",
  *         ref="#/components/schemas/Equipment/properties/created_at",
  *     ),

@@ -210,6 +210,55 @@ class SubserviceController extends Controller
     }
 
 
+    /**
+     * @OA\Post (
+     *      path = "/subservices/{subservice}/image",
+     *      operationId = "imageSubservice",
+     *      tags = {"Subservices"},
+     *      summary = "Update image for subservice",
+     *      description = "Returns subservice status",
+     *      @OA\Parameter(
+     *          name="subservice",
+     *          description="Subservice id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              ref="#/components/schemas/BaseModel/properties/id",
+     *          )
+     *      ),
+     *      @OA\RequestBody (
+     *          required = true,
+     *          @OA\MediaType (
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property (
+     *                      property="image",
+     *                      ref="#/components/schemas/BaseModel/properties/uploads",
+     *                  )
+     *              )
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *          @OA\JsonContent (
+     *              ref="#/components/schemas/BaseModel/properties/booleanResult",
+     *          ),
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function image(Subservice $subservice, Request $image)
     {
         if (!is_null($subservice->id) && $subservice->uploadImage($image)) {
