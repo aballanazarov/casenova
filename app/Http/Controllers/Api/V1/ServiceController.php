@@ -81,62 +81,7 @@ class ServiceController extends Controller
      *          description = "Pass user credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              @OA\Property (
-     *                  property = "translation",
-     *                  type = "object",
-     *                  format = "query",
-     *                  @OA\Property (
-     *                      property = "ru",
-     *                      type = "object",
-     *                      format = "query",
-     *                      @OA\Property (
-     *                          property = "name",
-     *                          type = "string",
-     *                          format = "string",
-     *                          example = "Name Ru"
-     *                      ),
-     *                      @OA\Property (
-     *                          property = "title",
-     *                          type = "string",
-     *                          format = "string",
-     *                          example = "Title Ru"
-     *                      ),
-     *                  ),
-     *                  @OA\Property (
-     *                      property = "uz",
-     *                      type = "object",
-     *                      format = "query",
-     *                      @OA\Property (
-     *                          property = "name",
-     *                          type = "string",
-     *                          format = "string",
-     *                          example = "Name Uz"
-     *                      ),
-     *                      @OA\Property (
-     *                          property = "title",
-     *                          type = "string",
-     *                          format = "string",
-     *                          example = "Title Uz"
-     *                      ),
-     *                  ),
-     *                  @OA\Property (
-     *                      property = "en",
-     *                      type = "object",
-     *                      format = "query",
-     *                      @OA\Property (
-     *                          property = "name",
-     *                          type = "string",
-     *                          format = "string",
-     *                          example = "Name En"
-     *                      ),
-     *                      @OA\Property (
-     *                          property = "title",
-     *                          type = "string",
-     *                          format = "string",
-     *                          example = "Title En"
-     *                      ),
-     *                  ),
-     *              ),
+     *              ref="#/components/schemas/StoreServiceRequest",
      *          ),
      *      ),
      *      @OA\Response (

@@ -87,6 +87,39 @@
                         "description": "Forbidden"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Blogs"
+                ],
+                "summary": "Create new blog",
+                "description": "Returns service data",
+                "operationId": "storeBlog",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreBlogRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
             }
         },
         "/equipments": {
@@ -107,6 +140,39 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Equipments"
+                ],
+                "summary": "Create new equipment",
+                "description": "Returns service data",
+                "operationId": "storeEquipments",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreEquipmentRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
                         "description": "Unauthenticated"
@@ -157,64 +223,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "properties": {
-                                    "translation": {
-                                        "properties": {
-                                            "ru": {
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string",
-                                                        "format": "string",
-                                                        "example": "Name Ru"
-                                                    },
-                                                    "title": {
-                                                        "type": "string",
-                                                        "format": "string",
-                                                        "example": "Title Ru"
-                                                    }
-                                                },
-                                                "type": "object",
-                                                "format": "query"
-                                            },
-                                            "uz": {
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string",
-                                                        "format": "string",
-                                                        "example": "Name Uz"
-                                                    },
-                                                    "title": {
-                                                        "type": "string",
-                                                        "format": "string",
-                                                        "example": "Title Uz"
-                                                    }
-                                                },
-                                                "type": "object",
-                                                "format": "query"
-                                            },
-                                            "en": {
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string",
-                                                        "format": "string",
-                                                        "example": "Name En"
-                                                    },
-                                                    "title": {
-                                                        "type": "string",
-                                                        "format": "string",
-                                                        "example": "Title En"
-                                                    }
-                                                },
-                                                "type": "object",
-                                                "format": "query"
-                                            }
-                                        },
-                                        "type": "object",
-                                        "format": "query"
-                                    }
-                                },
-                                "type": "object",
-                                "collectionFormat": "multi"
+                                "$ref": "#/components/schemas/StoreServiceRequest"
                             }
                         }
                     }
@@ -273,7 +282,7 @@
         "/subservices": {
             "get": {
                 "tags": [
-                    "Blogs"
+                    "Subservices"
                 ],
                 "summary": "Get list of subservices",
                 "description": "Returns list of subservices",
@@ -296,11 +305,176 @@
                         "description": "Forbidden"
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Subservices"
+                ],
+                "summary": "Create new subservice",
+                "description": "Returns service data",
+                "operationId": "storeSubservices",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreSubserviceRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
             }
         }
     },
     "components": {
         "schemas": {
+            "StoreBlogRequest": {
+                "title": "StoreBlogRequest",
+                "properties": {
+                    "ru": {
+                        "$ref": "#/components/schemas/StoreBlogTranslationRequest"
+                    },
+                    "uz": {
+                        "$ref": "#/components/schemas/StoreBlogTranslationRequest"
+                    },
+                    "en": {
+                        "$ref": "#/components/schemas/StoreBlogTranslationRequest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreBlogRequest"
+                }
+            },
+            "StoreBlogTranslationRequest": {
+                "title": "StoreBlogTranslationRequest",
+                "properties": {
+                    "title": {
+                        "$ref": "#/components/schemas/BlogTranslation/properties/title"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/BlogTranslation/properties/content"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreBlogTranslationRequest"
+                }
+            },
+            "StoreEquipmentRequest": {
+                "title": "StoreEquipmentRequest",
+                "properties": {
+                    "ru": {
+                        "$ref": "#/components/schemas/StoreEquipmentTranslationRequest"
+                    },
+                    "uz": {
+                        "$ref": "#/components/schemas/StoreEquipmentTranslationRequest"
+                    },
+                    "en": {
+                        "$ref": "#/components/schemas/StoreEquipmentTranslationRequest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreEquipmentRequest"
+                }
+            },
+            "StoreEquipmentTranslationRequest": {
+                "title": "StoreEquipmentTranslationRequest",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/name"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/EquipmentTranslation/properties/title"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreEquipmentTranslationRequest"
+                }
+            },
+            "StoreServiceRequest": {
+                "title": "StoreServiceRequest",
+                "properties": {
+                    "ru": {
+                        "$ref": "#/components/schemas/StoreServiceTranslationRequest"
+                    },
+                    "uz": {
+                        "$ref": "#/components/schemas/StoreServiceTranslationRequest"
+                    },
+                    "en": {
+                        "$ref": "#/components/schemas/StoreServiceTranslationRequest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreServiceRequest"
+                }
+            },
+            "StoreServiceTranslationRequest": {
+                "title": "StoreServiceTranslationRequest",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/name"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/ServiceTranslation/properties/title"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreServiceTranslationRequest"
+                }
+            },
+            "StoreSubserviceRequest": {
+                "title": "StoreSubserviceRequest",
+                "properties": {
+                    "ru": {
+                        "$ref": "#/components/schemas/StoreSubserviceTranslationRequest"
+                    },
+                    "uz": {
+                        "$ref": "#/components/schemas/StoreSubserviceTranslationRequest"
+                    },
+                    "en": {
+                        "$ref": "#/components/schemas/StoreSubserviceTranslationRequest"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreSubserviceRequest"
+                }
+            },
+            "StoreSubserviceTranslationRequest": {
+                "title": "StoreSubserviceTranslationRequest",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/name"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/SubserviceTranslation/properties/content"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "StoreSubserviceTranslationRequest"
+                }
+            },
             "BlogCollection": {
                 "title": "BlogCollection",
                 "properties": {

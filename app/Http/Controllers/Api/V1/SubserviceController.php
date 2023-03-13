@@ -23,7 +23,7 @@ class SubserviceController extends Controller
      * @OA\Get (
      *      path = "/subservices",
      *      operationId = "getSubservices",
-     *      tags = {"Blogs"},
+     *      tags = {"Subservices"},
      *      summary = "Get list of subservices",
      *      description = "Returns list of subservices",
      *      @OA\Response (
@@ -62,6 +62,40 @@ class SubserviceController extends Controller
         //
     }
 
+
+    /**
+     * @OA\Post(
+     *      path = "/subservices",
+     *      operationId = "storeSubservices",
+     *      tags = {"Subservices"},
+     *      summary = "Create new subservice",
+     *      description = "Returns service data",
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              ref="#/components/schemas/StoreSubserviceRequest",
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
 
     public function store(StoreSubserviceRequest $request)
     {

@@ -63,6 +63,39 @@ class BlogController extends Controller
     }
 
 
+    /**
+     * @OA\Post(
+     *      path = "/blog",
+     *      operationId = "storeBlog",
+     *      tags = {"Blogs"},
+     *      summary = "Create new blog",
+     *      description = "Returns service data",
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              ref="#/components/schemas/StoreBlogRequest",
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function store(StoreBlogRequest $request)
     {
         return BlogResource::make(Blog::create($request->all()));
