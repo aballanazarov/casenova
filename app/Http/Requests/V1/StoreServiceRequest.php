@@ -3,6 +3,8 @@
 namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\File;
+use Illuminate\Http\Request;
 
 /**
  * @OA\Schema(
@@ -26,8 +28,9 @@ use Illuminate\Foundation\Http\FormRequest;
  *         ref="#/components/schemas/StoreServiceTranslationRequest",
  *     ),
  * ),
+ *
+ * @property File upload
  */
-
 class StoreServiceRequest extends FormRequest
 {
     public function authorize()
@@ -39,7 +42,9 @@ class StoreServiceRequest extends FormRequest
 
     public function rules()
     {
-        $result = [];
+        $result = [
+            'image'
+        ];
 
         foreach (config('translatable.locales') as $locale) {
             $result[$locale] = ['required'];

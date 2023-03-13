@@ -30,12 +30,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property int id
  * @property string create_at
  * @property string update_at
+ * @property string image
  * @property array translatedAttributes
  */
 class Service extends Model implements TranslatableContract
 {
     use HasFactory;
     use Translatable;
+
+    protected $fillable = [
+        'image',
+    ];
 
     public $translatedAttributes = [
         'name',
