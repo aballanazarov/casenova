@@ -210,6 +210,55 @@ class EquipmentController extends Controller
     }
 
 
+    /**
+     * @OA\Post (
+     *      path = "/equipment/{equipment}/image",
+     *      operationId = "imageEquipment",
+     *      tags = {"Equipments"},
+     *      summary = "Update image for equipment",
+     *      description = "Returns equipment status",
+     *      @OA\Parameter(
+     *          name="equipment",
+     *          description="Equipment id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              ref="#/components/schemas/BaseModel/properties/id",
+     *          )
+     *      ),
+     *      @OA\RequestBody (
+     *          required = true,
+     *          @OA\MediaType (
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property (
+     *                      property="image",
+     *                      ref="#/components/schemas/BaseModel/properties/uploads",
+     *                  )
+     *              )
+     *          ),
+     *      ),
+     *      @OA\Response (
+     *          response = 201,
+     *          description = "Successful operation",
+     *          @OA\JsonContent (
+     *              ref="#/components/schemas/BaseModel/properties/booleanResult",
+     *          ),
+     *       ),
+     *      @OA\Response (
+     *          response = 400,
+     *          description = "Bad Request"
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function image(Equipment $equipment, Request $image)
     {
         if (!is_null($equipment->id) && $equipment->uploadImage($image)) {

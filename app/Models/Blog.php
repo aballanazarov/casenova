@@ -27,6 +27,10 @@ use Illuminate\Support\Facades\App;
  *         property="updated_at",
  *         ref="#/components/schemas/BaseModel/properties/updated_at",
  *     ),
+ *     @OA\Property (
+ *         property="image",
+ *         ref="#/components/schemas/BaseModel/properties/image",
+ *     ),
  * ),
  *
  * @property int id
