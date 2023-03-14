@@ -111,6 +111,11 @@ cp .env.example .env
     ...
 ```
 
+# Generate App key
+```
+php artisan key:generate
+```
+
 # Insert initial information
 ```
 php artisan migrate
