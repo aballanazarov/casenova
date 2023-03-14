@@ -287,6 +287,6 @@ class ServiceController extends Controller
             return URL::to("/uploads") . "/" . $service->image;
         }
 
-        return "error";
+        return response(['error' => 'Failed image upload'], 500);
     }
 }
