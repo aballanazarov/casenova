@@ -8,11 +8,10 @@ use App\Http\Controllers\Api\V1\ServiceController;
 use App\Http\Controllers\Api\V1\SubserviceController;
 use Illuminate\Support\Facades\Route;
 
-// Without Authorization
-// With Authorization
 Route::prefix('v1')
-//    ->middleware('auth:sanctum')
     ->group(function () {
+
+        // Without Authorization
         Route::post('login', [AuthController::class, 'login']);
 
         Route::get('services', [ServiceController::class, 'index']);
@@ -34,6 +33,8 @@ Route::prefix('v1')
             return \App\Http\Resources\V1\UserCollection::make(\App\Models\User::all());
         });
 
+
+        // With Authorization
         Route::prefix('admin')
             ->middleware('auth:sanctum')
             ->group(function () {
