@@ -30,9 +30,16 @@ Route::prefix('v1')
         Route::get('galleries', [GalleryController::class, 'index']);
         Route::get('galleries/{gallery}', [GalleryController::class, 'show'])->whereNumber('service');
 
+        Route::get('users', function () {
+            return \App\Http\Resources\V1\UserCollection::make(\App\Models\User::all());
+        });
+
         Route::prefix('admin')
             ->middleware('auth:sanctum')
             ->group(function () {
+                Route::post('create', [AuthController::class, 'store']);
+                Route::post('logout', [AuthController::class, 'destroy']);
+
                 Route::apiResource('services', ServiceController::class);
                 Route::post('services/{service}/image', [ServiceController::class, 'image'])->whereNumber('service');
 

@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\LoginUserRequest;
+use App\Http\Requests\V1\StoreUserRequest;
+use App\Http\Resources\V1\UserResource;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @OA\Tag (
@@ -41,6 +45,18 @@ class AuthController extends Controller
             $user = auth()->user();
             return $user->createToken("auth-token")->plainTextToken;
         }
-        return response(401);
+        return response("Login error", 500);
+    }
+
+
+    public function store(StoreUserRequest $request)
+    {
+        return UserResource::make(User::query()->create($request->validated()));
+    }
+
+
+    public function destroy(User $user)
+    {
+        return $user->tokens()->delete();
     }
 }
