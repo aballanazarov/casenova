@@ -37,6 +37,8 @@ Route::prefix('v1')
         Route::prefix('admin')
             ->middleware('auth:sanctum')
             ->group(function () {
+                Route::post('logout', [AuthController::class, 'logout']);
+
                 Route::apiResource('users', UserController::class);
 
                 Route::post('create', [AuthController::class, 'store']);

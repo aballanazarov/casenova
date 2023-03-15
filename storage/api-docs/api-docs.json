@@ -40,6 +40,55 @@
                 }
             }
         },
+        "/admin/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User logout",
+                "operationId": "logoutUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "$ref": "#/components/schemas/BaseProperties/properties/property_message"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "message": "Successfully logged out"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseProperties/properties/unauthenticated"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseProperties/properties/forbidden"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/blog": {
             "get": {
                 "tags": [
@@ -116,7 +165,7 @@
                         "description": "Blog id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -161,7 +210,7 @@
                         "description": "Blog id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -207,7 +256,7 @@
                         "description": "Blog id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -218,7 +267,7 @@
                             "schema": {
                                 "properties": {
                                     "image": {
-                                        "$ref": "#/components/schemas/BaseModel/properties/property_uploads"
+                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
                                     }
                                 },
                                 "type": "object"
@@ -232,7 +281,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BaseModel/properties/property_boolean_result"
+                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
                                 }
                             }
                         }
@@ -325,7 +374,7 @@
                         "description": "Equipment id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -370,7 +419,7 @@
                         "description": "Equipment id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -416,7 +465,7 @@
                         "description": "Equipment id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -427,7 +476,7 @@
                             "schema": {
                                 "properties": {
                                     "image": {
-                                        "$ref": "#/components/schemas/BaseModel/properties/property_uploads"
+                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
                                     }
                                 },
                                 "type": "object"
@@ -441,7 +490,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BaseModel/properties/property_boolean_result"
+                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
                                 }
                             }
                         }
@@ -536,7 +585,7 @@
                         "description": "Gallery id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -583,7 +632,7 @@
                         "description": "Gallery id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -629,7 +678,7 @@
                         "description": "Gallery id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -664,7 +713,7 @@
                         "description": "Gallery id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -675,7 +724,7 @@
                             "schema": {
                                 "properties": {
                                     "image": {
-                                        "$ref": "#/components/schemas/BaseModel/properties/property_uploads"
+                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
                                     }
                                 },
                                 "type": "object"
@@ -689,7 +738,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BaseModel/properties/property_boolean_result"
+                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
                                 }
                             }
                         }
@@ -782,7 +831,7 @@
                         "description": "Service id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -827,7 +876,7 @@
                         "description": "Service id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -873,7 +922,7 @@
                         "description": "Service id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -884,7 +933,7 @@
                             "schema": {
                                 "properties": {
                                     "image": {
-                                        "$ref": "#/components/schemas/BaseModel/properties/property_uploads"
+                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
                                     }
                                 },
                                 "type": "object"
@@ -898,7 +947,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BaseModel/properties/property_boolean_result"
+                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
                                 }
                             }
                         }
@@ -991,7 +1040,7 @@
                         "description": "Subservice id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -1036,7 +1085,7 @@
                         "description": "Subservice id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -1082,7 +1131,7 @@
                         "description": "Subservice id",
                         "required": true,
                         "schema": {
-                            "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                         }
                     }
                 ],
@@ -1093,7 +1142,7 @@
                             "schema": {
                                 "properties": {
                                     "image": {
-                                        "$ref": "#/components/schemas/BaseModel/properties/property_uploads"
+                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
                                     }
                                 },
                                 "type": "object"
@@ -1107,7 +1156,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/BaseModel/properties/property_boolean_result"
+                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
                                 }
                             }
                         }
@@ -1150,9 +1199,7 @@
                         "description": "Forbidden"
                     }
                 }
-            }
-        },
-        "/admin/users/create": {
+            },
             "post": {
                 "tags": [
                     "Users"
@@ -1171,6 +1218,50 @@
                         }
                     }
                 },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/UserResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/admin/users/{id}": {
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Destroy User",
+                "description": "Return bool",
+                "operationId": "destroyUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -1419,7 +1510,7 @@
                 "title": "UpdateGalleryRequest",
                 "properties": {
                     "image": {
-                        "$ref": "#/components/schemas/GalleryResource/properties/image"
+                        "$ref": "#/components/schemas/Gallery/properties/image"
                     }
                 },
                 "type": "object",
@@ -1884,8 +1975,8 @@
                     "name": "UserResource"
                 }
             },
-            "BaseModel": {
-                "title": "BaseModel",
+            "BaseProperties": {
+                "title": "BaseProperties",
                 "properties": {
                     "property_id": {
                         "title": "id",
@@ -1927,27 +2018,65 @@
                         "type": "boolean",
                         "format": "boolean",
                         "example": "true"
+                    },
+                    "property_message": {
+                        "title": "property_message",
+                        "type": "string",
+                        "format": "string"
                     }
                 },
                 "type": "object",
                 "xml": {
-                    "name": "BaseModel"
+                    "name": "BaseProperties"
+                }
+            },
+            "ResponseProperties": {
+                "title": "ResponseProperties",
+                "properties": {
+                    "unauthenticated": {
+                        "properties": {
+                            "message": {
+                                "$ref": "#/components/schemas/BaseProperties/properties/property_message"
+                            }
+                        },
+                        "type": "object",
+                        "format": "object",
+                        "example": {
+                            "message": "Unauthenticated."
+                        }
+                    },
+                    "forbidden": {
+                        "properties": {
+                            "message": {
+                                "$ref": "#/components/schemas/BaseProperties/properties/property_message"
+                            }
+                        },
+                        "type": "object",
+                        "format": "object",
+                        "example": {
+                            "message": "Forbidden."
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResponseProperties"
                 }
             },
             "Blog": {
                 "title": "Blog",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "image": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_image"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_image"
                     },
                     "created_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     },
                     "updated_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     }
                 },
                 "type": "object",
@@ -1959,13 +2088,13 @@
                 "title": "BlogTranslation",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "blog_id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "locale": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_locale"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_locale"
                     },
                     "title": {
                         "title": "title",
@@ -1987,16 +2116,16 @@
                 "title": "Equipment",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "image": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_image"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_image"
                     },
                     "created_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     },
                     "updated_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     }
                 },
                 "type": "object",
@@ -2008,13 +2137,13 @@
                 "title": "EquipmentTranslation",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "equipment_id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "locale": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_locale"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_locale"
                     },
                     "name": {
                         "title": "name",
@@ -2036,16 +2165,16 @@
                 "title": "Gallery",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "image": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_image"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_image"
                     },
                     "created_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     },
                     "updated_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     }
                 },
                 "type": "object",
@@ -2057,16 +2186,16 @@
                 "title": "Service",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "image": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_image"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_image"
                     },
                     "created_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     },
                     "updated_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     }
                 },
                 "type": "object",
@@ -2078,13 +2207,13 @@
                 "title": "ServiceTranslation",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "service_id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "locale": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_locale"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_locale"
                     },
                     "name": {
                         "title": "name",
@@ -2106,19 +2235,19 @@
                 "title": "Subservice",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "service_id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "image": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_image"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_image"
                     },
                     "created_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     },
                     "updated_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     }
                 },
                 "type": "object",
@@ -2130,13 +2259,13 @@
                 "title": "SubserviceTranslation",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "subservice_id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "locale": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_locale"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_locale"
                     },
                     "name": {
                         "title": "name",
@@ -2158,7 +2287,7 @@
                 "title": "Subservice",
                 "properties": {
                     "id": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_id"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "name": {
                         "title": "name",
@@ -2176,13 +2305,13 @@
                         "format": "password"
                     },
                     "email_verified_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     },
                     "created_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     },
                     "updated_at": {
-                        "$ref": "#/components/schemas/BaseModel/properties/property_time"
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     }
                 },
                 "type": "object",

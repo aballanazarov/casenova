@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Services;
 
 /**
  * @OA\Schema(
- *     title="BaseModel",
+ *     title="BaseProperties",
  *     @OA\Xml(
- *         name="BaseModel"
+ *         name="BaseProperties"
  *     ),
  *
  *     @OA\Property (
@@ -61,9 +61,16 @@ namespace App\Models;
  *         type="boolean",
  *         example="true",
  *     ),
+
+ *     @OA\Property (
+ *         property="property_message",
+ *         title="property_message",
+ *         format="string",
+ *         type="string",
+ *     ),
  * ),
  */
-class BaseModel
+class BaseProperties
 {
 
 }

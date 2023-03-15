@@ -16,7 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
  *     ),
  *     @OA\Property (
  *         property="id",
- *         ref="#/components/schemas/BaseModel/properties/property_id",
+ *         ref="#/components/schemas/BaseProperties/properties/property_id",
  *     ),
  *     @OA\Property (
  *         property="name",
@@ -39,17 +39,17 @@ use Laravel\Sanctum\HasApiTokens;
  *     @OA\Property (
  *         property="email_verified_at",
  *         title="email_verified_at",
- *         ref="#/components/schemas/BaseModel/properties/property_time",
+ *         ref="#/components/schemas/BaseProperties/properties/property_time",
  *     ),
  *     @OA\Property (
  *         property="created_at",
  *         title="created_at",
- *         ref="#/components/schemas/BaseModel/properties/property_time",
+ *         ref="#/components/schemas/BaseProperties/properties/property_time",
  *     ),
  *     @OA\Property (
  *         property="updated_at",
  *         title="updated_at",
- *         ref="#/components/schemas/BaseModel/properties/property_time",
+ *         ref="#/components/schemas/BaseProperties/properties/property_time",
  *     ),
  * ),
  *

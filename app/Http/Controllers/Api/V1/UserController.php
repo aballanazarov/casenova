@@ -50,7 +50,7 @@ class UserController extends Controller
 
     /**
      * @OA\Post (
-     *      path = "/admin/users/create",
+     *      path = "/admin/users",
      *      operationId = "storeUser",
      *      tags = {"Users"},
      *      summary = "Create new User",
@@ -66,6 +66,13 @@ class UserController extends Controller
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",
+     *          @OA\JsonContent(
+     *              @OA\Property (
+     *                  property="data",
+     *                  type="object",
+     *                  ref="#/components/schemas/UserResource",
+     *              )
+     *          )
      *      ),
      *      @OA\Response (
      *          response = 401,
@@ -83,6 +90,36 @@ class UserController extends Controller
     }
 
 
+    /**
+     * @OA\Delete (
+     *      path="/admin/users/{id}",
+     *      operationId = "destroyUser",
+     *      tags = {"Users"},
+     *      summary = "Destroy User",
+     *      description = "Return bool",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *          )
+     *      ),
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          description = "Unauthenticated",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          description = "Forbidden"
+     *      )
+     * )
+     */
     public function destroy(int $id)
     {
         return User::destroy($id);

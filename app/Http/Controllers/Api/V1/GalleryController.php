@@ -108,7 +108,7 @@ class GalleryController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/property_id",
+     *              ref="#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\Response(
@@ -161,7 +161,7 @@ class GalleryController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/property_id",
+     *              ref="#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -209,7 +209,7 @@ class GalleryController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/property_id",
+     *              ref="#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\Response (
@@ -249,7 +249,7 @@ class GalleryController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/property_id",
+     *              ref="#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -259,7 +259,7 @@ class GalleryController extends Controller
      *              @OA\Schema(
      *                  @OA\Property (
      *                      property="image",
-     *                      ref="#/components/schemas/BaseModel/properties/property_uploads",
+     *                      ref="#/components/schemas/BaseProperties/properties/property_uploads",
      *                  )
      *              )
      *          ),
@@ -268,7 +268,7 @@ class GalleryController extends Controller
      *          response = 201,
      *          description = "Successful operation",
      *          @OA\JsonContent (
-     *              ref="#/components/schemas/BaseModel/properties/property_boolean_result",
+     *              ref="#/components/schemas/BaseProperties/properties/property_boolean_result",
      *          ),
      *       ),
      *      @OA\Response (
