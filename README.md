@@ -118,3 +118,13 @@ php artisan key:generate
 ```
 php artisan migrate
 ```
+
+# Adding the first information for the database
+```
+php artisan db:seed
+```
+
+# generate swagger documentation
+```
+php artisan l5-swagger:generate
+```
