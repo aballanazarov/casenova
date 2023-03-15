@@ -12,10 +12,6 @@
         {
             "url": "http://casenova.lc/api/v1",
             "description": "Api Server"
-        },
-        {
-            "url": "/admin",
-            "description": "Admin"
         }
     ],
     "paths": {
@@ -49,7 +45,7 @@
                 }
             }
         },
-        "/admin/logout": {
+        "{MODERATOR_URL}/logout": {
             "post": {
                 "tags": [
                     "Auth"

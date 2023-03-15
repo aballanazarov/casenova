@@ -107,8 +107,6 @@ cp .env.example .env
     DB_USERNAME=YOUR_USERNAME
     DB_PASSWORD=YOUR_PASSWORD
     ...
-    L5_SWAGGER_CONST_HOST=YOUR_DOMAIN/api/v1
-    ...
 ```
 
 # Generate App key
