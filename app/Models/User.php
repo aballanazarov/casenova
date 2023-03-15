@@ -9,6 +9,52 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
+ * @OA\Schema (
+ *     title="Subservice",
+ *     @OA\Xml(
+ *         name="Subservice"
+ *     ),
+ *     @OA\Property (
+ *         property="id",
+ *         ref="#/components/schemas/BaseModel/properties/property_id",
+ *     ),
+ *     @OA\Property (
+ *         property="name",
+ *         title="name",
+ *         format="string",
+ *         type="string",
+ *     ),
+ *     @OA\Property (
+ *         property="email",
+ *         title="email",
+ *         format="email",
+ *         type="string",
+ *     ),
+ *     @OA\Property (
+ *         property="password",
+ *         title="password",
+ *         format="password",
+ *         type="string",
+ *     ),
+ *     @OA\Property (
+ *         property="email_verified_at",
+ *         title="email_verified_at",
+ *         ref="#/components/schemas/BaseModel/properties/property_time",
+ *     ),
+ *     @OA\Property (
+ *         property="created_at",
+ *         title="created_at",
+ *         ref="#/components/schemas/BaseModel/properties/property_time",
+ *     ),
+ *     @OA\Property (
+ *         property="updated_at",
+ *         title="updated_at",
+ *         ref="#/components/schemas/BaseModel/properties/property_time",
+ *     ),
+ * ),
+ *
+ *
+ * @property int id
  * @property string name
  * @property string email
  * @property string password

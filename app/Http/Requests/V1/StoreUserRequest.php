@@ -6,6 +6,26 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 
 /**
+ * @OA\Schema(
+ *     title="StoreServiceRequest",
+ *     @OA\Xml(
+ *         name="StoreServiceRequest"
+ *     ),
+ *     @OA\Property (
+ *         property="name",
+ *         ref="#/components/schemas/User/properties/name",
+ *     ),
+ *     @OA\Property (
+ *         property="email",
+ *         ref="#/components/schemas/User/properties/email",
+ *     ),
+ *     @OA\Property (
+ *         property="password",
+ *         ref="#/components/schemas/User/properties/password",
+ *     ),
+ * ),
+ *
+ *
  * @property string name
  * @property string email
  * @property string password
