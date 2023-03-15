@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         if (!User::where(['email' => 'admin@casenova.uz'])->first()) {
-            User::factory()->create([
+            User::query()->create([
                 'name' => 'admin',
                 'email' => 'admin@casenova.uz',
                 'password' => Hash::make('P@$$Admin'),

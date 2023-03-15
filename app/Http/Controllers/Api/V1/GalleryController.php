@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
- *     name="Galleries",
- *     description="API Endpoints of Gallery"
+ *     name = "Galleries",
+ *     description = "API Endpoints of Gallery"
  * )
  */
 
@@ -30,18 +30,30 @@ class GalleryController extends Controller
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",
-     *          @OA\JsonContent(
+     *          @OA\JsonContent (
      *              ref="#/components/schemas/GalleryCollection",
      *          )
      *      ),
      *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function index()
@@ -50,14 +62,8 @@ class GalleryController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
     /**
-     * @OA\Post(
+     * @OA\Post (
      *      path = "/admin/galleries",
      *      operationId = "storeGalleries",
      *      tags = {"Galleries"},
@@ -68,7 +74,7 @@ class GalleryController extends Controller
      *          description = "Pass gallery credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              ref="#/components/schemas/StoreGalleryRequest",
+     *              ref = "#/components/schemas/StoreGalleryRequest",
      *          ),
      *      ),
      *      @OA\Response (
@@ -96,55 +102,57 @@ class GalleryController extends Controller
 
 
     /**
-     * @OA\Get(
-     *      path="/galleries/{id}",
-     *      operationId="getGalleryById",
-     *      tags={"Galleries"},
-     *      summary="Get gallery information",
-     *      description="Returns gallery data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="Gallery id",
-     *          required=true,
-     *          in="path",
+     * @OA\Get (
+     *      path = "/galleries/{id}",
+     *      operationId = "getGalleryById",
+     *      tags = {"Galleries"},
+     *      summary = "Get gallery information",
+     *      description = "Returns gallery data",
+     *      @OA\Parameter (
+     *          name = "id",
+     *          description = "Gallery id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
      *          @OA\JsonContent(
      *              @OA\Property (
-     *                  property="data",
-     *                  type="object",
-     *                  ref="#/components/schemas/GalleryResource",
+     *                  property = "data",
+     *                  type = "object",
+     *                  ref = "#/components/schemas/GalleryResource",
      *              )
      *          )
      *       ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad Request"
+     *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
      *      ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
+     *      @OA\Response (
+     *          response = 401,
+     *          ref = "#/components/responses/401",
      *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
+     *      @OA\Response (
+     *          response = 403,
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function show(Gallery $gallery)
     {
         return GalleryResource::make($gallery);
-    }
-
-
-    public function edit(Gallery $gallery)
-    {
-        //
     }
 
 
@@ -155,13 +163,13 @@ class GalleryController extends Controller
      *      tags = {"Galleries"},
      *      summary = "Update gallery",
      *      description = "Returns gallery data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="Gallery id",
-     *          required=true,
-     *          in="path",
+     *      @OA\Parameter (
+     *          name = "id",
+     *          description = "Gallery id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -169,7 +177,7 @@ class GalleryController extends Controller
      *          description = "Pass gallery credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              ref="#/components/schemas/UpdateGalleryRequest",
+     *              ref = "#/components/schemas/UpdateGalleryRequest",
      *          ),
      *      ),
      *      @OA\Response (
@@ -178,16 +186,24 @@ class GalleryController extends Controller
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function update(UpdateGalleryRequest $request, Gallery $gallery)
@@ -199,17 +215,17 @@ class GalleryController extends Controller
     /**
      * @OA\Delete (
      *      path = "/admin/galleries/{gallery}",
-     *      operationId = "deleteGallery",
+     *      operationId = "destroyGallery",
      *      tags = {"Galleries"},
-     *      summary = "Delete gallery",
-     *      description = "Returns gallery status",
+     *      summary = "Destroy gallery",
+     *      description = "Returns bool",
      *      @OA\Parameter(
-     *          name="gallery",
-     *          description="Gallery id",
-     *          required=true,
-     *          in="path",
+     *          name = "id",
+     *          description = "Gallery id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\Response (
@@ -218,16 +234,24 @@ class GalleryController extends Controller
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function destroy(int $id)
@@ -243,23 +267,23 @@ class GalleryController extends Controller
      *      tags = {"Galleries"},
      *      summary = "Update image for gallery",
      *      description = "Returns gallery status",
-     *      @OA\Parameter(
-     *          name="gallery",
-     *          description="Gallery id",
-     *          required=true,
-     *          in="path",
+     *      @OA\Parameter (
+     *          name = "gallery",
+     *          description = "Gallery id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
      *          required = true,
      *          @OA\MediaType (
-     *              mediaType="multipart/form-data",
+     *              mediaType = "multipart/form-data",
      *              @OA\Schema(
      *                  @OA\Property (
-     *                      property="image",
-     *                      ref="#/components/schemas/BaseProperties/properties/property_uploads",
+     *                      property = "image",
+     *                      ref = "#/components/schemas/BaseProperties/properties/property_uploads",
      *                  )
      *              )
      *          ),
@@ -268,21 +292,29 @@ class GalleryController extends Controller
      *          response = 201,
      *          description = "Successful operation",
      *          @OA\JsonContent (
-     *              ref="#/components/schemas/BaseProperties/properties/property_boolean_result",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_boolean_result",
      *          ),
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function image(Gallery $gallery, Request $image)

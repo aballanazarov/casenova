@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
- *     name="Equipments",
- *     description="API Endpoints of Projects"
+ *     name = "Equipments",
+ *     description = "API Endpoints of Projects"
  * )
  */
 class EquipmentController extends Controller
@@ -30,8 +30,8 @@ class EquipmentController extends Controller
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",
-     *          @OA\JsonContent(
-     *              ref="#/components/schemas/EquipmentCollection",
+     *          @OA\JsonContent (
+     *              ref = "#/components/schemas/EquipmentCollection",
      *          )
      *      ),
      *      @OA\Response (
@@ -58,15 +58,9 @@ class EquipmentController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
     /**
      * @OA\Post(
-     *      path = "/equipment",
+     *      path = "/admin/equipment",
      *      operationId = "storeEquipments",
      *      tags = {"Equipments"},
      *      summary = "Create new equipment",
@@ -76,7 +70,7 @@ class EquipmentController extends Controller
      *          description = "Pass user credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              ref="#/components/schemas/StoreEquipmentRequest",
+     *              ref = "#/components/schemas/StoreEquipmentRequest",
      *          ),
      *      ),
      *      @OA\Response (
@@ -85,16 +79,24 @@ class EquipmentController extends Controller
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function store(StoreEquipmentRequest $request)
@@ -104,44 +106,52 @@ class EquipmentController extends Controller
 
 
     /**
-     * @OA\Get(
-     *      path="/equipment/{id}",
-     *      operationId="getEquipmentById",
-     *      tags={"Equipments"},
-     *      summary="Get equipment information",
-     *      description="Returns equipment data",
+     * @OA\Get (
+     *      path = "/equipment/{id}",
+     *      operationId = "getEquipmentById",
+     *      tags = {"Equipments"},
+     *      summary = "Get equipment information",
+     *      description = "Returns equipment data",
      *      @OA\Parameter(
-     *          name="id",
-     *          description="Equipment id",
-     *          required=true,
-     *          in="path",
+     *          name = "id",
+     *          description = "Equipment id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
+     *          response = 200,
+     *          description = "Successful operation",
      *          @OA\JsonContent(
      *              @OA\Property (
-     *                  property="data",
-     *                  type="object",
-     *                  ref="#/components/schemas/EquipmentResource",
+     *                  property = "data",
+     *                  type = "object",
+     *                  ref = "#/components/schemas/EquipmentResource",
      *              )
      *          )
      *       ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad Request"
+     *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
      *      ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
+     *      @OA\Response (
+     *          response = 401,
+     *          ref = "#/components/responses/401",
      *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
+     *      @OA\Response (
+     *          response = 403,
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function show(Equipment $equipment)
@@ -150,26 +160,20 @@ class EquipmentController extends Controller
     }
 
 
-    public function edit(Equipment $equipment)
-    {
-        //
-    }
-
-
     /**
      * @OA\Put (
-     *      path = "/equipment/{id}",
+     *      path = "/admin/equipment/{id}",
      *      operationId = "updateEquipment",
      *      tags = {"Equipments"},
      *      summary = "Update equipment",
      *      description = "Returns equipment data",
      *      @OA\Parameter(
-     *          name="id",
-     *          description="Equipment id",
-     *          required=true,
-     *          in="path",
+     *          name = "id",
+     *          description = "Equipment id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -177,7 +181,7 @@ class EquipmentController extends Controller
      *          description = "Pass user credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              ref="#/components/schemas/UpdateEquipmentRequest",
+     *              ref = "#/components/schemas/UpdateEquipmentRequest",
      *          ),
      *      ),
      *      @OA\Response (
@@ -186,16 +190,24 @@ class EquipmentController extends Controller
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function update(UpdateEquipmentRequest $request, Equipment $equipment)
@@ -204,6 +216,48 @@ class EquipmentController extends Controller
     }
 
 
+    /**
+     * @OA\Delete (
+     *      path = "/admin/equipment/{id}",
+     *      operationId = "destroyEquipment",
+     *      tags = {"Equipments"},
+     *      summary = "Destroy Equipment",
+     *      description = "Return bool",
+     *      @OA\Parameter(
+     *          name = "id",
+     *          description = "Equipment id",
+     *          required = true,
+     *          in = "path",
+     *          @OA\Schema(
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
+     *          )
+     *      ),
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          ref = "#/components/responses/401",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
+     * )
+     */
     public function destroy(int $id)
     {
         return Equipment::destroy($id);
@@ -218,22 +272,22 @@ class EquipmentController extends Controller
      *      summary = "Update image for equipment",
      *      description = "Returns equipment status",
      *      @OA\Parameter(
-     *          name="equipment",
-     *          description="Equipment id",
-     *          required=true,
-     *          in="path",
+     *          name = "equipment",
+     *          description = "Equipment id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
      *          required = true,
      *          @OA\MediaType (
-     *              mediaType="multipart/form-data",
+     *              mediaType = "multipart/form-data",
      *              @OA\Schema(
      *                  @OA\Property (
-     *                      property="image",
-     *                      ref="#/components/schemas/BaseProperties/properties/property_uploads",
+     *                      property = "image",
+     *                      ref = "#/components/schemas/BaseProperties/properties/property_uploads",
      *                  )
      *              )
      *          ),
@@ -242,21 +296,29 @@ class EquipmentController extends Controller
      *          response = 201,
      *          description = "Successful operation",
      *          @OA\JsonContent (
-     *              ref="#/components/schemas/BaseProperties/properties/property_boolean_result",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_boolean_result",
      *          ),
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function image(Equipment $equipment, Request $image)

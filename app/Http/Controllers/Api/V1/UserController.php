@@ -11,11 +11,10 @@ use Illuminate\Http\Request;
 
 /**
  * @OA\Tag (
- *     name="Users",
- *     description="API Endpoints of Projects",
+ *     name = "Users",
+ *     description = "API Endpoints of Projects",
  * )
  */
-
 class UserController extends Controller
 {
     /**
@@ -29,7 +28,7 @@ class UserController extends Controller
      *          response = 200,
      *          description = "Successful operation",
      *          @OA\JsonContent(
-     *              ref="#/components/schemas/UserCollection",
+     *              ref = "#/components/schemas/UserCollection",
      *          )
      *      ),
      *      @OA\Response (
@@ -60,28 +59,40 @@ class UserController extends Controller
      *          description = "Pass user credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              ref="#/components/schemas/StoreUserRequest",
+     *              ref = "#/components/schemas/StoreUserRequest",
      *          ),
      *      ),
      *      @OA\Response (
      *          response = 201,
      *          description = "Created",
-     *          @OA\JsonContent(
+     *          @OA\JsonContent (
      *              @OA\Property (
-     *                  property="data",
-     *                  type="object",
-     *                  ref="#/components/schemas/UserResource",
+     *                  property = "data",
+     *                  type = "object",
+     *                  ref = "#/components/schemas/UserResource",
      *              )
      *          )
      *      ),
      *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function store(StoreUserRequest $request)
@@ -98,12 +109,12 @@ class UserController extends Controller
      *      summary = "Destroy User",
      *      description = "Return bool",
      *      @OA\Parameter(
-     *          name="id",
-     *          description="User id",
-     *          required=true,
-     *          in="path",
+     *          name = "id",
+     *          description = "User id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\Response (
@@ -111,13 +122,25 @@ class UserController extends Controller
      *          description = "Successful operation",
      *      ),
      *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function destroy(int $id)

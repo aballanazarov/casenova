@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
- *     name="Subservices",
- *     description="API Endpoints of Projects"
+ *     name = "Subservices",
+ *     description = "API Endpoints of Projects"
  * )
  */
 class SubserviceController extends Controller
@@ -30,18 +30,30 @@ class SubserviceController extends Controller
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",
-     *          @OA\JsonContent(
-     *              ref="#/components/schemas/SubserviceCollection",
+     *          @OA\JsonContent (
+     *              ref = "#/components/schemas/SubserviceCollection",
      *          )
      *      ),
      *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function index(Request $request)
@@ -58,15 +70,9 @@ class SubserviceController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
     /**
      * @OA\Post(
-     *      path = "/subservices",
+     *      path = "/admin/subservices",
      *      operationId = "storeSubservices",
      *      tags = {"Subservices"},
      *      summary = "Create new subservice",
@@ -76,7 +82,7 @@ class SubserviceController extends Controller
      *          description = "Pass user credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              ref="#/components/schemas/StoreSubserviceRequest",
+     *              ref = "#/components/schemas/StoreSubserviceRequest",
      *          ),
      *      ),
      *      @OA\Response (
@@ -85,16 +91,24 @@ class SubserviceController extends Controller
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function store(StoreSubserviceRequest $request)
@@ -104,44 +118,52 @@ class SubserviceController extends Controller
 
 
     /**
-     * @OA\Get(
-     *      path="/subservices/{id}",
-     *      operationId="getSubserviceById",
-     *      tags={"Services"},
-     *      summary="Get subservice information",
-     *      description="Returns subservice data",
+     * @OA\Get (
+     *      path = "/subservices/{id}",
+     *      operationId = "getSubserviceById",
+     *      tags = {"Services"},
+     *      summary = "Get subservice information",
+     *      description = "Returns subservice data",
      *      @OA\Parameter(
-     *          name="id",
-     *          description="Subservice id",
-     *          required=true,
-     *          in="path",
+     *          name = "id",
+     *          description = "Subservice id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
+     *          response = 200,
+     *          description = "Successful operation",
      *          @OA\JsonContent(
      *              @OA\Property (
-     *                  property="data",
-     *                  type="object",
-     *                  ref="#/components/schemas/SubserviceResource",
+     *                  property = "data",
+     *                  type = "object",
+     *                  ref = "#/components/schemas/SubserviceResource",
      *              )
      *          )
      *       ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad Request"
+     *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
      *      ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
+     *      @OA\Response (
+     *          response = 401,
+     *          ref = "#/components/responses/401",
      *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
+     *      @OA\Response (
+     *          response = 403,
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function show(Subservice $subservice)
@@ -150,26 +172,20 @@ class SubserviceController extends Controller
     }
 
 
-    public function edit(Subservice $subservice)
-    {
-        //
-    }
-
-
     /**
      * @OA\Put (
-     *      path = "/subservices/{id}",
+     *      path = "/admin/subservices/{id}",
      *      operationId = "updateSubservice",
      *      tags = {"Subservices"},
      *      summary = "Update subservice",
      *      description = "Returns subservice data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="Subservice id",
-     *          required=true,
-     *          in="path",
+     *      @OA\Parameter (
+     *          name = "id",
+     *          description = "Subservice id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -186,16 +202,24 @@ class SubserviceController extends Controller
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function update(UpdateSubserviceRequest $request, Subservice $subservice)
@@ -204,6 +228,48 @@ class SubserviceController extends Controller
     }
 
 
+    /**
+     * @OA\Delete (
+     *      path = "/admin/subservice/{id}",
+     *      operationId = "destroySubservice",
+     *      tags = {"Subservices"},
+     *      summary = "Destroy Subservice",
+     *      description = "Return bool",
+     *      @OA\Parameter (
+     *          name = "id",
+     *          description = "Subservice id",
+     *          required = true,
+     *          in = "path",
+     *          @OA\Schema (
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
+     *          )
+     *      ),
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
+     *      ),
+     *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          ref = "#/components/responses/401",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
+     * )
+     */
     public function destroy(int $id)
     {
         return Subservice::destroy($id);
@@ -212,28 +278,28 @@ class SubserviceController extends Controller
 
     /**
      * @OA\Post (
-     *      path = "/subservices/{subservice}/image",
+     *      path = "/admin/subservices/{subservice}/image",
      *      operationId = "imageSubservice",
      *      tags = {"Subservices"},
      *      summary = "Update image for subservice",
      *      description = "Returns subservice status",
-     *      @OA\Parameter(
-     *          name="subservice",
-     *          description="Subservice id",
-     *          required=true,
-     *          in="path",
+     *      @OA\Parameter (
+     *          name = "subservice",
+     *          description = "Subservice id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
      *          required = true,
      *          @OA\MediaType (
-     *              mediaType="multipart/form-data",
-     *              @OA\Schema(
+     *              mediaType = "multipart/form-data",
+     *              @OA\Schema (
      *                  @OA\Property (
-     *                      property="image",
-     *                      ref="#/components/schemas/BaseProperties/properties/property_uploads",
+     *                      property = "image",
+     *                      ref = "#/components/schemas/BaseProperties/properties/property_uploads",
      *                  )
      *              )
      *          ),
@@ -242,21 +308,29 @@ class SubserviceController extends Controller
      *          response = 201,
      *          description = "Successful operation",
      *          @OA\JsonContent (
-     *              ref="#/components/schemas/BaseProperties/properties/property_boolean_result",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_boolean_result",
      *          ),
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function image(Subservice $subservice, Request $image)

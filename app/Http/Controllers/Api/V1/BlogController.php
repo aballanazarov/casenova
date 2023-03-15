@@ -192,7 +192,7 @@ class BlogController extends Controller
      *          description = "Pass user credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              ref="#/components/schemas/UpdateBlogRequest",
+     *              ref = "#/components/schemas/UpdateBlogRequest",
      *          ),
      *      ),
      *      @OA\Response (
@@ -201,16 +201,24 @@ class BlogController extends Controller
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
@@ -219,37 +227,74 @@ class BlogController extends Controller
     }
 
 
+    /**
+     * @OA\Delete (
+     *      path = "/admin/blog/{id}",
+     *      operationId = "destroyBlog",
+     *      tags = {"Blogs"},
+     *      summary = "Destroy Blog",
+     *      description = "Return bool",
+     *      @OA\Parameter (
+     *          name = "id",
+     *          description = "Blog id",
+     *          required = true,
+     *          in = "path",
+     *          @OA\Schema (
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
+     *          )
+     *      ),
+     *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
+     *          response = 401,
+     *          ref = "#/components/responses/401",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
+     * )
+     */
     public function destroy(int $id)
     {
         return Blog::destroy($id);
-
     }
 
 
     /**
      * @OA\Post (
-     *      path = "/blog/{blog}/image",
+     *      path = "/admin/blog/{blog}/image",
      *      operationId = "imageBlog",
      *      tags = {"Blogs"},
      *      summary = "Update image for blog",
      *      description = "Returns blog status",
-     *      @OA\Parameter(
-     *          name="blog",
-     *          description="Blog id",
-     *          required=true,
-     *          in="path",
+     *      @OA\Parameter (
+     *          name = "blog",
+     *          description = "Blog id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
      *          required = true,
      *          @OA\MediaType (
-     *              mediaType="multipart/form-data",
+     *              mediaType = "multipart/form-data",
      *              @OA\Schema(
      *                  @OA\Property (
-     *                      property="image",
-     *                      ref="#/components/schemas/BaseProperties/properties/property_uploads",
+     *                      property = "image",
+     *                      ref = "#/components/schemas/BaseProperties/properties/property_uploads",
      *                  )
      *              )
      *          ),
@@ -258,21 +303,29 @@ class BlogController extends Controller
      *          response = 201,
      *          description = "Successful operation",
      *          @OA\JsonContent (
-     *              ref="#/components/schemas/BaseProperties/properties/property_boolean_result",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_boolean_result",
      *          ),
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function image(Blog $blog, Request $image)
