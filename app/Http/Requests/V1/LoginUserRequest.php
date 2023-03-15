@@ -7,8 +7,22 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * @property string $email
- * @property string $password
+ * @OA\Schema (
+ *     title = "LoginUserRequest",
+ *
+ *     @OA\Property (
+ *         property = "email",
+ *         ref = "#/components/schemas/User/properties/email",
+ *     ),
+ *
+ *     @OA\Property (
+ *         property = "password",
+ *         ref = "#/components/schemas/User/properties/password",
+ *     ),
+ * ),
+ *
+ * @property string email
+ * @property string password
  */
 class LoginUserRequest extends FormRequest
 {

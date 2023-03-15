@@ -6,34 +6,35 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 
 /**
- * @OA\Schema(
- *     title="SubserviceResource",
- *     @OA\Xml(
- *         name="SubserviceResource"
- *     ),
+ * @OA\Schema (
+ *     title = "SubserviceResource",
+ *
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/Subservice/properties/id",
+ *         property = "id",
+ *         ref = "#/components/schemas/Subservice/properties/id",
  *     ),
+ *
  *     @OA\Property (
- *         property="image",
- *         ref="#/components/schemas/Subservice/properties/image",
+ *         property = "image",
+ *         ref = "#/components/schemas/Subservice/properties/image",
  *     ),
+ *
  *     @OA\Property (
- *         property="createdAt",
- *         ref="#/components/schemas/Subservice/properties/created_at",
+ *         property = "createdAt",
+ *         ref = "#/components/schemas/Subservice/properties/created_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="updatedAt",
- *         ref="#/components/schemas/Subservice/properties/updated_at",
+ *         property = "updatedAt",
+ *         ref = "#/components/schemas/Subservice/properties/updated_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="translations",
- *         type="array",
+ *         property = "translations",
+ *         title = "Translations",
+ *         type = "array",
  *         @OA\Items (
- *             anyOf={
- *                 @OA\Schema(ref="#/components/schemas/SubserviceTranslationResource"),
- *             }
+ *             ref = "#/components/schemas/SubserviceTranslationResource",
  *         ),
  *     ),
  * ),

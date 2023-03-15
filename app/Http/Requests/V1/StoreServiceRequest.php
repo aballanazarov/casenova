@@ -7,25 +7,25 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 
 /**
- * @OA\Schema(
- *     title="StoreServiceRequest",
- *     @OA\Xml(
- *         name="StoreServiceRequest"
- *     ),
+ * @OA\Schema (
+ *     title = "StoreServiceRequest",
+ *
  *     @OA\Property (
- *         property="ru",
- *         type="object",
- *         ref="#/components/schemas/StoreServiceTranslationRequest",
+ *         property = "ru",
+ *         type = "object",
+ *         ref = "#/components/schemas/StoreServiceTranslationRequest",
  *     ),
+ *
  *     @OA\Property (
- *         property="uz",
- *         type="object",
- *         ref="#/components/schemas/StoreServiceTranslationRequest",
+ *         property = "uz",
+ *         type = "object",
+ *         ref = "#/components/schemas/StoreServiceTranslationRequest",
  *     ),
+ *
  *     @OA\Property (
- *         property="en",
- *         type="object",
- *         ref="#/components/schemas/StoreServiceTranslationRequest",
+ *         property = "en",
+ *         type = "object",
+ *         ref = "#/components/schemas/StoreServiceTranslationRequest",
  *     ),
  * ),
  */

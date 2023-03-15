@@ -7,33 +7,33 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @OA\Schema (
- *     title="SubserviceTranslation",
- *     @OA\Xml(
- *         name="SubserviceTranslation"
- *     ),
+ *     title = "SubserviceTranslation",
+ *
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/BaseProperties/properties/property_id",
+ *         property = "id",
+ *         ref = "#/components/schemas/BaseProperties/properties/property_id",
  *     ),
+ *
  *     @OA\Property (
- *         property="subservice_id",
- *         ref="#/components/schemas/BaseProperties/properties/property_id",
+ *         property = "subservice_id",
+ *         ref = "#/components/schemas/BaseProperties/properties/property_id",
  *     ),
+ *
  *     @OA\Property (
- *         property="locale",
- *         ref="#/components/schemas/BaseProperties/properties/property_locale",
+ *         property = "locale",
+ *         ref = "#/components/schemas/BaseProperties/properties/property_locale",
  *     ),
+ *
  *     @OA\Property (
- *         property="name",
- *         title="name",
- *         format="string",
- *         type="string",
+ *         property = "name",
+ *         title = "Name",
+ *         type = "string",
  *     ),
+ *
  *     @OA\Property (
- *         property="content",
- *         title="content",
- *         format="string",
- *         type="string",
+ *         property = "content",
+ *         title = "Content",
+ *         type = "string",
  *     ),
  * ),
  *

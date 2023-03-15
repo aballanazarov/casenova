@@ -6,26 +6,27 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 
 /**
- * @OA\Schema(
- *     title="GalleryResource",
- *     @OA\Xml(
- *         name="GalleryResource"
- *     ),
+ * @OA\Schema (
+ *     title = "GalleryResource",
+ *
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/Gallery/properties/id",
+ *         property = "id",
+ *         ref = "#/components/schemas/Gallery/properties/id",
  *     ),
+ *
  *     @OA\Property (
- *         property="image",
- *         ref="#/components/schemas/Gallery/properties/image",
+ *         property = "image",
+ *         ref = "#/components/schemas/Gallery/properties/image",
  *     ),
+ *
  *     @OA\Property (
- *         property="createdAt",
- *         ref="#/components/schemas/Gallery/properties/created_at",
+ *         property = "createdAt",
+ *         ref = "#/components/schemas/Gallery/properties/created_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="updatedAt",
- *         ref="#/components/schemas/Gallery/properties/updated_at",
+ *         property = "updatedAt",
+ *         ref = "#/components/schemas/Gallery/properties/updated_at",
  *     ),
  * ),
  *

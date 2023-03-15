@@ -10,7 +10,6 @@ use App\Models\Blog;
 use App\Http\Requests\V1\StoreBlogRequest;
 use App\Http\Requests\V1\UpdateBlogRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
@@ -22,26 +21,38 @@ class BlogController extends Controller
 {
     /**
      * @OA\Get (
-     *      path="/blog",
-     *      operationId="getBlogs",
-     *      tags={"Blogs"},
-     *      summary="Get list of blogs",
-     *      description="Returns list of blogs",
+     *      path = "/blog",
+     *      operationId = "getBlogs",
+     *      tags = {"Blogs"},
+     *      summary = "Get list of blogs",
+     *      description = "Returns list of blogs",
      *      @OA\Response (
-     *          response=200,
-     *          description="Successful operation",
+     *          response = 200,
+     *          description = "Successful operation",
      *          @OA\JsonContent(
-     *              ref="#/components/schemas/BlogCollection",
+     *              ref = "#/components/schemas/BlogCollection",
      *          )
      *      ),
      *      @OA\Response (
-     *          response=401,
-     *          description="Unauthenticated",
+     *          response = 400,
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
-     *          response=403,
-     *          description="Forbidden"
-     *      )
+     *          response = 401,
+     *          ref = "#/components/responses/401",
+     *      ),
+     *      @OA\Response (
+     *          response = 403,
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function index(Request $request)
@@ -60,7 +71,7 @@ class BlogController extends Controller
 
     /**
      * @OA\Post (
-     *      path = "/blog",
+     *      path = "/admin/blog",
      *      operationId = "storeBlog",
      *      tags = {"Blogs"},
      *      summary = "Create new Blog",
@@ -70,7 +81,7 @@ class BlogController extends Controller
      *          description = "Pass blog credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
-     *              ref="#/components/schemas/StoreBlogRequest",
+     *              ref = "#/components/schemas/StoreBlogRequest",
      *          ),
      *      ),
      *      @OA\Response (
@@ -79,16 +90,24 @@ class BlogController extends Controller
      *       ),
      *      @OA\Response (
      *          response = 400,
-     *          description = "Bad Request"
+     *          ref = "#/components/responses/400",
      *      ),
      *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function store(StoreBlogRequest $request)
@@ -99,43 +118,51 @@ class BlogController extends Controller
 
     /**
      * @OA\Get (
-     *      path="/blog/{id}",
-     *      operationId="getBlogById",
-     *      tags={"Blogs"},
-     *      summary="Get blog information",
-     *      description="Returns blog data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="Blog id",
-     *          required=true,
-     *          in="path",
+     *      path = "/blog/{id}",
+     *      operationId = "getBlogById",
+     *      tags = {"Blogs"},
+     *      summary = "Get blog information",
+     *      description = "Returns blog data",
+     *      @OA\Parameter (
+     *          name = "id",
+     *          description = "Blog id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
+     *      @OA\Response (
+     *          response = 200,
+     *          description = "Successful operation",
      *          @OA\JsonContent(
      *              @OA\Property (
-     *                  property="data",
-     *                  type="object",
-     *                  ref="#/components/schemas/BlogResource",
+     *                  property = "data",
+     *                  type = "object",
+     *                  ref = "#/components/schemas/BlogResource",
      *              )
      *          )
      *       ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad Request"
+     *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
      *      ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
+     *      @OA\Response (
+     *          response = 401,
+     *          ref = "#/components/responses/401",
      *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
+     *      @OA\Response (
+     *          response = 403,
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function show(Blog $blog)
@@ -144,26 +171,20 @@ class BlogController extends Controller
     }
 
 
-    public function edit(Blog $blog)
-    {
-        //
-    }
-
-
     /**
      * @OA\Put (
-     *      path = "/blog/{id}",
+     *      path = "/admin/blog/{id}",
      *      operationId = "updateBlog",
      *      tags = {"Blogs"},
      *      summary = "Update blog",
      *      description = "Returns blog data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="Blog id",
-     *          required=true,
-     *          in="path",
+     *      @OA\Parameter (
+     *          name = "id",
+     *          description = "Blog id",
+     *          required = true,
+     *          in = "path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseProperties/properties/property_id",
+     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (

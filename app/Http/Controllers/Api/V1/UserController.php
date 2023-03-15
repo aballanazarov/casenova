@@ -64,8 +64,8 @@ class UserController extends Controller
      *          ),
      *      ),
      *      @OA\Response (
-     *          response = 200,
-     *          description = "Successful operation",
+     *          response = 201,
+     *          description = "Created",
      *          @OA\JsonContent(
      *              @OA\Property (
      *                  property="data",

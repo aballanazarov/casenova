@@ -6,34 +6,35 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 
 /**
- * @OA\Schema(
- *     title="EquipmentResource",
- *     @OA\Xml(
- *         name="EquipmentResource"
- *     ),
+ * @OA\Schema (
+ *     title = "EquipmentResource",
+ *
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/Equipment/properties/id",
+ *         property = "id",
+ *         ref = "#/components/schemas/Equipment/properties/id",
  *     ),
+ *
  *     @OA\Property (
- *         property="image",
- *         ref="#/components/schemas/Equipment/properties/image",
+ *         property = "image",
+ *         ref = "#/components/schemas/Equipment/properties/image",
  *     ),
+ *
  *     @OA\Property (
- *         property="createdAt",
- *         ref="#/components/schemas/Equipment/properties/created_at",
+ *         property = "createdAt",
+ *         ref = "#/components/schemas/Equipment/properties/created_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="updatedAt",
- *         ref="#/components/schemas/Equipment/properties/updated_at",
+ *         property = "updatedAt",
+ *         ref = "#/components/schemas/Equipment/properties/updated_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="translations",
- *         type="array",
+ *         property = "translations",
+ *         title = "Translations",
+ *         type = "array",
  *         @OA\Items (
- *             anyOf={
- *                 @OA\Schema(ref="#/components/schemas/EquipmentTranslationResource"),
- *             }
+ *             ref="#/components/schemas/EquipmentTranslationResource"),
  *         ),
  *     ),
  * ),

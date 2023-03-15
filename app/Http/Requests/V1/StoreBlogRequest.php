@@ -5,25 +5,25 @@ namespace App\Http\Requests\V1;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @OA\Schema(
- *     title="StoreBlogRequest",
- *     @OA\Xml(
- *         name="StoreBlogRequest"
- *     ),
+ * @OA\Schema (
+ *     title = "StoreBlogRequest",
+ *
  *     @OA\Property (
- *         property="ru",
- *         type="object",
- *         ref="#/components/schemas/StoreBlogTranslationRequest",
+ *         property = "ru",
+ *         type = "object",
+ *         ref = "#/components/schemas/StoreBlogTranslationRequest",
  *     ),
+ *
  *     @OA\Property (
- *         property="uz",
- *         type="object",
- *         ref="#/components/schemas/StoreBlogTranslationRequest",
+ *         property = "uz",
+ *         type = "object",
+ *         ref = "#/components/schemas/StoreBlogTranslationRequest",
  *     ),
+ *
  *     @OA\Property (
- *         property="en",
- *         type="object",
- *         ref="#/components/schemas/StoreBlogTranslationRequest",
+ *         property = "en",
+ *         type = "object",
+ *         ref = "#/components/schemas/StoreBlogTranslationRequest",
  *     ),
  * ),
  */

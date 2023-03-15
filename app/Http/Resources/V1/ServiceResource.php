@@ -6,34 +6,35 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 
 /**
- * @OA\Schema(
- *     title="ServiceResource",
- *     @OA\Xml(
- *         name="ServiceResource"
- *     ),
+ * @OA\Schema (
+ *     title = "ServiceResource",
+ *
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/Service/properties/id",
+ *         property = "id",
+ *         ref = "#/components/schemas/Service/properties/id",
  *     ),
+ *
  *     @OA\Property (
- *         property="image",
- *         ref="#/components/schemas/Service/properties/image",
+ *         property = "image",
+ *         ref = "#/components/schemas/Service/properties/image",
  *     ),
+ *
  *     @OA\Property (
- *         property="createdAt",
- *         ref="#/components/schemas/Service/properties/created_at",
+ *         property = "createdAt",
+ *         ref = "#/components/schemas/Service/properties/created_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="updatedAt",
- *         ref="#/components/schemas/Service/properties/updated_at",
+ *         property = "updatedAt",
+ *         ref = "#/components/schemas/Service/properties/updated_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="translations",
- *         type="array",
+ *         property = "translations",
+ *         title = "Translations",
+ *         type = "array",
  *         @OA\Items (
- *             anyOf={
- *                 @OA\Schema(ref="#/components/schemas/ServiceTranslationResource"),
- *             }
+ *             ref = "#/components/schemas/ServiceTranslationResource"
  *         ),
  *     ),
  * ),

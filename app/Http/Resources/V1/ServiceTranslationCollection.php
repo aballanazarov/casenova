@@ -6,12 +6,14 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
  * @OA\Schema (
- *     title="ServiceTranslationCollection",
- *     @OA\Property(
- *         property="data",
- *         type="array",
+ *     title = "ServiceTranslationCollection",
+ *
+ *     @OA\Property (
+ *         property = "data",
+ *         title = "data",
+ *         type = "array",
  *         @OA\Items (
- *             ref="#/components/schemas/ServiceTranslationResource",
+ *             ref = "#/components/schemas/ServiceTranslationResource",
  *         ),
  *     )
  * )

@@ -7,19 +7,19 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * @OA\Schema(
  *     title="UpdateSubserviceRequest",
- *     @OA\Xml(
- *         name="UpdateSubserviceRequest"
- *     ),
+ *
  *     @OA\Property (
  *         property="ru",
  *         type="object",
  *         ref="#/components/schemas/UpdateSubserviceTranslationRequest",
  *     ),
+ *
  *     @OA\Property (
  *         property="uz",
  *         type="object",
  *         ref="#/components/schemas/UpdateSubserviceTranslationRequest",
  *     ),
+ *
  *     @OA\Property (
  *         property="en",
  *         type="object",

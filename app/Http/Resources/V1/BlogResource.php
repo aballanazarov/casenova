@@ -6,34 +6,35 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 
 /**
- * @OA\Schema(
- *     title="BlogResource",
- *     @OA\Xml(
- *         name="BlogResource"
- *     ),
+ * @OA\Schema (
+ *     title = "BlogResource",
+ *
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/Blog/properties/id",
+ *         property = "id",
+ *         ref = "#/components/schemas/Blog/properties/id",
  *     ),
+ *
  *     @OA\Property (
- *         property="image",
- *         ref="#/components/schemas/Blog/properties/image",
+ *         property = "image",
+ *         ref = "#/components/schemas/Blog/properties/image",
  *     ),
+ *
  *     @OA\Property (
- *         property="createdAt",
- *         ref="#/components/schemas/Blog/properties/created_at",
+ *         property = "createdAt",
+ *         ref = "#/components/schemas/Blog/properties/created_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="updatedAt",
- *         ref="#/components/schemas/Blog/properties/updated_at",
+ *         property = "updatedAt",
+ *         ref = "#/components/schemas/Blog/properties/updated_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="translations",
- *         type="array",
+ *         property = "translations",
+ *         title = "Translations",
+ *         type = "array",
  *         @OA\Items (
- *             anyOf={
- *                 @OA\Schema(ref="#/components/schemas/BlogTranslationResource"),
- *             }
+ *             ref = "#/components/schemas/BlogTranslationResource"
  *         ),
  *     ),
  * ),

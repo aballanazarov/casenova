@@ -5,14 +5,12 @@ namespace App\Http\Requests\V1;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @OA\Schema(
- *     title="StoreGalleryRequest",
- *     @OA\Xml(
- *         name="StoreGalleryRequest"
- *     ),
+ * @OA\Schema (
+ *     title = "StoreGalleryRequest",
+ *
  *     @OA\Property (
- *         property="image",
- *         ref="#/components/schemas/Gallery/properties/image",
+ *         property = "image",
+ *         ref = "#/components/schemas/Gallery/properties/image",
  *     ),
  * ),
  */

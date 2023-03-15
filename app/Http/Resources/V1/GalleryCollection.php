@@ -6,12 +6,14 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
  * @OA\Schema (
- *     title="GalleryCollection",
+ *     title = "GalleryCollection",
+ *
  *     @OA\Property(
- *         property="data",
- *         type="array",
+ *         property = "data",
+ *         title  =  "Data",
+ *         type = "array",
  *         @OA\Items (
- *             ref="#/components/schemas/GalleryResource",
+ *             ref = "#/components/schemas/GalleryResource",
  *         ),
  *     )
  * )

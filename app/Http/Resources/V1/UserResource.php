@@ -7,38 +7,42 @@ use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @OA\Schema(
- *     title="UserResource",
- *     @OA\Xml(
- *         name="UserResource"
- *     ),
+ * @OA\Schema (
+ *     title = "UserResource",
+ *
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/User/properties/id",
+ *         property = "id",
+ *         ref = "#/components/schemas/User/properties/id",
  *     ),
+ *
  *     @OA\Property (
- *         property="name",
- *         ref="#/components/schemas/User/properties/name",
+ *         property = "name",
+ *         ref = "#/components/schemas/User/properties/name",
  *     ),
+ *
  *     @OA\Property (
- *         property="email",
- *         ref="#/components/schemas/User/properties/email",
+ *         property = "email",
+ *         ref = "#/components/schemas/User/properties/email",
  *     ),
+ *
  *     @OA\Property (
- *         property="password",
- *         ref="#/components/schemas/User/properties/password",
+ *         property = "password",
+ *         ref = "#/components/schemas/User/properties/password",
  *     ),
+ *
  *     @OA\Property (
- *         property="emailVerifiedAt",
- *         ref="#/components/schemas/User/properties/email_verified_at",
+ *         property = "emailVerifiedAt",
+ *         ref = "#/components/schemas/User/properties/email_verified_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="createdAt",
- *         ref="#/components/schemas/User/properties/created_at",
+ *         property = "createdAt",
+ *         ref = "#/components/schemas/User/properties/created_at",
  *     ),
+ *
  *     @OA\Property (
- *         property="updatedAt",
- *         ref="#/components/schemas/User/properties/updated_at",
+ *         property = "updatedAt",
+ *         ref = "#/components/schemas/User/properties/updated_at",
  *     ),
  * ),
  *

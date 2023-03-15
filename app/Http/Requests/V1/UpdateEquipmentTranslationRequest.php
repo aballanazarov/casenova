@@ -5,15 +5,14 @@ namespace App\Http\Requests\V1;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @OA\Schema(
+ * @OA\Schema (
  *     title="UpdateEquipmentTranslationRequest",
- *     @OA\Xml(
- *         name="UpdateEquipmentTranslationRequest"
- *     ),
+ *
  *     @OA\Property (
  *         property="name",
  *         ref="#/components/schemas/EquipmentTranslation/properties/name",
  *     ),
+ *
  *     @OA\Property (
  *         property="title",
  *         ref="#/components/schemas/EquipmentTranslation/properties/title",

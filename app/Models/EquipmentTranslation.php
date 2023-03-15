@@ -7,34 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @OA\Schema (
- *     title="EquipmentTranslation",
- *     @OA\Xml(
- *         name="EquipmentTranslation"
+ *     title = "EquipmentTranslation",
+ *
+ *     @OA\Property (
+ *         property = "id",
+ *         ref = "#/components/schemas/BaseProperties/properties/property_id",
  *     ),
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/BaseProperties/properties/property_id",
+ *         property = "equipment_id",
+ *         title = "Equipment ID",
+ *         ref = "#/components/schemas/BaseProperties/properties/property_id",
  *     ),
  *     @OA\Property (
- *         property="equipment_id",
- *         title="equipment_id",
- *         ref="#/components/schemas/BaseProperties/properties/property_id",
+ *         property = "locale",
+ *         ref = "#/components/schemas/BaseProperties/properties/property_locale",
  *     ),
  *     @OA\Property (
- *         property="locale",
- *         ref="#/components/schemas/BaseProperties/properties/property_locale",
+ *         property = "name",
+ *         title = "Name",
+ *         type = "string",
  *     ),
  *     @OA\Property (
- *         property="name",
- *         title="name",
- *         format="string",
- *         type="string",
- *     ),
- *     @OA\Property (
- *         property="title",
- *         title="title",
- *         format="string",
- *         type="string",
+ *         property = "title",
+ *         title = "Title",
+ *         type = "string",
  *     ),
  * ),
  *

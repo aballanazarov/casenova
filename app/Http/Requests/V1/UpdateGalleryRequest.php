@@ -5,11 +5,9 @@ namespace App\Http\Requests\V1;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @OA\Schema(
+ * @OA\Schema (
  *     title="UpdateGalleryRequest",
- *     @OA\Xml(
- *         name="UpdateGalleryRequest"
- *     ),
+ *
  *     @OA\Property (
  *         property="image",
  *         ref="#/components/schemas/Gallery/properties/image",

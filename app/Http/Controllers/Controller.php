@@ -8,22 +8,18 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 /**
- * @OA\Info(
- *      version="1.0.0",
- *      title="Casenova API Documentation",
- *      description="Casenova API Documentation",
- *      @OA\Contact(
- *          email="admin@casenova.uz"
- *      ),
- *      @OA\License(
- *          name="Apache 2.0",
- *          url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ * @OA\Info (
+ *      version = "1.0.0",
+ *      title = "Casenova API Documentation",
+ *      @OA\License (
+ *          name = "Apache 2.0",
+ *          url = "https://www.apache.org/licenses/LICENSE-2.0.html"
  *      )
  * )
  *
- * @OA\Server(
- *      url=L5_SWAGGER_CONST_HOST,
- *      description="Api Server"
+ * @OA\Server (
+ *      url = L5_SWAGGER_CONST_HOST,
+ *      description = "Api Server"
  * )
  */
 class Controller extends BaseController

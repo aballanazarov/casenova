@@ -5,15 +5,14 @@ namespace App\Http\Requests\V1;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @OA\Schema(
+ * @OA\Schema (
  *     title="UpdateBlogTranslationRequest",
- *     @OA\Xml(
- *         name="UpdateBlogTranslationRequest"
- *     ),
+ *
  *     @OA\Property (
  *         property="title",
  *         ref="#/components/schemas/BlogTranslation/properties/title",
  *     ),
+ *
  *     @OA\Property (
  *         property="content",
  *         ref="#/components/schemas/BlogTranslation/properties/content",

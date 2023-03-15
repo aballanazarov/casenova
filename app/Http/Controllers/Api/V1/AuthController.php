@@ -4,17 +4,12 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\LoginUserRequest;
-use App\Http\Requests\V1\StoreUserRequest;
-use App\Http\Resources\V1\UserResource;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * @OA\Tag (
- *     name="Auth",
- *     description="API Endpoints of Projects"
+ *     name = "Auth",
+ *     description = "API Endpoints of Projects",
  * )
  */
 class AuthController extends Controller
@@ -27,17 +22,29 @@ class AuthController extends Controller
      *      summary = "User authorization",
      *      description = "Return User token",
      *      @OA\Response (
-     *          response = 200,
+     *          response = 201,
      *          description = "Successful operation",
      *      ),
      *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden"
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function login(LoginUserRequest $request)
@@ -71,19 +78,25 @@ class AuthController extends Controller
      *          )
      *      ),
      *      @OA\Response (
+     *          response = 400,
+     *          ref = "#/components/responses/400",
+     *      ),
+     *      @OA\Response (
      *          response = 401,
-     *          description = "Unauthenticated",
-     *          @OA\JsonContent (
-     *              ref="#/components/schemas/ResponseProperties/properties/unauthenticated",
-     *          )
+     *          ref = "#/components/responses/401",
      *      ),
      *      @OA\Response (
      *          response = 403,
-     *          description = "Forbidden",
-     *          @OA\JsonContent (
-     *              ref="#/components/schemas/ResponseProperties/properties/forbidden",
-     *          )
-     *      )
+     *          ref = "#/components/responses/403",
+     *      ),
+     *      @OA\Response (
+     *          response = 422,
+     *          ref = "#/components/responses/422",
+     *      ),
+     *      @OA\Response (
+     *          response = 500,
+     *          ref = "#/components/responses/500",
+     *      ),
      * )
      */
     public function logout()

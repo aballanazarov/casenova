@@ -6,29 +6,31 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @OA\Schema(
- *     title="EquipmentTranslationResource",
- *     @OA\Xml(
- *         name="EquipmentTranslationResource",
- *     ),
+ *     title = "EquipmentTranslationResource",
+ *
  *     @OA\Property (
- *         property="id",
- *         ref="#/components/schemas/EquipmentTranslation/properties/id",
+ *         property = "id",
+ *         ref = "#/components/schemas/EquipmentTranslation/properties/id",
  *     ),
+ *
  *     @OA\Property (
- *         property="equipmentId",
- *         ref="#/components/schemas/EquipmentTranslation/properties/equipment_id",
+ *         property = "equipmentId",
+ *         ref = "#/components/schemas/EquipmentTranslation/properties/equipment_id",
  *     ),
+ *
  *     @OA\Property (
- *         property="locale",
- *         ref="#/components/schemas/EquipmentTranslation/properties/locale",
+ *         property = "locale",
+ *         ref = "#/components/schemas/EquipmentTranslation/properties/locale",
  *     ),
+ *
  *     @OA\Property (
- *         property="name",
- *         ref="#/components/schemas/EquipmentTranslation/properties/name",
+ *         property = "name",
+ *         ref = "#/components/schemas/EquipmentTranslation/properties/name",
  *     ),
+ *
  *     @OA\Property (
- *         property="title",
- *         ref="#/components/schemas/EquipmentTranslation/properties/title",
+ *         property = "title",
+ *         ref = "#/components/schemas/EquipmentTranslation/properties/title",
  *     ),
  * )
  */
