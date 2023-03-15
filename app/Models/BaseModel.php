@@ -10,7 +10,7 @@ namespace App\Models;
  *     ),
  *
  *     @OA\Property (
- *         property="id",
+ *         property="property_id",
  *         title="id",
  *         format="integer",
  *         type="integer",
@@ -20,8 +20,8 @@ namespace App\Models;
  *     ),
  *
  *     @OA\Property (
- *         property="created_at",
- *         title="created_at",
+ *         property="property_time",
+ *         title="time",
  *         format="date-time",
  *         type="string",
  *         nullable=true,
@@ -30,17 +30,7 @@ namespace App\Models;
  *     ),
  *
  *     @OA\Property (
- *         property="updated_at",
- *         title="updated_at",
- *         format="date-time",
- *         type="string",
- *         nullable=true,
- *         readOnly="true",
- *         example="2023-01-01T09:30:59.000000Z",
- *     ),
- *
- *     @OA\Property (
- *         property="locale",
+ *         property="property_locale",
  *         title="locale",
  *         format="string",
  *         type="string",
@@ -49,7 +39,7 @@ namespace App\Models;
  *     ),
  *
  *     @OA\Property (
- *         property="image",
+ *         property="property_image",
  *         title="image",
  *         format="string",
  *         type="string",
@@ -58,15 +48,15 @@ namespace App\Models;
  *     ),
  *
  *     @OA\Property (
- *         property="uploads",
+ *         property="property_uploads",
  *         title="uploads",
  *         format="binary",
  *         type="string",
  *     ),
  *
  *     @OA\Property (
- *         property="booleanResult",
- *         title="boolean",
+ *         property="property_boolean_result",
+ *         title="boolean_result",
  *         format="boolean",
  *         type="boolean",
  *         example="true",

@@ -6,6 +6,9 @@ use App\Http\Controllers\Api\V1\EquipmentController;
 use App\Http\Controllers\Api\V1\GalleryController;
 use App\Http\Controllers\Api\V1\ServiceController;
 use App\Http\Controllers\Api\V1\SubserviceController;
+use App\Http\Controllers\Api\V1\UserController;
+use App\Http\Resources\V1\UserCollection;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')
@@ -29,17 +32,15 @@ Route::prefix('v1')
         Route::get('galleries', [GalleryController::class, 'index']);
         Route::get('galleries/{gallery}', [GalleryController::class, 'show'])->whereNumber('service');
 
-        Route::get('users', function () {
-            return \App\Http\Resources\V1\UserCollection::make(\App\Models\User::all());
-        });
-
 
         // With Authorization
         Route::prefix('admin')
             ->middleware('auth:sanctum')
             ->group(function () {
+                Route::apiResource('users', UserController::class);
+
                 Route::post('create', [AuthController::class, 'store']);
-                Route::post('logout', [AuthController::class, 'destroy']);
+                Route::post('delete/{id}', [AuthController::class, 'destroy'])->whereNumber('id');
 
                 Route::apiResource('services', ServiceController::class);
                 Route::post('services/{service}/image', [ServiceController::class, 'image'])->whereNumber('service');

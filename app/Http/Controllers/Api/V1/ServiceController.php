@@ -8,11 +8,8 @@ use App\Http\Resources\V1\ServiceResource;
 use App\Models\Service;
 use App\Http\Requests\V1\StoreServiceRequest;
 use App\Http\Requests\V1\UpdateServiceRequest;
-use App\Http\Requests\V1\BulkStoreServiceRequest;
 use App\Filters\V1\ServicesFilter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
 
 /**
@@ -109,16 +106,6 @@ class ServiceController extends Controller
     }
 
 
-    public function bulkStore(BulkStoreServiceRequest $request)
-    {
-        $bulk = collect($request->all())->map(function ($arr, $key) {
-            return Arr::except($arr, []);
-        });
-
-        Service::create($bulk->toArray());
-    }
-
-
     /**
      * @OA\Get(
      *      path="/services/{id}",
@@ -132,7 +119,7 @@ class ServiceController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              type="integer"
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\Response(
@@ -191,7 +178,7 @@ class ServiceController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              type="integer"
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -226,9 +213,9 @@ class ServiceController extends Controller
     }
 
 
-    public function destroy(Service $service)
+    public function destroy(int $id)
     {
-        //
+        return Service::destroy($id);
     }
 
 
@@ -245,7 +232,7 @@ class ServiceController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/id",
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -255,7 +242,7 @@ class ServiceController extends Controller
      *              @OA\Schema(
      *                  @OA\Property (
      *                      property="image",
-     *                      ref="#/components/schemas/BaseModel/properties/uploads",
+     *                      ref="#/components/schemas/BaseModel/properties/property_uploads",
      *                  )
      *              )
      *          ),
@@ -264,7 +251,7 @@ class ServiceController extends Controller
      *          response = 201,
      *          description = "Successful operation",
      *          @OA\JsonContent (
-     *              ref="#/components/schemas/BaseModel/properties/booleanResult",
+     *              ref="#/components/schemas/BaseModel/properties/property_boolean_result",
      *          ),
      *       ),
      *      @OA\Response (

@@ -4,6 +4,19 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema(
+ *     title="UpdateGalleryRequest",
+ *     @OA\Xml(
+ *         name="UpdateGalleryRequest"
+ *     ),
+ *     @OA\Property (
+ *         property="image",
+ *         ref="#/components/schemas/Gallery/properties/image",
+ *     ),
+ * ),
+ */
+
 class UpdateGalleryRequest extends FormRequest
 {
     public function authorize()
@@ -15,7 +28,7 @@ class UpdateGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'
+            'image' => ['string'],
         ];
     }
 }

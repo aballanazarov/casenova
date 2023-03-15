@@ -116,7 +116,7 @@ class SubserviceController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              type="integer"
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\Response(
@@ -169,7 +169,7 @@ class SubserviceController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              type="integer"
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -204,9 +204,9 @@ class SubserviceController extends Controller
     }
 
 
-    public function destroy(Subservice $subservice)
+    public function destroy(int $id)
     {
-        //
+        return Subservice::destroy($id);
     }
 
 
@@ -223,7 +223,7 @@ class SubserviceController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/id",
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -233,7 +233,7 @@ class SubserviceController extends Controller
      *              @OA\Schema(
      *                  @OA\Property (
      *                      property="image",
-     *                      ref="#/components/schemas/BaseModel/properties/uploads",
+     *                      ref="#/components/schemas/BaseModel/properties/property_uploads",
      *                  )
      *              )
      *          ),
@@ -242,7 +242,7 @@ class SubserviceController extends Controller
      *          response = 201,
      *          description = "Successful operation",
      *          @OA\JsonContent (
-     *              ref="#/components/schemas/BaseModel/properties/booleanResult",
+     *              ref="#/components/schemas/BaseModel/properties/property_boolean_result",
      *          ),
      *       ),
      *      @OA\Response (

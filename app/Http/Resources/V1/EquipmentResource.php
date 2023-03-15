@@ -50,7 +50,7 @@ class EquipmentResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'od' => $this->id,
+            'id' => $this->id,
             'image' => empty($this->image) ? $this->image : URL::to("/uploads")  . "/" . $this->image,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,

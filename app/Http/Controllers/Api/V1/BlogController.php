@@ -58,22 +58,16 @@ class BlogController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
     /**
      * @OA\Post (
      *      path = "/blog",
      *      operationId = "storeBlog",
      *      tags = {"Blogs"},
-     *      summary = "Create new blog",
-     *      description = "Returns blog data",
+     *      summary = "Create new Blog",
+     *      description = "Returns Blog data",
      *      @OA\RequestBody (
      *          required = true,
-     *          description = "Pass user credentials",
+     *          description = "Pass blog credentials",
      *          @OA\JsonContent (
      *              collectionFormat = "multi",
      *              ref="#/components/schemas/StoreBlogRequest",
@@ -116,7 +110,7 @@ class BlogController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/id",
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\Response(
@@ -169,7 +163,7 @@ class BlogController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/id",
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -204,9 +198,10 @@ class BlogController extends Controller
     }
 
 
-    public function destroy(Blog $blog)
+    public function destroy(int $id)
     {
-        //
+        return Blog::destroy($id);
+
     }
 
 
@@ -223,7 +218,7 @@ class BlogController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              ref="#/components/schemas/BaseModel/properties/id",
+     *              ref="#/components/schemas/BaseModel/properties/property_id",
      *          )
      *      ),
      *      @OA\RequestBody (
@@ -233,7 +228,7 @@ class BlogController extends Controller
      *              @OA\Schema(
      *                  @OA\Property (
      *                      property="image",
-     *                      ref="#/components/schemas/BaseModel/properties/uploads",
+     *                      ref="#/components/schemas/BaseModel/properties/property_uploads",
      *                  )
      *              )
      *          ),
@@ -242,7 +237,7 @@ class BlogController extends Controller
      *          response = 201,
      *          description = "Successful operation",
      *          @OA\JsonContent (
-     *              ref="#/components/schemas/BaseModel/properties/booleanResult",
+     *              ref="#/components/schemas/BaseModel/properties/property_boolean_result",
      *          ),
      *       ),
      *      @OA\Response (

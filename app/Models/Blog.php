@@ -17,26 +17,28 @@ use Illuminate\Support\Facades\App;
  *     ),
  *     @OA\Property (
  *         property="id",
- *         ref="#/components/schemas/BaseModel/properties/id",
- *     ),
- *     @OA\Property (
- *         property="created_at",
- *         ref="#/components/schemas/BaseModel/properties/created_at",
- *     ),
- *     @OA\Property (
- *         property="updated_at",
- *         ref="#/components/schemas/BaseModel/properties/updated_at",
+ *         ref="#/components/schemas/BaseModel/properties/property_id",
  *     ),
  *     @OA\Property (
  *         property="image",
- *         ref="#/components/schemas/BaseModel/properties/image",
+ *         ref="#/components/schemas/BaseModel/properties/property_image",
+ *     ),
+ *     @OA\Property (
+ *         property="created_at",
+ *         title="created_at",
+ *         ref="#/components/schemas/BaseModel/properties/property_time",
+ *     ),
+ *     @OA\Property (
+ *         property="updated_at",
+ *         title="updated_at",
+ *         ref="#/components/schemas/BaseModel/properties/property_time",
  *     ),
  * ),
  *
  * @property int id
+ * @property string image
  * @property string create_at
  * @property string update_at
- * @property string image
  * @property array translatedAttributes
  */
 class Blog extends Model implements TranslatableContract

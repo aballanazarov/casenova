@@ -47,16 +47,4 @@ class AuthController extends Controller
         }
         return response("Login error", 500);
     }
-
-
-    public function store(StoreUserRequest $request)
-    {
-        return UserResource::make(User::query()->create($request->validated()));
-    }
-
-
-    public function destroy(User $user)
-    {
-        return $user->tokens()->delete();
-    }
 }

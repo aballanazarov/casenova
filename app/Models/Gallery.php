@@ -4,28 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 /**
  * @OA\Schema (
- *     title="Blog",
+ *     title="Gallery",
  *     @OA\Xml(
- *         name="Blog"
+ *         name="Gallery"
  *     ),
  *     @OA\Property (
  *         property="id",
- *         ref="#/components/schemas/BaseModel/properties/id",
+ *         ref="#/components/schemas/BaseModel/properties/property_id",
  *     ),
  *     @OA\Property (
  *         property="image",
- *         ref="#/components/schemas/BaseModel/properties/image",
+ *         ref="#/components/schemas/BaseModel/properties/property_image",
  *     ),
  *     @OA\Property (
  *         property="created_at",
- *         ref="#/components/schemas/BaseModel/properties/created_at",
+ *         title="created_at",
+ *         ref="#/components/schemas/BaseModel/properties/property_time",
  *     ),
  *     @OA\Property (
  *         property="updated_at",
- *         ref="#/components/schemas/BaseModel/properties/updated_at",
+ *         title="updated_at",
+ *         ref="#/components/schemas/BaseModel/properties/property_time",
  *     ),
  * ),
  *
@@ -41,4 +44,18 @@ class Gallery extends Model
     protected $fillable = [
         'image',
     ];
+
+
+    public function uploadImage(Request $request) : bool
+    {
+        $upload = $request->file('image');
+        if (!is_null($upload)) {
+            $uploadName = time() . "." . $upload->extension();
+            $upload->move(public_path('uploads'), $uploadName);
+            $this->image = $uploadName;
+            return $this->save();
+        }
+
+        return false;
+    }
 }

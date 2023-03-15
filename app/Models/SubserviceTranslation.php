@@ -13,15 +13,15 @@ use Illuminate\Database\Eloquent\Model;
  *     ),
  *     @OA\Property (
  *         property="id",
- *         ref="#/components/schemas/BaseModel/properties/id",
+ *         ref="#/components/schemas/BaseModel/properties/property_id",
  *     ),
  *     @OA\Property (
  *         property="subservice_id",
- *         ref="#/components/schemas/BaseModel/properties/id",
+ *         ref="#/components/schemas/BaseModel/properties/property_id",
  *     ),
  *     @OA\Property (
  *         property="locale",
- *         ref="#/components/schemas/BaseModel/properties/locale",
+ *         ref="#/components/schemas/BaseModel/properties/property_locale",
  *     ),
  *     @OA\Property (
  *         property="name",
