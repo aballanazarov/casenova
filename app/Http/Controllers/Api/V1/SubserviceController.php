@@ -121,7 +121,7 @@ class SubserviceController extends Controller
      * @OA\Get (
      *      path = "/subservices/{id}",
      *      operationId = "getSubserviceById",
-     *      tags = {"Services"},
+     *      tags = {"Subservices"},
      *      summary = "Get subservice information",
      *      description = "Returns subservice data",
      *      @OA\Parameter(

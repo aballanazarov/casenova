@@ -266,7 +266,7 @@ class EquipmentController extends Controller
 
     /**
      * @OA\Post (
-     *      path = "/equipment/{equipment}/image",
+     *      path = "/admin/equipment/{equipment}/image",
      *      operationId = "imageEquipment",
      *      tags = {"Equipments"},
      *      summary = "Update image for equipment",

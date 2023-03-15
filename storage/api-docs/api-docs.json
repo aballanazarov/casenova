@@ -45,7 +45,7 @@
                 }
             }
         },
-        "{MODERATOR_URL}/logout": {
+        "/admin/logout": {
             "post": {
                 "tags": [
                     "Auth"
@@ -255,18 +255,60 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Blogs"
+                ],
+                "summary": "Destroy Blog",
+                "description": "Return bool",
+                "operationId": "destroyBlog",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Blog id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
         },
-        "/blog/{blog}/image": {
+        "/admin/blog/{blog}/image": {
             "post": {
                 "tags": [
                     "Blogs"
@@ -312,13 +354,19 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -349,7 +397,9 @@
                         "description": "Forbidden"
                     }
                 }
-            },
+            }
+        },
+        "/admin/equipment": {
             "post": {
                 "tags": [
                     "Equipments"
@@ -373,13 +423,19 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -420,16 +476,24 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
-            },
+            }
+        },
+        "/admin/equipment/{id}": {
             "put": {
                 "tags": [
                     "Equipments"
@@ -464,18 +528,63 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Equipments"
+                ],
+                "summary": "Destroy Equipment",
+                "description": "Return bool",
+                "operationId": "destroyEquipment",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Equipment id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
         },
-        "/equipment/{equipment}/image": {
+        "/admin/equipment/{equipment}/image": {
             "post": {
                 "tags": [
                     "Equipments"
@@ -521,13 +630,19 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -551,11 +666,20 @@
                             }
                         }
                     },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -631,13 +755,19 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -677,13 +807,19 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -693,12 +829,12 @@
                 "tags": [
                     "Galleries"
                 ],
-                "summary": "Delete gallery",
-                "description": "Returns gallery status",
-                "operationId": "deleteGallery",
+                "summary": "Destroy gallery",
+                "description": "Returns bool",
+                "operationId": "destroyGallery",
                 "parameters": [
                     {
-                        "name": "gallery",
+                        "name": "id",
                         "in": "path",
                         "description": "Gallery id",
                         "required": true,
@@ -712,13 +848,19 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -769,13 +911,19 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -806,7 +954,9 @@
                         "description": "Forbidden"
                     }
                 }
-            },
+            }
+        },
+        "/admin/services": {
             "post": {
                 "tags": [
                     "Services"
@@ -830,13 +980,19 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -877,16 +1033,24 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
-            },
+            }
+        },
+        "/admin/services/{id}": {
             "put": {
                 "tags": [
                     "Services"
@@ -921,18 +1085,65 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
         },
-        "/services/{service}/image": {
+        "/admin/service/{id}": {
+            "delete": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Destroy Service",
+                "description": "Return bool",
+                "operationId": "destroyService",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/admin/services/{service}/image": {
             "post": {
                 "tags": [
                     "Services"
@@ -978,13 +1189,19 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -1008,14 +1225,25 @@
                             }
                         }
                     },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
-            },
+            }
+        },
+        "/admin/subservices": {
             "post": {
                 "tags": [
                     "Subservices"
@@ -1039,13 +1267,19 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -1053,7 +1287,7 @@
         "/subservices/{id}": {
             "get": {
                 "tags": [
-                    "Services"
+                    "Subservices"
                 ],
                 "summary": "Get subservice information",
                 "description": "Returns subservice data",
@@ -1086,16 +1320,24 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
-            },
+            }
+        },
+        "/admin/subservices/{id}": {
             "put": {
                 "tags": [
                     "Subservices"
@@ -1130,18 +1372,65 @@
                         "description": "Successful operation"
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
         },
-        "/subservices/{subservice}/image": {
+        "/admin/subservice/{id}": {
+            "delete": {
+                "tags": [
+                    "Subservices"
+                ],
+                "summary": "Destroy Subservice",
+                "description": "Return bool",
+                "operationId": "destroySubservice",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Subservice id",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/admin/subservices/{subservice}/image": {
             "post": {
                 "tags": [
                     "Subservices"
@@ -1187,13 +1476,19 @@
                         }
                     },
                     "400": {
-                        "description": "Bad Request"
+                        "$ref": "#/components/responses/400"
                     },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -1259,11 +1554,20 @@
                             }
                         }
                     },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -1291,11 +1595,20 @@
                     "200": {
                         "description": "Successful operation"
                     },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
                     "401": {
-                        "description": "Unauthenticated"
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
-                        "description": "Forbidden"
+                        "$ref": "#/components/responses/403"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
                     }
                 }
             }
