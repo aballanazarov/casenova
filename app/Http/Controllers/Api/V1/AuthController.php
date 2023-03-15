@@ -21,6 +21,14 @@ class AuthController extends Controller
      *      tags = {"Auth"},
      *      summary = "User authorization",
      *      description = "Return User token",
+     *      @OA\RequestBody (
+     *          required = true,
+     *          description = "Pass user credentials",
+     *          @OA\JsonContent (
+     *              collectionFormat = "multi",
+     *              ref = "#/components/schemas/LoginUserRequest",
+     *          ),
+     *      ),
      *      @OA\Response (
      *          response = 201,
      *          description = "Successful operation",

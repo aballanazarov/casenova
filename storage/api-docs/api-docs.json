@@ -23,6 +23,17 @@
                 "summary": "User authorization",
                 "description": "Return User token",
                 "operationId": "authUser",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginUserRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Successful operation"
