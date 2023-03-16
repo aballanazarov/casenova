@@ -294,7 +294,7 @@ return [
          * Constants which can be used in annotations
          */
         'constants' => [
-            'L5_SWAGGER_CONST_HOST' => env('APP_URL', 'https://casenova.uz') . "/api/v1",
+            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'https://casenova.uz'),
         ],
     ],
 ];
