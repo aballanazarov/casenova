@@ -13,6 +13,13 @@ return [
                  * Route for accessing api documentation interface
                 */
                 'api' => 'docs',
+
+                /*
+                 * fix Swagger 419 Error
+                 */
+                'middleware' => [
+                    'api' => ['web'],
+                ],
             ],
             'paths' => [
                 /*

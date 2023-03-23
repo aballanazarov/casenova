@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
             User::query()->create([
                 'name' => 'admin',
                 'email' => 'admin@casenova.uz',
-                'password' => Hash::make('P@$$Admin'),
+                'password' => 'P@$$Admin',
             ]);
         }
     }

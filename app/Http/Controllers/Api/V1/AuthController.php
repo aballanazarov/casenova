@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\LoginUserRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 /**
  * @OA\Tag (
@@ -61,7 +62,8 @@ class AuthController extends Controller
             $user = auth()->user();
             return $user->createToken("auth-token")->plainTextToken;
         }
-        return response("Login error", 500);
+
+        return response(trans('auth.failed'), 401);
     }
 
 
@@ -110,6 +112,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::user()->tokens()->delete();
+        Session::flush();
 
         return [
             'message' => trans('auth.logout'),
