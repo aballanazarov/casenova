@@ -15,91 +15,6 @@
         }
     ],
     "paths": {
-        "/login": {
-            "post": {
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "User authorization",
-                "description": "Return User token",
-                "operationId": "authUser",
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LoginUserRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/logout": {
-            "post": {
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "User logout",
-                "operationId": "logoutUser",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "$ref": "#/components/schemas/BaseProperties/properties/property_message"
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                "example": {
-                                    "message": "Successfully logged out"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
         "/blog": {
             "get": {
                 "tags": [
@@ -118,47 +33,6 @@
                                 }
                             }
                         }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/blog": {
-            "post": {
-                "tags": [
-                    "Blogs"
-                ],
-                "summary": "Create new Blog",
-                "description": "Returns Blog data",
-                "operationId": "storeBlog",
-                "requestBody": {
-                    "description": "Pass blog credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/StoreBlogRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
                     },
                     "400": {
                         "$ref": "#/components/responses/400"
@@ -231,157 +105,6 @@
                 }
             }
         },
-        "/admin/blog/{id}": {
-            "put": {
-                "tags": [
-                    "Blogs"
-                ],
-                "summary": "Update blog",
-                "description": "Returns blog data",
-                "operationId": "updateBlog",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Blog id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateBlogRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Blogs"
-                ],
-                "summary": "Destroy Blog",
-                "description": "Return bool",
-                "operationId": "destroyBlog",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Blog id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "responses": {
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/blog/{blog}/image": {
-            "post": {
-                "tags": [
-                    "Blogs"
-                ],
-                "summary": "Update image for blog",
-                "description": "Returns blog status",
-                "operationId": "imageBlog",
-                "parameters": [
-                    {
-                        "name": "blog",
-                        "in": "path",
-                        "description": "Blog id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "image": {
-                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
         "/equipment": {
             "get": {
                 "tags": [
@@ -406,47 +129,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    }
-                }
-            }
-        },
-        "/admin/equipment": {
-            "post": {
-                "tags": [
-                    "Equipments"
-                ],
-                "summary": "Create new equipment",
-                "description": "Returns equipment data",
-                "operationId": "storeEquipments",
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/StoreEquipmentRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -482,160 +164,6 @@
                                         }
                                     },
                                     "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/equipment/{id}": {
-            "put": {
-                "tags": [
-                    "Equipments"
-                ],
-                "summary": "Update equipment",
-                "description": "Returns equipment data",
-                "operationId": "updateEquipment",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Equipment id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateEquipmentRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Equipments"
-                ],
-                "summary": "Destroy Equipment",
-                "description": "Return bool",
-                "operationId": "destroyEquipment",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Equipment id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/equipment/{equipment}/image": {
-            "post": {
-                "tags": [
-                    "Equipments"
-                ],
-                "summary": "Update image for equipment",
-                "description": "Returns equipment status",
-                "operationId": "imageEquipment",
-                "parameters": [
-                    {
-                        "name": "equipment",
-                        "in": "path",
-                        "description": "Equipment id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "image": {
-                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
                                 }
                             }
                         }
@@ -695,41 +223,6 @@
                 }
             }
         },
-        "/admin/galleries": {
-            "post": {
-                "tags": [
-                    "Galleries"
-                ],
-                "summary": "Create new gallery",
-                "description": "Returns gallery data",
-                "operationId": "storeGalleries",
-                "requestBody": {
-                    "description": "Pass gallery credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/StoreGalleryRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            }
-        },
         "/galleries/{id}": {
             "get": {
                 "tags": [
@@ -783,162 +276,6 @@
                 }
             }
         },
-        "/admin/galleries/{id}": {
-            "put": {
-                "tags": [
-                    "Galleries"
-                ],
-                "summary": "Update gallery",
-                "description": "Returns gallery data",
-                "operationId": "updateGalleries",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Gallery id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Pass gallery credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateGalleryRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/galleries/{gallery}": {
-            "delete": {
-                "tags": [
-                    "Galleries"
-                ],
-                "summary": "Destroy gallery",
-                "description": "Returns bool",
-                "operationId": "destroyGallery",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Gallery id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/galleries/{gallery}/image": {
-            "post": {
-                "tags": [
-                    "Galleries"
-                ],
-                "summary": "Update image for gallery",
-                "description": "Returns gallery status",
-                "operationId": "imageGallery",
-                "parameters": [
-                    {
-                        "name": "gallery",
-                        "in": "path",
-                        "description": "Gallery id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "image": {
-                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
         "/services": {
             "get": {
                 "tags": [
@@ -963,47 +300,6 @@
                     },
                     "403": {
                         "description": "Forbidden"
-                    }
-                }
-            }
-        },
-        "/admin/services": {
-            "post": {
-                "tags": [
-                    "Services"
-                ],
-                "summary": "Create new service",
-                "description": "Returns service data",
-                "operationId": "storeServices",
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/StoreServiceRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
                     }
                 }
             }
@@ -1061,162 +357,6 @@
                 }
             }
         },
-        "/admin/services/{id}": {
-            "put": {
-                "tags": [
-                    "Services"
-                ],
-                "summary": "Update service",
-                "description": "Returns service data",
-                "operationId": "updateServices",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Service id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateServiceRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/service/{id}": {
-            "delete": {
-                "tags": [
-                    "Services"
-                ],
-                "summary": "Destroy Service",
-                "description": "Return bool",
-                "operationId": "destroyService",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Service id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/services/{service}/image": {
-            "post": {
-                "tags": [
-                    "Services"
-                ],
-                "summary": "Update image for service",
-                "description": "Returns service status",
-                "operationId": "imageService",
-                "parameters": [
-                    {
-                        "name": "service",
-                        "in": "path",
-                        "description": "Service id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "image": {
-                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
         "/subservices": {
             "get": {
                 "tags": [
@@ -1235,47 +375,6 @@
                                 }
                             }
                         }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/subservices": {
-            "post": {
-                "tags": [
-                    "Subservices"
-                ],
-                "summary": "Create new subservice",
-                "description": "Returns service data",
-                "operationId": "storeSubservices",
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/StoreSubserviceRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
                     },
                     "400": {
                         "$ref": "#/components/responses/400"
@@ -1347,547 +446,10 @@
                     }
                 }
             }
-        },
-        "/admin/subservices/{id}": {
-            "put": {
-                "tags": [
-                    "Subservices"
-                ],
-                "summary": "Update subservice",
-                "description": "Returns subservice data",
-                "operationId": "updateSubservice",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Subservice id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/UpdateSubserviceRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/subservice/{id}": {
-            "delete": {
-                "tags": [
-                    "Subservices"
-                ],
-                "summary": "Destroy Subservice",
-                "description": "Return bool",
-                "operationId": "destroySubservice",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Subservice id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/subservices/{subservice}/image": {
-            "post": {
-                "tags": [
-                    "Subservices"
-                ],
-                "summary": "Update image for subservice",
-                "description": "Returns subservice status",
-                "operationId": "imageSubservice",
-                "parameters": [
-                    {
-                        "name": "subservice",
-                        "in": "path",
-                        "description": "Subservice id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "properties": {
-                                    "image": {
-                                        "$ref": "#/components/schemas/BaseProperties/properties/property_uploads"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BaseProperties/properties/property_boolean_result"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/users": {
-            "get": {
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Get list of users",
-                "description": "Returns list of users",
-                "operationId": "getUsers",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/UserCollection"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Create new User",
-                "description": "Return User data",
-                "operationId": "storeUser",
-                "requestBody": {
-                    "description": "Pass user credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/StoreUserRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "data": {
-                                            "$ref": "#/components/schemas/UserResource"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
-        },
-        "/admin/users/{id}": {
-            "delete": {
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Destroy User",
-                "description": "Return bool",
-                "operationId": "destroyUser",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "User id",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation"
-                    },
-                    "400": {
-                        "$ref": "#/components/responses/400"
-                    },
-                    "401": {
-                        "$ref": "#/components/responses/401"
-                    },
-                    "403": {
-                        "$ref": "#/components/responses/403"
-                    },
-                    "422": {
-                        "$ref": "#/components/responses/422"
-                    },
-                    "500": {
-                        "$ref": "#/components/responses/500"
-                    }
-                }
-            }
         }
     },
     "components": {
         "schemas": {
-            "LoginUserRequest": {
-                "title": "LoginUserRequest",
-                "properties": {
-                    "email": {
-                        "$ref": "#/components/schemas/User/properties/email"
-                    },
-                    "password": {
-                        "$ref": "#/components/schemas/User/properties/password"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreBlogRequest": {
-                "title": "StoreBlogRequest",
-                "properties": {
-                    "ru": {
-                        "$ref": "#/components/schemas/StoreBlogTranslationRequest"
-                    },
-                    "uz": {
-                        "$ref": "#/components/schemas/StoreBlogTranslationRequest"
-                    },
-                    "en": {
-                        "$ref": "#/components/schemas/StoreBlogTranslationRequest"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreBlogTranslationRequest": {
-                "title": "StoreBlogTranslationRequest",
-                "properties": {
-                    "title": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/title"
-                    },
-                    "content": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/content"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreEquipmentRequest": {
-                "title": "StoreEquipmentRequest",
-                "properties": {
-                    "ru": {
-                        "$ref": "#/components/schemas/StoreEquipmentTranslationRequest"
-                    },
-                    "uz": {
-                        "$ref": "#/components/schemas/StoreEquipmentTranslationRequest"
-                    },
-                    "en": {
-                        "$ref": "#/components/schemas/StoreEquipmentTranslationRequest"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreEquipmentTranslationRequest": {
-                "title": "StoreEquipmentTranslationRequest",
-                "properties": {
-                    "name": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/name"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/title"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreGalleryRequest": {
-                "title": "StoreGalleryRequest",
-                "properties": {
-                    "image": {
-                        "$ref": "#/components/schemas/Gallery/properties/image"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreServiceRequest": {
-                "title": "StoreServiceRequest",
-                "properties": {
-                    "ru": {
-                        "$ref": "#/components/schemas/StoreServiceTranslationRequest"
-                    },
-                    "uz": {
-                        "$ref": "#/components/schemas/StoreServiceTranslationRequest"
-                    },
-                    "en": {
-                        "$ref": "#/components/schemas/StoreServiceTranslationRequest"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreServiceTranslationRequest": {
-                "title": "StoreServiceTranslationRequest",
-                "properties": {
-                    "name": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/name"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/title"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreSubserviceRequest": {
-                "title": "StoreSubserviceRequest",
-                "properties": {
-                    "ru": {
-                        "$ref": "#/components/schemas/StoreSubserviceTranslationRequest"
-                    },
-                    "uz": {
-                        "$ref": "#/components/schemas/StoreSubserviceTranslationRequest"
-                    },
-                    "en": {
-                        "$ref": "#/components/schemas/StoreSubserviceTranslationRequest"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreSubserviceTranslationRequest": {
-                "title": "StoreSubserviceTranslationRequest",
-                "properties": {
-                    "name": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/name"
-                    },
-                    "content": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/content"
-                    }
-                },
-                "type": "object"
-            },
-            "StoreUserRequest": {
-                "title": "StoreServiceRequest",
-                "properties": {
-                    "name": {
-                        "$ref": "#/components/schemas/User/properties/name"
-                    },
-                    "email": {
-                        "$ref": "#/components/schemas/User/properties/email"
-                    },
-                    "password": {
-                        "$ref": "#/components/schemas/User/properties/password"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateBlogRequest": {
-                "title": "UpdateBlogRequest",
-                "properties": {
-                    "ru": {
-                        "$ref": "#/components/schemas/UpdateBlogTranslationRequest"
-                    },
-                    "uz": {
-                        "$ref": "#/components/schemas/UpdateBlogTranslationRequest"
-                    },
-                    "en": {
-                        "$ref": "#/components/schemas/UpdateBlogTranslationRequest"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateBlogTranslationRequest": {
-                "title": "UpdateBlogTranslationRequest",
-                "properties": {
-                    "title": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/title"
-                    },
-                    "content": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/content"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateEquipmentRequest": {
-                "title": "UpdateEquipmentRequest",
-                "properties": {
-                    "ru": {
-                        "$ref": "#/components/schemas/UpdateEquipmentTranslationRequest"
-                    },
-                    "uz": {
-                        "$ref": "#/components/schemas/UpdateEquipmentTranslationRequest"
-                    },
-                    "en": {
-                        "$ref": "#/components/schemas/UpdateEquipmentTranslationRequest"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateEquipmentTranslationRequest": {
-                "title": "UpdateEquipmentTranslationRequest",
-                "properties": {
-                    "name": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/name"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/title"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateGalleryRequest": {
-                "title": "UpdateGalleryRequest",
-                "properties": {
-                    "image": {
-                        "$ref": "#/components/schemas/Gallery/properties/image"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateServiceRequest": {
-                "title": "UpdateServiceRequest",
-                "properties": {
-                    "ru": {
-                        "$ref": "#/components/schemas/UpdateServiceTranslationRequest"
-                    },
-                    "uz": {
-                        "$ref": "#/components/schemas/UpdateServiceTranslationRequest"
-                    },
-                    "en": {
-                        "$ref": "#/components/schemas/UpdateServiceTranslationRequest"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateServiceTranslationRequest": {
-                "title": "UpdateServiceTranslationRequest",
-                "properties": {
-                    "name": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/name"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/title"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateSubserviceRequest": {
-                "title": "UpdateSubserviceRequest",
-                "properties": {
-                    "ru": {
-                        "$ref": "#/components/schemas/UpdateSubserviceTranslationRequest"
-                    },
-                    "uz": {
-                        "$ref": "#/components/schemas/UpdateSubserviceTranslationRequest"
-                    },
-                    "en": {
-                        "$ref": "#/components/schemas/UpdateSubserviceTranslationRequest"
-                    }
-                },
-                "type": "object"
-            },
-            "UpdateSubserviceTranslationRequest": {
-                "title": "UpdateSubserviceTranslationRequest",
-                "properties": {
-                    "name": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/name"
-                    },
-                    "content": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/content"
-                    }
-                },
-                "type": "object"
-            },
             "BlogCollection": {
                 "title": "BlogCollection",
                 "properties": {
@@ -1907,6 +469,12 @@
                     "id": {
                         "$ref": "#/components/schemas/Blog/properties/id"
                     },
+                    "title": {
+                        "$ref": "#/components/schemas/Blog/properties/title"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/Blog/properties/content"
+                    },
                     "image": {
                         "$ref": "#/components/schemas/Blog/properties/image"
                     },
@@ -1915,47 +483,6 @@
                     },
                     "updatedAt": {
                         "$ref": "#/components/schemas/Blog/properties/updated_at"
-                    },
-                    "translations": {
-                        "title": "Translations",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BlogTranslationResource"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "BlogTranslationCollection": {
-                "title": "BlogTranslationCollection",
-                "properties": {
-                    "data": {
-                        "title": "Data",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BlogTranslationResource"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "BlogTranslationResource": {
-                "title": "BlogTranslationResource",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/id"
-                    },
-                    "blogId": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/blog_id"
-                    },
-                    "locale": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/locale"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/title"
-                    },
-                    "content": {
-                        "$ref": "#/components/schemas/BlogTranslation/properties/content"
                     }
                 },
                 "type": "object"
@@ -1979,6 +506,12 @@
                     "id": {
                         "$ref": "#/components/schemas/Equipment/properties/id"
                     },
+                    "name": {
+                        "$ref": "#/components/schemas/Equipment/properties/name"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/Equipment/properties/title"
+                    },
                     "image": {
                         "$ref": "#/components/schemas/Equipment/properties/image"
                     },
@@ -1987,47 +520,6 @@
                     },
                     "updatedAt": {
                         "$ref": "#/components/schemas/Equipment/properties/updated_at"
-                    },
-                    "translations": {
-                        "title": "Translations",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/EquipmentTranslationResource"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "EquipmentTranslationCollection": {
-                "title": "EquipmentTranslationCollection",
-                "properties": {
-                    "data": {
-                        "title": "Data",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/EquipmentTranslationResource"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "EquipmentTranslationResource": {
-                "title": "EquipmentTranslationResource",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/id"
-                    },
-                    "equipmentId": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/equipment_id"
-                    },
-                    "locale": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/locale"
-                    },
-                    "name": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/name"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/EquipmentTranslation/properties/title"
                     }
                 },
                 "type": "object"
@@ -2082,6 +574,12 @@
                     "id": {
                         "$ref": "#/components/schemas/Service/properties/id"
                     },
+                    "name": {
+                        "$ref": "#/components/schemas/Service/properties/name"
+                    },
+                    "title": {
+                        "$ref": "#/components/schemas/Service/properties/title"
+                    },
                     "image": {
                         "$ref": "#/components/schemas/Service/properties/image"
                     },
@@ -2090,47 +588,6 @@
                     },
                     "updatedAt": {
                         "$ref": "#/components/schemas/Service/properties/updated_at"
-                    },
-                    "translations": {
-                        "title": "Translations",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ServiceTranslationResource"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "ServiceTranslationCollection": {
-                "title": "ServiceTranslationCollection",
-                "properties": {
-                    "data": {
-                        "title": "data",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ServiceTranslationResource"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "ServiceTranslationResource": {
-                "title": "ServiceTranslationResource",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/id"
-                    },
-                    "serviceId": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/service_id"
-                    },
-                    "locale": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/locale"
-                    },
-                    "name": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/name"
-                    },
-                    "title": {
-                        "$ref": "#/components/schemas/ServiceTranslation/properties/title"
                     }
                 },
                 "type": "object"
@@ -2154,6 +611,12 @@
                     "id": {
                         "$ref": "#/components/schemas/Subservice/properties/id"
                     },
+                    "name": {
+                        "$ref": "#/components/schemas/Subservice/properties/name"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/Subservice/properties/content"
+                    },
                     "image": {
                         "$ref": "#/components/schemas/Subservice/properties/image"
                     },
@@ -2162,47 +625,6 @@
                     },
                     "updatedAt": {
                         "$ref": "#/components/schemas/Subservice/properties/updated_at"
-                    },
-                    "translations": {
-                        "title": "Translations",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/SubserviceTranslationResource"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "SubserviceTranslationCollection": {
-                "title": "SubserviceTranslationCollection",
-                "properties": {
-                    "data": {
-                        "title": "Data",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/SubserviceTranslationResource"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "SubserviceTranslationResource": {
-                "title": "SubserviceTranslationResource",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/id"
-                    },
-                    "subserviceId": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/subservice_id"
-                    },
-                    "locale": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/locale"
-                    },
-                    "name": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/name"
-                    },
-                    "content": {
-                        "$ref": "#/components/schemas/SubserviceTranslation/properties/content"
                     }
                 },
                 "type": "object"
@@ -2301,30 +723,6 @@
                     "id": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
-                    "image": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_image"
-                    },
-                    "created_at": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
-                    },
-                    "updated_at": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
-                    }
-                },
-                "type": "object"
-            },
-            "BlogTranslation": {
-                "title": "BlogTranslation",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                    },
-                    "blog_id": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                    },
-                    "locale": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_locale"
-                    },
                     "title": {
                         "title": "Title",
                         "type": "string"
@@ -2332,18 +730,6 @@
                     "content": {
                         "title": "Content",
                         "type": "string"
-                    }
-                },
-                "type": "object",
-                "xml": {
-                    "name": "BlogTranslation"
-                }
-            },
-            "Equipment": {
-                "title": "Equipment",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
                     "image": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_image"
@@ -2357,17 +743,11 @@
                 },
                 "type": "object"
             },
-            "EquipmentTranslation": {
-                "title": "EquipmentTranslation",
+            "Equipment": {
+                "title": "Equipment",
                 "properties": {
                     "id": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                    },
-                    "equipment_id": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                    },
-                    "locale": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_locale"
                     },
                     "name": {
                         "title": "Name",
@@ -2376,6 +756,15 @@
                     "title": {
                         "title": "Title",
                         "type": "string"
+                    },
+                    "image": {
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_image"
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
+                    },
+                    "updated_at": {
+                        "$ref": "#/components/schemas/BaseProperties/properties/property_time"
                     }
                 },
                 "type": "object"
@@ -2404,6 +793,14 @@
                     "id": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
                     "image": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_image"
                     },
@@ -2412,29 +809,6 @@
                     },
                     "updated_at": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_time"
-                    }
-                },
-                "type": "object"
-            },
-            "ServiceTranslation": {
-                "title": "ServiceTranslation",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                    },
-                    "service_id": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                    },
-                    "locale": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_locale"
-                    },
-                    "name": {
-                        "title": "Name",
-                        "type": "string"
-                    },
-                    "title": {
-                        "title": "Title",
-                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -2448,6 +822,14 @@
                     "service_id": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_id"
                     },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "content": {
+                        "title": "Content",
+                        "type": "string"
+                    },
                     "image": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_image"
                     },
@@ -2456,29 +838,6 @@
                     },
                     "updated_at": {
                         "$ref": "#/components/schemas/BaseProperties/properties/property_time"
-                    }
-                },
-                "type": "object"
-            },
-            "SubserviceTranslation": {
-                "title": "SubserviceTranslation",
-                "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                    },
-                    "subservice_id": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_id"
-                    },
-                    "locale": {
-                        "$ref": "#/components/schemas/BaseProperties/properties/property_locale"
-                    },
-                    "name": {
-                        "title": "Name",
-                        "type": "string"
-                    },
-                    "content": {
-                        "title": "Content",
-                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -2631,21 +990,9 @@
                     }
                 }
             }
-        },
-        "securitySchemes": {
-            "sanctum": {
-                "type": "apiKey",
-                "description": "Enter token in format (Bearer <token>)",
-                "name": "Authorization",
-                "in": "header"
-            }
         }
     },
     "tags": [
-        {
-            "name": "Auth",
-            "description": "API Endpoints of Projects"
-        },
         {
             "name": "Blogs",
             "description": "API Endpoints of Projects"
@@ -2664,10 +1011,6 @@
         },
         {
             "name": "Subservices",
-            "description": "API Endpoints of Projects"
-        },
-        {
-            "name": "Users",
             "description": "API Endpoints of Projects"
         }
     ]

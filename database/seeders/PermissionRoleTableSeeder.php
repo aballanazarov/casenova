@@ -17,5 +17,19 @@ class PermissionRoleTableSeeder extends Seeder
         $role->permissions()->sync(
             $permissions->pluck('id')->all()
         );
+
+
+        $role = Role::where('name', 'moderator')->firstOrFail();
+
+        $permissions = Permission::where(
+            function ($query) {
+                $query->whereIn('table_name', ['services', 'subservices', 'equipment', 'blogs', 'galleries'])
+                    ->orWhere('key', 'browse_admin');
+            }
+        );
+
+        $role->permissions()->sync(
+            $permissions->pluck('id')->all()
+        );
     }
 }

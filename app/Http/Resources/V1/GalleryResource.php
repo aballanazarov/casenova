@@ -41,7 +41,7 @@ class GalleryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => empty($this->image) ? $this->image : URL::to("/uploads")  . "/" . $this->image,
+            'image' => empty($this->image) ? $this->image : URL::to("/storage") . "/" . str_replace('\\', '/', $this->image),
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
         ];

@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\URL;
  *     ),
  *
  *     @OA\Property (
+ *         property = "name",
+ *         ref = "#/components/schemas/Equipment/properties/name",
+ *     ),
+ *
+ *     @OA\Property (
+ *         property = "title",
+ *         ref = "#/components/schemas/Equipment/properties/title",
+ *     ),
+ *
+ *     @OA\Property (
  *         property = "image",
  *         ref = "#/components/schemas/Equipment/properties/image",
  *     ),
@@ -28,18 +38,11 @@ use Illuminate\Support\Facades\URL;
  *         property = "updatedAt",
  *         ref = "#/components/schemas/Equipment/properties/updated_at",
  *     ),
- *
- *     @OA\Property (
- *         property = "translations",
- *         title = "Translations",
- *         type = "array",
- *         @OA\Items (
- *             ref="#/components/schemas/EquipmentTranslationResource"),
- *         ),
- *     ),
  * ),
  *
  * @property int id
+ * @property string name
+ * @property string title
  * @property string image
  * @property string created_at
  * @property string updated_at
@@ -52,10 +55,11 @@ class EquipmentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => empty($this->image) ? $this->image : URL::to("/uploads")  . "/" . $this->image,
+            'name' => $this->name,
+            'title' => $this->title,
+            'image' => empty($this->image) ? $this->image : URL::to("/storage") . "/" . str_replace('\\', '/', $this->image),
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
-            'translations' => EquipmentTranslationResource::collection($this->translations),
         ];
     }
 }

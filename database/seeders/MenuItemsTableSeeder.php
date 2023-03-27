@@ -265,6 +265,60 @@ class MenuItemsTableSeeder extends Seeder
         // Create for moderator
         $menu = Menu::where('name', 'moderator')->firstOrFail();
 
+        /** Menu for CRUD Services */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('moderator.voyager.menu.services.name'),
+            'url'     => '',
+            'route'   => 'voyager.services.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-dollar',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 15,
+            ])->save();
+        }
+
+
+        /** Menu for CRUD Subservices */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('moderator.voyager.menu.subservices.name'),
+            'url'     => '',
+            'route'   => 'voyager.subservices.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-dollar',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 16,
+            ])->save();
+        }
+
+
+        /** Menu for CRUD Equipment */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('moderator.voyager.menu.equipment.name'),
+            'url'     => '',
+            'route'   => 'voyager.equipment.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-polaroid',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 17,
+            ])->save();
+        }
+
+
         /** Menu for CRUD Blogs */
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
@@ -278,7 +332,25 @@ class MenuItemsTableSeeder extends Seeder
                 'icon_class' => 'voyager-megaphone',
                 'color'      => null,
                 'parent_id'  => null,
-                'order'      => 1,
+                'order'      => 18,
+            ])->save();
+        }
+
+
+        /** Menu for CRUD Galleries */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('moderator.voyager.menu.galleries.name'),
+            'url'     => '',
+            'route'   => 'voyager.galleries.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-photos',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 19,
             ])->save();
         }
     }

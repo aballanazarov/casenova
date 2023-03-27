@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\URL;
  *     ),
  *
  *     @OA\Property (
+ *         property = "name",
+ *         ref = "#/components/schemas/Subservice/properties/name",
+ *     ),
+ *
+ *     @OA\Property (
+ *         property = "content",
+ *         ref = "#/components/schemas/Subservice/properties/content",
+ *     ),
+ *
+ *     @OA\Property (
  *         property = "image",
  *         ref = "#/components/schemas/Subservice/properties/image",
  *     ),
@@ -28,19 +38,12 @@ use Illuminate\Support\Facades\URL;
  *         property = "updatedAt",
  *         ref = "#/components/schemas/Subservice/properties/updated_at",
  *     ),
- *
- *     @OA\Property (
- *         property = "translations",
- *         title = "Translations",
- *         type = "array",
- *         @OA\Items (
- *             ref = "#/components/schemas/SubserviceTranslationResource",
- *         ),
- *     ),
  * ),
  *
  * @property int id
  * @property string service_id
+ * @property string name
+ * @property string content
  * @property string image
  * @property string created_at
  * @property string updated_at
@@ -54,10 +57,11 @@ class SubserviceResource extends JsonResource
         return [
             'id' => $this->id,
             'serviceId' => $this->service_id,
-            'image' => empty($this->image) ? $this->image : URL::to("/uploads")  . "/" . $this->image,
+            'name' => $this->name,
+            'content' => $this->content,
+            'image' => empty($this->image) ? $this->image : URL::to("/storage") . "/" . str_replace('\\', '/', $this->image),
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
-            'translations' => SubserviceTranslationResource::collection($this->translations),
         ];
     }
 }

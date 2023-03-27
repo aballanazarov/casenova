@@ -2,6 +2,9 @@
 
 return [
     'voyager' => [
+        'roles' => [
+            'moderator' => 'Moderator',
+        ],
         'bread' => [
             'services' => [
                 'singular' => 'service',

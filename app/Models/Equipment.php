@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+use TCG\Voyager\Traits\Translatable;
 
 /**
  * @OA\Schema (
@@ -15,6 +13,17 @@ use Illuminate\Http\Request;
  *     @OA\Property (
  *         property = "id",
  *         ref = "#/components/schemas/BaseProperties/properties/property_id",
+ *     ),
+ *
+ *     @OA\Property (
+ *         property = "name",
+ *         title = "Name",
+ *         type = "string",
+ *     ),
+ *     @OA\Property (
+ *         property = "title",
+ *         title = "Title",
+ *         type = "string",
  *     ),
  *
  *     @OA\Property (
@@ -36,37 +45,26 @@ use Illuminate\Http\Request;
  * ),
  *
  * @property int id
+ * @property string name
+ * @property string title
  * @property string image
  * @property string create_at
  * @property string update_at
  * @property array translatedAttributes
  */
-class Equipment extends Model implements TranslatableContract
+class Equipment extends Model
 {
     use HasFactory;
     use Translatable;
 
     protected $fillable = [
+        'name',
+        'title',
         'image',
     ];
 
-    public $translatedAttributes = [
+    public $translatable = [
         'name',
         'title',
     ];
-
-
-    public function uploadImage(Request $request)
-    {
-        $upload = $request->file('image');
-        if (!is_null($upload)) {
-            $uploadName = time() . "." . $upload->extension();
-            $upload->move(public_path('uploads'), $uploadName);
-            $this->image = $uploadName;
-            return $this->save();
-        }
-
-        return false;
-
-    }
 }

@@ -16,6 +16,13 @@ class RolesTableSeeder extends Seeder
             ])->save();
         }
 
+        $role = Role::firstOrNew(['name' => 'moderator']);
+        if (!$role->exists) {
+            $role->fill([
+                'display_name' => __('admin.voyager.roles.moderator'),
+            ])->save();
+        }
+
         $role = Role::firstOrNew(['name' => 'user']);
         if (!$role->exists) {
             $role->fill([

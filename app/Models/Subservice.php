@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+use TCG\Voyager\Traits\Translatable;
 
 /**
  * @OA\Schema (
@@ -21,6 +19,18 @@ use Illuminate\Http\Request;
  *         property = "service_id",
  *         title = "Service ID",
  *         ref = "#/components/schemas/BaseProperties/properties/property_id",
+ *     ),
+ *
+ *     @OA\Property (
+ *         property = "name",
+ *         title = "Name",
+ *         type = "string",
+ *     ),
+ *
+ *     @OA\Property (
+ *         property = "content",
+ *         title = "Content",
+ *         type = "string",
  *     ),
  *
  *     @OA\Property (
@@ -43,22 +53,26 @@ use Illuminate\Http\Request;
  *
  * @property int id
  * @property int service_id
+ * @property string name
+ * @property string content
  * @property string image
  * @property string create_at
  * @property string update_at
  * @property array translatedAttributes
  */
-class Subservice extends Model implements TranslatableContract
+class Subservice extends Model
 {
     use HasFactory;
     use Translatable;
 
     protected $fillable = [
         'service_id',
+        'name',
+        'content',
         'image',
     ];
 
-    public $translatedAttributes = [
+    public $translatable = [
         'name',
         'content',
     ];
@@ -67,20 +81,5 @@ class Subservice extends Model implements TranslatableContract
     public function service()
     {
         return $this->belongsTo(Service::class);
-    }
-
-
-    public function uploadImage(Request $request)
-    {
-        $upload = $request->file('image');
-        if (!is_null($upload)) {
-            $uploadName = time() . "." . $upload->extension();
-            $upload->move(public_path('uploads'), $uploadName);
-            $this->image = $uploadName;
-            return $this->save();
-        }
-
-        return false;
-
     }
 }

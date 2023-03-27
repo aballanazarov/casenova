@@ -6,11 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\ServiceCollection;
 use App\Http\Resources\V1\ServiceResource;
 use App\Models\Service;
-use App\Http\Requests\V1\StoreServiceRequest;
-use App\Http\Requests\V1\UpdateServiceRequest;
 use App\Filters\V1\ServicesFilter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
 
 /**
  * @OA\Tag (
@@ -61,50 +58,9 @@ class ServiceController extends Controller
     }
 
 
-    /**
-     * @OA\Post (
-     *      path = "/admin/services",
-     *      operationId = "storeServices",
-     *      tags = {"Services"},
-     *      summary = "Create new service",
-     *      description = "Returns service data",
-     *      @OA\RequestBody (
-     *          required = true,
-     *          description = "Pass user credentials",
-     *          @OA\JsonContent (
-     *              collectionFormat = "multi",
-     *              ref = "#/components/schemas/StoreServiceRequest",
-     *          ),
-     *      ),
-     *      @OA\Response (
-     *          response = 201,
-     *          description = "Successful operation",
-     *       ),
-     *      @OA\Response (
-     *          response = 400,
-     *          ref = "#/components/responses/400",
-     *      ),
-     *      @OA\Response (
-     *          response = 401,
-     *          ref = "#/components/responses/401",
-     *      ),
-     *      @OA\Response (
-     *          response = 403,
-     *          ref = "#/components/responses/403",
-     *      ),
-     *      @OA\Response (
-     *          response = 422,
-     *          ref = "#/components/responses/422",
-     *      ),
-     *      @OA\Response (
-     *          response = 500,
-     *          ref = "#/components/responses/500",
-     *      ),
-     * )
-     */
-    public function store(StoreServiceRequest $request)
+    public function store(Request $request)
     {
-        return ServiceResource::make(Service::create($request->all()));
+        //
     }
 
 
@@ -169,173 +125,14 @@ class ServiceController extends Controller
     }
 
 
-    /**
-     * @OA\Put (
-     *      path = "/admin/services/{id}",
-     *      operationId = "updateServices",
-     *      tags = {"Services"},
-     *      summary = "Update service",
-     *      description = "Returns service data",
-     *      @OA\Parameter (
-     *          name = "id",
-     *          description = "Service id",
-     *          required = true,
-     *          in = "path",
-     *          @OA\Schema(
-     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
-     *          )
-     *      ),
-     *      @OA\RequestBody (
-     *          required = true,
-     *          description = "Pass user credentials",
-     *          @OA\JsonContent (
-     *              collectionFormat = "multi",
-     *              ref = "#/components/schemas/UpdateServiceRequest",
-     *          ),
-     *      ),
-     *      @OA\Response (
-     *          response = 201,
-     *          description = "Successful operation",
-     *       ),
-     *      @OA\Response (
-     *          response = 400,
-     *          ref = "#/components/responses/400",
-     *      ),
-     *      @OA\Response (
-     *          response = 401,
-     *          ref = "#/components/responses/401",
-     *      ),
-     *      @OA\Response (
-     *          response = 403,
-     *          ref = "#/components/responses/403",
-     *      ),
-     *      @OA\Response (
-     *          response = 422,
-     *          ref = "#/components/responses/422",
-     *      ),
-     *      @OA\Response (
-     *          response = 500,
-     *          ref = "#/components/responses/500",
-     *      ),
-     * )
-     */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(Request $request, Service $service)
     {
-        return $service->update($request->all());
+        //
     }
 
 
-    /**
-     * @OA\Delete (
-     *      path = "/admin/service/{id}",
-     *      operationId = "destroyService",
-     *      tags = {"Services"},
-     *      summary = "Destroy Service",
-     *      description = "Return bool",
-     *      @OA\Parameter (
-     *          name = "id",
-     *          description = "Service id",
-     *          required = true,
-     *          in = "path",
-     *          @OA\Schema (
-     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
-     *          )
-     *      ),
-     *      @OA\Response (
-     *          response = 200,
-     *          description = "Successful operation",
-     *      ),
-     *      @OA\Response (
-     *          response = 400,
-     *          ref = "#/components/responses/400",
-     *      ),
-     *      @OA\Response (
-     *          response = 401,
-     *          ref = "#/components/responses/401",
-     *      ),
-     *      @OA\Response (
-     *          response = 403,
-     *          ref = "#/components/responses/403",
-     *      ),
-     *      @OA\Response (
-     *          response = 422,
-     *          ref = "#/components/responses/422",
-     *      ),
-     *      @OA\Response (
-     *          response = 500,
-     *          ref = "#/components/responses/500",
-     *      ),
-     * )
-     */
     public function destroy(int $id)
     {
-        return Service::destroy($id);
-    }
-
-
-    /**
-     * @OA\Post (
-     *      path = "/admin/services/{service}/image",
-     *      operationId = "imageService",
-     *      tags = {"Services"},
-     *      summary = "Update image for service",
-     *      description = "Returns service status",
-     *      @OA\Parameter (
-     *          name = "service",
-     *          description = "Service id",
-     *          required = true,
-     *          in = "path",
-     *          @OA\Schema (
-     *              ref = "#/components/schemas/BaseProperties/properties/property_id",
-     *          )
-     *      ),
-     *      @OA\RequestBody (
-     *          required = true,
-     *          @OA\MediaType (
-     *              mediaType = "multipart/form-data",
-     *              @OA\Schema (
-     *                  @OA\Property (
-     *                      property = "image",
-     *                      ref = "#/components/schemas/BaseProperties/properties/property_uploads",
-     *                  )
-     *              )
-     *          ),
-     *      ),
-     *      @OA\Response (
-     *          response = 201,
-     *          description = "Successful operation",
-     *          @OA\JsonContent (
-     *              ref = "#/components/schemas/BaseProperties/properties/property_boolean_result",
-     *          ),
-     *       ),
-     *      @OA\Response (
-     *          response = 400,
-     *          ref = "#/components/responses/400",
-     *      ),
-     *      @OA\Response (
-     *          response = 401,
-     *          ref = "#/components/responses/401",
-     *      ),
-     *      @OA\Response (
-     *          response = 403,
-     *          ref = "#/components/responses/403",
-     *      ),
-     *      @OA\Response (
-     *          response = 422,
-     *          ref = "#/components/responses/422",
-     *      ),
-     *      @OA\Response (
-     *          response = 500,
-     *          ref = "#/components/responses/500",
-     *      ),
-     * )
-     */
-    public function image(Service $service, Request $image)
-    {
-        if (!is_null($service->id) && $service->uploadImage($image)) {
-            return URL::to("/uploads") . "/" . $service->image;
-        }
-
-        return response(['error' => 'Failed image upload'], 500);
+        //
     }
 }
