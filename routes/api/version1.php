@@ -31,33 +31,5 @@ Route::prefix('v1')
 
         Route::get('galleries', [GalleryController::class, 'index']);
         Route::get('galleries/{gallery}', [GalleryController::class, 'show'])->whereNumber('service');
-
-
-        // With Authorization
-        Route::prefix('admin')
-            ->middleware('auth:sanctum')
-            ->group(function () {
-                Route::post('logout', [AuthController::class, 'logout']);
-
-                Route::apiResource('users', UserController::class);
-
-                Route::post('create', [AuthController::class, 'store']);
-                Route::post('delete/{id}', [AuthController::class, 'destroy'])->whereNumber('id');
-
-                Route::apiResource('services', ServiceController::class);
-                Route::post('services/{service}/image', [ServiceController::class, 'image'])->whereNumber('service');
-
-                Route::apiResource('subservices', SubserviceController::class);
-                Route::post('subservices/{subservice}/image', [SubserviceController::class, 'image'])->whereNumber('subservice');
-
-                Route::apiResource('equipment', EquipmentController::class);
-                Route::post('equipment/{equipment}/image', [EquipmentController::class, 'image'])->whereNumber('equipment');
-
-                Route::apiResource('blog', BlogController::class);
-                Route::post('blog/{blog}/image', [BlogController::class, 'image'])->whereNumber('blog');
-
-                Route::apiResource('galleries', GalleryController::class);
-                Route::post('galleries/{gallery}/image', [GalleryController::class, 'image'])->whereNumber('gallery');
-            });
     }
     );

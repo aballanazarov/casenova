@@ -12,9 +12,17 @@ class UserSeeder extends Seeder
     {
         if (!User::where(['email' => 'admin@casenova.uz'])->first()) {
             User::query()->create([
-                'name' => 'admin',
+                'name' => 'Admin',
                 'email' => 'admin@casenova.uz',
-                'password' => 'P@$$Admin',
+                'password' => Hash::make('P@$$Admin'),
+            ]);
+        }
+
+        if (!User::where(['email' => 'moderator@casenova.uz'])->first()) {
+            User::query()->create([
+                'name' => 'Moderator',
+                'email' => 'moderator@casenova.uz',
+                'password' => Hash::make('P@$$CaseNova'),
             ]);
         }
     }

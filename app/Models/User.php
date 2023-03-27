@@ -62,9 +62,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string created_at
  * @property string updated_at
  */
-class User extends Authenticatable
+class User extends \TCG\Voyager\Models\User
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'name',
@@ -80,9 +80,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function setPasswordAttribute(string $value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
 }
