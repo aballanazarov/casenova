@@ -3,13 +3,11 @@
 use App\Http\Controllers\Api\V1\BlogController;
 use App\Http\Controllers\Api\V1\EquipmentController;
 use App\Http\Controllers\Api\V1\GalleryController;
-use App\Http\Controllers\Api\V1\LocaleController;
 use App\Http\Controllers\Api\V1\ServiceController;
 use App\Http\Controllers\Api\V1\SubserviceController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')
-    ->middleware('localization')
     ->group(function () {
         Route::get('services', [ServiceController::class, 'index']);
         Route::get('services/{service}', [ServiceController::class, 'show'])->whereNumber('service');
@@ -25,7 +23,4 @@ Route::prefix('v1')
 
         Route::get('galleries', [GalleryController::class, 'index']);
         Route::get('galleries/{gallery}', [GalleryController::class, 'show'])->whereNumber('service');
-
-        Route::get('/language', [LocaleController::class, 'index']);
-        Route::get('/language/set', [LocaleController::class, 'change']);
     });
