@@ -57,8 +57,8 @@ class SubserviceResource extends JsonResource
         return [
             'id' => $this->id,
             'serviceId' => $this->service_id,
-            'name' => $this->name,
-            'content' => $this->content,
+            'name' => $this->getTranslatedAttribute('name', app()->getLocale(), config('voyager.multilingual.default')),
+            'content' => $this->getTranslatedAttribute('content', app()->getLocale(), config('voyager.multilingual.default')),
             'image' => empty($this->image) ? $this->image : URL::to("/storage") . "/" . str_replace('\\', '/', $this->image),
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,

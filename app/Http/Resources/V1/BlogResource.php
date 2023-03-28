@@ -57,8 +57,8 @@ class BlogResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'content' => $this->content,
+            'title' => $this->getTranslatedAttribute('title', app()->getLocale(), config('voyager.multilingual.default')),
+            'content' => $this->getTranslatedAttribute('content', app()->getLocale(), config('voyager.multilingual.default')),
             'image' => empty($this->image) ? $this->image : URL::to("/storage") . "/" . str_replace('\\', '/', $this->image),
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,

@@ -54,8 +54,8 @@ class ServiceResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'title' => $this->title,
+            'name' => $this->getTranslatedAttribute('name', app()->getLocale(), config('voyager.multilingual.default')),
+            'title' => $this->getTranslatedAttribute('title', app()->getLocale(), config('voyager.multilingual.default')),
             'image' => empty($this->image) ? $this->image : URL::to("/storage") . "/" . str_replace('\\', '/', $this->image),
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
