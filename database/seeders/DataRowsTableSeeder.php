@@ -467,10 +467,10 @@ class DataRowsTableSeeder extends Seeder
                 'display_name' => 'Service ID',
                 'required'     => 1,
                 'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
                 'order'        => 2,
             ])->save();
         }
@@ -480,7 +480,7 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'relationship',
                 'display_name' => __('admin.voyager.menu.services.name'),
-                'required'     => 1,
+                'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
