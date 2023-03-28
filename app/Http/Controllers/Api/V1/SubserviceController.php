@@ -24,6 +24,13 @@ class SubserviceController extends Controller
      *      tags = {"Subservices"},
      *      summary = "Get list of subservices",
      *      description = "Returns list of subservices",
+     *      @OA\Parameter(
+     *          name="Accept-Language",
+     *          in="header",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",

@@ -23,6 +23,15 @@
                 "summary": "Get list of blogs",
                 "description": "Returns list of blogs",
                 "operationId": "getBlogs",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -113,6 +122,15 @@
                 "summary": "Get list of equipments",
                 "description": "Returns list of equipments",
                 "operationId": "getEquipments",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -281,9 +299,17 @@
                 "tags": [
                     "Services"
                 ],
-                "summary": "Get list of services",
-                "description": "Returns list of services",
+                "summary": "Получить список услуг",
                 "operationId": "getServices",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -320,6 +346,20 @@
                         "required": true,
                         "schema": {
                             "$ref": "#/components/schemas/BaseProperties/properties/property_id"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "incSubs",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
                         }
                     }
                 ],
@@ -365,6 +405,15 @@
                 "summary": "Get list of subservices",
                 "description": "Returns list of subservices",
                 "operationId": "getSubservices",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",

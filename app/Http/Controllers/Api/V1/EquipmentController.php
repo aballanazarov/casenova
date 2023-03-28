@@ -24,6 +24,13 @@ class EquipmentController extends Controller
      *      tags = {"Equipments"},
      *      summary = "Get list of equipments",
      *      description = "Returns list of equipments",
+     *      @OA\Parameter(
+     *          name="Accept-Language",
+     *          in="header",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",

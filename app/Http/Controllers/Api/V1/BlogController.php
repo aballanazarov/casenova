@@ -24,6 +24,13 @@ class BlogController extends Controller
      *      tags = {"Blogs"},
      *      summary = "Get list of blogs",
      *      description = "Returns list of blogs",
+     *      @OA\Parameter(
+     *          name="Accept-Language",
+     *          in="header",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",

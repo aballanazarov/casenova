@@ -22,8 +22,14 @@ class ServiceController extends Controller
      *      path = "/services",
      *      operationId = "getServices",
      *      tags = {"Services"},
-     *      summary = "Get list of services",
-     *      description = "Returns list of services",
+     *      summary = "Получить список услуг",
+     *      @OA\Parameter(
+     *          name="Accept-Language",
+     *          in="header",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",
@@ -80,6 +86,20 @@ class ServiceController extends Controller
      *              ref = "#/components/schemas/BaseProperties/properties/property_id",
      *          )
      *      ),
+     *      @OA\Parameter(
+     *          name="Accept-Language",
+     *          in="header",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *     @OA\Parameter(
+     *          name="incSubs",
+     *          in = "query",
+     *          @OA\Schema(
+     *              type="boolean"
+     *          )
+     *      ),
      *      @OA\Response (
      *          response = 200,
      *          description = "Successful operation",
@@ -115,7 +135,8 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        $incSubs = request()->query('incSubs');
+        $incSubsParam = request()->query('incSubs');
+        $incSubs = is_string($incSubsParam) && $incSubsParam == "true";
 
         if ($incSubs) {
             return ServiceResource::make($service->loadMissing('subservices'));
