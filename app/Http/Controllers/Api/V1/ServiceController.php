@@ -27,7 +27,14 @@ class ServiceController extends Controller
      *          name="Accept-Language",
      *          in="header",
      *          @OA\Schema(
-     *              type="string"
+     *              type="string",
+     *          )
+     *      ),
+     *     @OA\Parameter(
+     *          name="incSubs",
+     *          in = "query",
+     *          @OA\Schema(
+     *              type="boolean"
      *          )
      *      ),
      *      @OA\Response (

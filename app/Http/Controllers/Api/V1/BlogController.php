@@ -28,7 +28,7 @@ class BlogController extends Controller
      *          name="Accept-Language",
      *          in="header",
      *          @OA\Schema(
-     *              type="string"
+     *              type="string",
      *          )
      *      ),
      *      @OA\Response (

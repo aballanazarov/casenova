@@ -306,7 +306,16 @@
                         "name": "Accept-Language",
                         "in": "header",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "maximum": 2,
+                            "minimum": 2
+                        }
+                    },
+                    {
+                        "name": "incSubs",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
                         }
                     }
                 ],
